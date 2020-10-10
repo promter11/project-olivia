@@ -5,7 +5,7 @@ class AppStore {
     makeAutoObservable(this);
   }
 
-  title = 123;
+  title = "Olivia";
 }
 
 export default AppStore;
