@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Title } from "./style";
-
-import AppStore from "../../stores/AppStore";
+import { AppStyled } from "./style";
+import GlobalStyles from "../../styled";
+import Routes from "../../routes";
 
 class App extends Component {
-  store = new AppStore();
-
   render() {
-    const { title } = this.store;
-
-    return <Title>{title}</Title>;
+    return (
+      <AppStyled>
+        <GlobalStyles />
+        <Routes />
+      </AppStyled>
+    );
   }
 }
 
