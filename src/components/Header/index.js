@@ -8,50 +8,20 @@ import {
   LogoIcon,
   SearchIcon,
   BagIcon,
-  Search,
-  SearchTitle,
-  SearchDescription,
-  SearchFormWrapper,
-  SearchForm,
-  SearchInput,
-  SearchClose,
+  Button,
 } from "./style";
+import Search from "../Search";
+
+import SearchStore from "../../stores/SearchStore";
 
 export default class Header extends Component {
-  state = {
-    search: "",
-    isActive: false,
-  };
-
-  handleSearch = (event) => {
-    event.preventDefault();
-
-    this.setState((prevState) => {
-      return {
-        isActive: !prevState.isActive,
-      };
-    });
-  };
-
-  updateSearch = (value) => {
-    this.setState({
-      search: value,
-    });
-  };
-
-  submitForm = (event) => {
-    event.preventDefault();
-
-    this.setState({
-      search: "",
-    });
-  };
-
   render() {
-    const { search, isActive } = this.state;
+    const { active } = this.props;
+
+    const { toggleSearch } = SearchStore;
 
     return (
-      <HeaderStyled>
+      <HeaderStyled active={active}>
         <Container>
           <Wrapper>
             <StyledLink to="/">
@@ -91,7 +61,7 @@ export default class Header extends Component {
               </LogoIcon>
             </StyledLink>
             <ItemsWrapper>
-              <StyledLink to="/" onClick={(event) => this.handleSearch(event)}>
+              <Button onClick={() => toggleSearch()}>
                 <SearchIcon>
                   <path
                     d="M18 18L23 23"
@@ -108,7 +78,7 @@ export default class Header extends Component {
                     strokeWidth="1.5"
                   />
                 </SearchIcon>
-              </StyledLink>
+              </Button>
               <StyledLink to="/cart">
                 <BagIcon>
                   <path
@@ -127,24 +97,7 @@ export default class Header extends Component {
               </StyledLink>
             </ItemsWrapper>
           </Wrapper>
-          <Search active={isActive}>
-            <SearchTitle>Поиск аромата</SearchTitle>
-            <SearchFormWrapper>
-              <SearchForm onSubmit={(event) => this.submitForm(event)}>
-                <SearchInput
-                  onChange={(event) => this.updateSearch(event.target.value)}
-                  value={search}
-                />
-              </SearchForm>
-              <SearchDescription>Гармония - это ещё не все.</SearchDescription>
-            </SearchFormWrapper>
-            <SearchClose onClick={(event) => this.handleSearch(event)}>
-              <polygon
-                fill="white"
-                points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 214.2,178.5"
-              />
-            </SearchClose>
-          </Search>
+          <Search />
         </Container>
       </HeaderStyled>
     );

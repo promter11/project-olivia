@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const HomeStyled = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+export const HomeStyled = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+`;
+
+export const Block = styled.div`
   max-width: 43rem;
 `;
 
@@ -34,6 +38,7 @@ export const Description = styled.p`
 export const StyledLink = styled(Link)`
   display: inline-block;
   position: relative;
+  z-index: 5;
   font-size: 1.4rem;
   line-height: 1;
   font-weight: 300;

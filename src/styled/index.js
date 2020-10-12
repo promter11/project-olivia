@@ -9,6 +9,8 @@ const GlobalStyles = createGlobalStyle`
     --gray-color: #c8c8c8;
     --lightgray-color: #e8e8e8;
     --border-color: #808080;
+    --link-color: #7777d7;
+    --background-color: #f8f8f8;
     --error-color: #f79595;
     --white-color: #ffffff;
   }
@@ -22,10 +24,6 @@ const GlobalStyles = createGlobalStyle`
   
   html {
     font-size: 10px;
-  }
-  
-  body {
-    min-height: 100vh;
   }
   
   h1 {
@@ -62,6 +60,10 @@ const GlobalStyles = createGlobalStyle`
     color: var(--white-color);
   }
   
+  ul {
+    list-style-type: none;
+  }
+  
   input,
   textarea,
   button {
@@ -69,11 +71,8 @@ const GlobalStyles = createGlobalStyle`
   }
   
   button {
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-    padding: 1rem 3rem;
     border: 0;
-    border-radius: 0.4rem;
+    cursor: pointer;
   }
   
   img {

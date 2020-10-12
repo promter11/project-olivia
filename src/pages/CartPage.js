@@ -1,12 +1,9 @@
-import React, { Component, Fragment } from "react";
-import Header from "../components/Header";
+import React, { Component } from "react";
+
+import Cart from "../components/Cart";
 
 export default class CartPage extends Component {
   render() {
-    return (
-      <Fragment>
-        <Header />
-      </Fragment>
-    );
+    return <Cart />;
   }
 }

@@ -4,8 +4,9 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import CartPage from "./pages/CartPage";
+import NoMatch from "./components/NoMatch";
 
-export default class Routes extends Component {
+class Routes extends Component {
   render() {
     return (
       <Switch>
@@ -18,7 +19,12 @@ export default class Routes extends Component {
         <Route path="/cart">
           <CartPage />
         </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
       </Switch>
     );
   }
 }
+
+export default Routes;

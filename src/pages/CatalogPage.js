@@ -1,12 +1,9 @@
-import React, { Component, Fragment } from "react";
-import Header from "../components/Header";
+import React, { Component } from "react";
+
+import Catalog from "../components/Catalog";
 
 export default class CatalogPage extends Component {
   render() {
-    return (
-      <Fragment>
-        <Header />
-      </Fragment>
-    );
+    return <Catalog />;
   }
 }
