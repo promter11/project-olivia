@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Mark from "../../assets/icons/mark.svg";
 
 export const FilterStyled = styled.aside`
-  width: 33.33%;
+  width: 25%;
   padding-right: 3rem;
   margin-right: 3rem;
   border-right: 0.1rem solid var(--lightgray-color);
@@ -67,6 +67,48 @@ export const Checkbox = styled.input.attrs({
   }
 `;
 
+export const RadioText = styled.span`
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: bold;
+  padding-left: 3rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.1rem solid var(--gray-color);
+    border-radius: 50%;
+    transition: all 0.25s ease-in-out;
+    box-sizing: border-box;
+    background: var(--white-color);
+  }
+
+  &:hover {
+    &::before {
+      border: 0.1rem solid var(--green-color);
+    }
+  }
+`;
+
+export const Radio = styled.input.attrs({
+  type: "radio",
+  name: "rating",
+})`
+  position: absolute;
+  height: 0;
+  visibility: hidden;
+
+  &:checked + ${RadioText}::before {
+    border: 0.4rem solid var(--green-color);
+  }
+`;
+
 export const Wrapper = styled.div``;
 
 export const FieldsWrapper = styled.div`
@@ -78,7 +120,7 @@ export const TextField = styled.input.attrs({
   type: "number",
 })`
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem 1.2rem;
   border: 0.1rem solid var(--gray-color);
   border-radius: 0.4rem;
 

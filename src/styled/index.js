@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     --gray-color: #c8c8c8;
     --lightgray-color: #e8e8e8;
     --border-color: #808080;
-    --link-color: #7777d7;
+    --catalog-item-background-color: #f2f2f2;
     --background-color: #f8f8f8;
     --error-color: #f79595;
     --white-color: #ffffff;

@@ -77,9 +77,9 @@ export default class NoMatch extends Component {
               <circle fill="#FFFFFF" cx="245.76" cy="352.333" r="15.852" />
             </g>
           </Image>
-          <Title>Ой!</Title>
+          <Title>Страница не найдена</Title>
           <Description>
-            Похоже, страницы, которую вы пытаетесь найти, не существует.
+            Похоже, страница, которую вы пытаетесь найти, не существует.
           </Description>
           <StyledLink to="/">Перейти на главную</StyledLink>
         </Container>

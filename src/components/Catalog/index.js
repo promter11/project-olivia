@@ -9,18 +9,18 @@ import {
   Wrapper,
   List,
   ListItem,
+  ListItemBrand,
+  ListItemTitle,
+  ListItemWrapper,
+  ListItemPrice,
+  ListItemLink,
 } from "./style";
 
-import Breadcrumbs from "../Breadcrumbs";
 import Filter from "../Filter";
+import Sort from "../Sort";
 
 export default class Catalog extends Component {
   render() {
-    const crumbs = [
-      { title: "Главная", link: "/" },
-      { title: "Каталог", link: "/catalog" },
-    ];
-
     const items = [
       { id: 0, title: "Aventus", brand: "Creed", price: 19320, image: "" },
       {
@@ -49,19 +49,26 @@ export default class Catalog extends Component {
     return (
       <CatalogStyled>
         <Container>
-          <Breadcrumbs crumbs={crumbs} />
           <CatalogBlock>
-            <TitleWrapper>
-              <Title>Каталог</Title>
-              <Count>100</Count>
-            </TitleWrapper>
+            <Wrapper>
+              <TitleWrapper>
+                <Title>Каталог</Title>
+                <Count>100</Count>
+              </TitleWrapper>
+              <Sort />
+            </Wrapper>
             <Wrapper>
               <Filter />
               <List>
                 {items.map(({ id, title, brand, price }, _) => {
                   return (
                     <ListItem key={id}>
-                      {title} {brand} {price}
+                      <ListItemBrand>{brand}</ListItemBrand>
+                      <ListItemTitle>{title}</ListItemTitle>
+                      <ListItemWrapper>
+                        <ListItemPrice>{price} ₽</ListItemPrice>
+                        <ListItemLink to="/">Подробнее</ListItemLink>
+                      </ListItemWrapper>
                     </ListItem>
                   );
                 })}

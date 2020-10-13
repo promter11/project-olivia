@@ -7,6 +7,8 @@ import {
   Label,
   Checkbox,
   CheckboxText,
+  Radio,
+  RadioText,
   TextField,
   Range,
   Wrapper,
@@ -34,8 +36,8 @@ export default class Filter extends Component {
             <BlockTitle>Цена</BlockTitle>
             <Wrapper>
               <FieldsWrapper>
-                <TextField />
-                <TextField />
+                <TextField defaultValue={0} />
+                <TextField defaultValue={100000} />
               </FieldsWrapper>
               <Range />
             </Wrapper>
@@ -57,6 +59,25 @@ export default class Filter extends Component {
             <Label>
               <Checkbox />
               <CheckboxText>Одеколон (cologne)</CheckboxText>
+            </Label>
+          </Block>
+          <Block>
+            <BlockTitle>Рейтинг</BlockTitle>
+            <Label>
+              <Radio />
+              <RadioText>Больше 2 звёзд</RadioText>
+            </Label>
+            <Label>
+              <Radio />
+              <RadioText>Больше 3 звёзд</RadioText>
+            </Label>
+            <Label>
+              <Radio />
+              <RadioText>Больше 4 звёзд</RadioText>
+            </Label>
+            <Label>
+              <Radio />
+              <RadioText>Любой</RadioText>
             </Label>
           </Block>
           <Button>Очистить фильтр</Button>

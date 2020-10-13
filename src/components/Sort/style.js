@@ -1,0 +1,66 @@
+import styled from "styled-components";
+
+export const SortStyled = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+export const Title = styled.h4``;
+
+export const Option = styled.span`
+  font-size: 1.4rem;
+  line-height: 1;
+  border-bottom: 0.1rem dashed var(--pink-color);
+  cursor: pointer;
+  color: var(--pink-color);
+`;
+
+export const List = styled.ul`
+  position: absolute;
+  top: calc(100% + 1rem);
+  transform: ${(props) =>
+    props.active ? "translateY(0)" : "translateY(-1rem)"};
+  width: 100%;
+  border: 0.1rem solid var(--gray-color);
+  border-radius: 0.8rem;
+  opacity: ${(props) => (props.active ? "1" : "0")};
+  visibility: ${(props) => (props.active ? "visible" : "hidden")};
+  transition: all 0.25s ease-in-out;
+  background-color: var(--white-color);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 4rem;
+    border-bottom: 1rem solid var(--white-color);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+  }
+
+  &::before {
+    bottom: calc(100% + 0.1rem);
+    border-bottom-color: var(--gray-color);
+  }
+`;
+
+export const ListItem = styled.li`
+  font-size: 1.2rem;
+  padding: 1rem;
+  transition: font-weight 0.25s ease-in-out;
+  cursor: pointer;
+
+  &:first-child {
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 0.8rem 0.8rem;
+  }
+
+  &:hover {
+    font-weight: bold;
+  }
+`;

@@ -2,19 +2,19 @@ import styled from "styled-components";
 import Arrow from "../../assets/icons/arrow.svg";
 import { Link } from "react-router-dom";
 
-export const NoMatchStyled = styled.section`
+export const EmptyStyled = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-grow: 1;
   text-align: center;
+  flex-grow: 1;
 `;
 
 export const Image = styled.svg.attrs({
   width: "120",
   height: "120",
-  viewBox: "0 0 491.52 491.52",
+  viewBox: "0 0 120 120",
+  fill: "none",
   xmlns: "http://www.w3.org/2000/svg",
 })`
   margin-bottom: 3rem;
@@ -26,7 +26,7 @@ export const Title = styled.h2`
 `;
 
 export const Description = styled.p`
-  max-width: 36rem;
+  max-width: 30rem;
   font-size: 1.8rem;
   line-height: 2.4rem;
   margin: 0 auto 3rem auto;
