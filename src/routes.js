@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
+import ItemPage from "./pages/ItemPage";
 import CartPage from "./pages/CartPage";
 import EmptyPage from "./pages/EmptyPage";
 import NoMatch from "./components/NoMatch";
@@ -11,9 +12,10 @@ import Breadcrumbs from "./components/Breadcrumbs";
 const routes = [
   { path: "/", title: "Главная", Component: HomePage },
   { path: "/catalog", title: "Каталог", Component: CatalogPage },
+  { path: "/catalog/:id", Component: ItemPage },
   { path: "/cart", title: "Корзина", Component: CartPage },
   { path: "/cart/empty", title: "Корзина пустая", Component: EmptyPage },
-  { path: "*", title: "Страница не найдена", Component: NoMatch },
+  { path: "*", Component: NoMatch },
 ];
 
 class Routes extends Component {
