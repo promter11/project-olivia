@@ -1,7 +1,8 @@
 import styled from "styled-components";
+
 import Mark from "../../assets/icons/mark.svg";
 
-export const FilterStyled = styled.aside`
+export const Filter = styled.aside`
   width: 25%;
   padding-right: 3rem;
   margin-right: 3rem;
@@ -125,7 +126,7 @@ export const TextField = styled.input.attrs({
   border-radius: 0.4rem;
 
   &:not(:last-child) {
-    margin-right: 3rem;
+    margin-right: 1.5rem;
   }
 
   &::-webkit-outer-spin-button,

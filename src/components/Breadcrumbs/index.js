@@ -1,11 +1,7 @@
 import React, { Component } from "react";
+
 import { Container } from "../../styled/components";
-import {
-  BreadcrumbsList,
-  BreadcrumbsItem,
-  BreadcrumbsLink,
-  BreadcrumbsSection,
-} from "./style";
+import * as S from "./style";
 
 export default class Breadcrumbs extends Component {
   render() {
@@ -16,19 +12,19 @@ export default class Breadcrumbs extends Component {
     }
 
     return (
-      <BreadcrumbsSection>
+      <S.Breadcrumbs>
         <Container>
-          <BreadcrumbsList>
+          <S.BreadcrumbsList>
             {crumbs.map(({ title, path }, index) => {
               return (
-                <BreadcrumbsItem key={index}>
-                  <BreadcrumbsLink to={path}>{title}</BreadcrumbsLink>
-                </BreadcrumbsItem>
+                <S.BreadcrumbsItem key={index}>
+                  <S.BreadcrumbsLink to={path}>{title}</S.BreadcrumbsLink>
+                </S.BreadcrumbsItem>
               );
             })}
-          </BreadcrumbsList>
+          </S.BreadcrumbsList>
         </Container>
-      </BreadcrumbsSection>
+      </S.Breadcrumbs>
     );
   }
 }

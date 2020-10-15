@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import Arrow from "../../assets/icons/arrow.svg";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-export const EmptyStyled = styled.section`
+import Arrow from "../../assets/icons/arrow.svg";
+
+export const Empty = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;

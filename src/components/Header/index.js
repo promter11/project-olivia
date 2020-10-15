@@ -1,15 +1,8 @@
 import React, { Component } from "react";
+
 import { Container } from "../../styled/components";
-import {
-  HeaderStyled,
-  Wrapper,
-  ItemsWrapper,
-  StyledLink,
-  LogoIcon,
-  SearchIcon,
-  BagIcon,
-  Button,
-} from "./style";
+import * as S from "./style";
+
 import Search from "../Search";
 
 import SearchStore from "../../stores/SearchStore";
@@ -21,11 +14,11 @@ export default class Header extends Component {
     const { toggleSearch } = SearchStore;
 
     return (
-      <HeaderStyled active={active}>
+      <S.Header active={active}>
         <Container>
-          <Wrapper>
-            <StyledLink to="/">
-              <LogoIcon>
+          <S.Wrapper>
+            <S.StyledLink to="/">
+              <S.LogoIcon>
                 <path
                   d="M11.7163 26.2438C12.8122 28.3216 14.3262 29.6946 14.4137 29.7729C14.5805 29.9224 14.7902 29.997 14.9998 29.997C15.2095 29.997 15.4194 29.9224 15.5862 29.7729C15.6737 29.6946 17.1873 28.3216 18.2832 26.2438C16.9934 25.7306 15.8785 25.0266 14.9998 24.3599C14.1209 25.0266 13.0063 25.7306 11.7163 26.2438Z"
                   fill="white"
@@ -58,11 +51,11 @@ export default class Header extends Component {
                   d="M12.0255 21.5591C11.5009 20.9734 10.8659 20.2005 10.2383 19.2762C9.41529 18.0643 8.75794 16.8203 8.28484 15.5784C7.68105 13.9936 7.3748 12.4047 7.3748 10.8564C7.3748 9.59727 7.57714 8.31165 7.97768 7.02304C5.24918 5.96057 2.52777 5.83423 1.38931 5.83423C1.07437 5.83423 0.880739 5.84384 0.841143 5.84613C0.393907 5.87085 0.0368518 6.22791 0.0121326 6.67514C-0.00388912 6.96422 -0.330961 13.8011 3.79578 17.9279C6.22971 20.3616 9.60549 21.246 12.0255 21.5591Z"
                   fill="white"
                 />
-              </LogoIcon>
-            </StyledLink>
-            <ItemsWrapper>
-              <Button onClick={() => toggleSearch()}>
-                <SearchIcon>
+              </S.LogoIcon>
+            </S.StyledLink>
+            <S.ItemsWrapper>
+              <S.Button onClick={() => toggleSearch()}>
+                <S.SearchIcon>
                   <path
                     d="M18 18L23 23"
                     strokeWidth="1.5"
@@ -77,10 +70,10 @@ export default class Header extends Component {
                     stroke="white"
                     strokeWidth="1.5"
                   />
-                </SearchIcon>
-              </Button>
-              <StyledLink to="/cart">
-                <BagIcon>
+                </S.SearchIcon>
+              </S.Button>
+              <S.StyledLink to="/cart">
+                <S.BagIcon>
                   <path
                     d="M3.75879 6.75H21.2588V23.25H3.75879V6.75Z"
                     fill="none"
@@ -93,13 +86,13 @@ export default class Header extends Component {
                     stroke="white"
                     strokeWidth="1.5"
                   />
-                </BagIcon>
-              </StyledLink>
-            </ItemsWrapper>
-          </Wrapper>
+                </S.BagIcon>
+              </S.StyledLink>
+            </S.ItemsWrapper>
+          </S.Wrapper>
           <Search />
         </Container>
-      </HeaderStyled>
+      </S.Header>
     );
   }
 }

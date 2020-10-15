@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-export const HeaderStyled = styled.header`
+export const Header = styled.header`
   padding: 1.5rem 0;
   border-bottom: ${(props) =>
     props.active

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SortStyled = styled.div`
+export const Sort = styled.div`
   position: relative;
   display: flex;
   align-items: center;

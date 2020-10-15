@@ -1,23 +1,24 @@
 import React, { Component } from "react";
+
 import { Container } from "../../styled/components";
-import { HomeStyled, Block, Title, Description, StyledLink } from "./style";
+import * as S from "./style";
 
 class Home extends Component {
   render() {
     return (
-      <HomeStyled>
+      <S.Home>
         <Container>
-          <Block>
-            <Title>Olivia</Title>
-            <Description>
+          <S.Block>
+            <S.Title>Olivia</S.Title>
+            <S.Description>
               В этом мире нет ничего вечного. Все потихоньку рассыпается. Под
               кажущейся человеку нерушимой поверхностью вещей зачастую вызревают
               кошмары.
-            </Description>
-            <StyledLink to="/catalog">Изучить каталог</StyledLink>
-          </Block>
+            </S.Description>
+            <S.StyledLink to="/catalog">Изучить каталог</S.StyledLink>
+          </S.Block>
         </Container>
-      </HomeStyled>
+      </S.Home>
     );
   }
 }

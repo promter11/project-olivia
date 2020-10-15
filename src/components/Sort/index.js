@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import { SortStyled, Title, Option, List, ListItem } from "./style";
+
+import * as S from "./style";
+
 import SortStore from "../../stores/SortStore";
 
 class Sort extends Component {
@@ -13,21 +15,21 @@ class Sort extends Component {
     const { items, current, active, toggleSort } = SortStore;
 
     return (
-      <SortStyled>
-        <Title>
+      <S.Sort>
+        <S.Title>
           Сортировка:&nbsp;
-          <Option onClick={() => toggleSort()}>{current}</Option>
-        </Title>
-        <List active={active}>
+          <S.Option onClick={() => toggleSort()}>{current}</S.Option>
+        </S.Title>
+        <S.List active={active}>
           {items.map((el, index) => {
             return (
-              <ListItem key={index} onClick={() => this.handleItem(el)}>
+              <S.ListItem key={index} onClick={() => this.handleItem(el)}>
                 {el}
-              </ListItem>
+              </S.ListItem>
             );
           })}
-        </List>
-      </SortStyled>
+        </S.List>
+      </S.Sort>
     );
   }
 }

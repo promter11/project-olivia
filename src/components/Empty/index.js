@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { EmptyStyled, Image, Title, Description, StyledLink } from "./style.js";
+
 import { Container } from "../../styled/components";
+import * as S from "./style.js";
 
 export default class Empty extends Component {
   render() {
     return (
-      <EmptyStyled>
+      <S.Empty>
         <Container>
-          <Image>
+          <S.Image>
             <g>
               <path
                 d="M55.6741 75.5682C55.8809 77.5679 57.569 79.0564 59.536 79.0564C59.6697 79.0564 59.8045 79.0497 59.9403 79.0357C62.0757 78.8149 63.628 76.905 63.4072 74.7695L61.6144 57.4228C61.3936 55.2874 59.4826 53.7371 57.3482 53.9559C55.2128 54.1767 53.6605 56.0866 53.8813 58.2221L55.6741 75.5682Z"
@@ -47,14 +48,14 @@ export default class Empty extends Component {
                 <rect width="120" height="120" fill="white" />
               </clipPath>
             </defs>
-          </Image>
-          <Title>Ваша корзина пустая</Title>
-          <Description>
+          </S.Image>
+          <S.Title>Ваша корзина пустая</S.Title>
+          <S.Description>
             Похоже, ваша корзина не содержит ни одного товара.
-          </Description>
-          <StyledLink to="/">Вернуться на главную</StyledLink>
+          </S.Description>
+          <S.StyledLink to="/">Вернуться на главную</S.StyledLink>
         </Container>
-      </EmptyStyled>
+      </S.Empty>
     );
   }
 }

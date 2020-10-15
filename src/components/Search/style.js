@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SearchImage from "../../assets/images/search.jpg";
 
-export const SearchStyled = styled.div`
+export const Search = styled.div`
   position: absolute;
   top: ${(props) => (props.active ? "0" : "-100%")};
   left: 0;

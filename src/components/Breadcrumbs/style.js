@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-export const BreadcrumbsSection = styled.section`
+export const Breadcrumbs = styled.section`
   border-bottom: 0.1rem solid var(--gray-color);
 `;
 

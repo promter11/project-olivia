@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+
 import { Container } from "../../styled/components";
-import { NoMatchStyled, Image, Title, Description, StyledLink } from "./style";
+import * as S from "./style";
 
 export default class NoMatch extends Component {
   render() {
     return (
-      <NoMatchStyled>
+      <S.NoMatch>
         <Container>
-          <Image>
+          <S.Image>
             <circle fill="#505050" cx="245.76" cy="245.76" r="245.76" />
             <path
               style={{ opacity: 0.1 }}
@@ -76,14 +77,14 @@ export default class NoMatch extends Component {
               />
               <circle fill="#FFFFFF" cx="245.76" cy="352.333" r="15.852" />
             </g>
-          </Image>
-          <Title>Страница не найдена</Title>
-          <Description>
+          </S.Image>
+          <S.Title>Страница не найдена</S.Title>
+          <S.Description>
             Похоже, страница, которую вы пытаетесь найти, не существует.
-          </Description>
-          <StyledLink to="/">Перейти на главную</StyledLink>
+          </S.Description>
+          <S.StyledLink to="/">Перейти на главную</S.StyledLink>
         </Container>
-      </NoMatchStyled>
+      </S.NoMatch>
     );
   }
 }

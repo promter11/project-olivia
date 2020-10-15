@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { AppStyled, Main } from "./style";
+
 import GlobalStyles from "../../styled";
+import * as S from "./style";
 
 import Header from "../Header";
 import Routes from "../../routes";
@@ -13,13 +14,13 @@ class App extends Component {
     const isHomePage = pathname === "/";
 
     return (
-      <AppStyled active={isHomePage}>
+      <S.App active={isHomePage}>
         <GlobalStyles />
         <Header active={isHomePage} />
-        <Main>
+        <S.Main>
           <Routes />
-        </Main>
-      </AppStyled>
+        </S.Main>
+      </S.App>
     );
   }
 }

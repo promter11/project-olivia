@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import Arrow from "../../assets/icons/more-arrow.svg";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-export const CatalogStyled = styled.section``;
+import Arrow from "../../assets/icons/more-arrow.svg";
+
+export const Catalog = styled.section``;
 
 export const CatalogBlock = styled.div`
   padding: 4rem 0;
@@ -40,33 +41,33 @@ export const List = styled.ul`
   width: 75%;
 `;
 
-export const ListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  width: calc((100% / 3) - (6rem / 3));
-  padding: 3rem;
-  margin-bottom: 3rem;
-  background-color: var(--catalog-item-background-color);
-`;
-
 export const ListItemBrand = styled.span`
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: bold;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
   color: var(--white-color);
 `;
 
 export const ListItemTitle = styled.span`
   font-size: 1.4rem;
   line-height: 1.8rem;
-  font-weight: bold;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
   color: var(--pink-color);
 `;
 
 export const ListItemPrice = styled.span`
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
   color: var(--white-color);
 `;
 
@@ -81,8 +82,11 @@ export const ListItemLink = styled(Link)`
   position: relative;
   font-size: 1.4rem;
   line-height: 1.8rem;
-  font-weight: bold;
+  font-weight: 600;
   padding-right: 3rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
   color: var(--white-color);
 
   &::before {
@@ -93,6 +97,36 @@ export const ListItemLink = styled(Link)`
     transform: translateY(-50%) rotate(180deg);
     width: 2rem;
     height: 1rem;
+    transition: right 0.5s ease;
     background: url(${Arrow}) no-repeat center center / cover;
+  }
+
+  &:hover {
+    &::before {
+      right: -0.5rem;
+    }
+  }
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  width: calc((100% / 3) - (6rem / 3));
+  min-height: 36rem;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  transition: background-color 0.25s ease-in-out;
+  background-color: var(--catalog-item-background-color);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    
+    ${ListItemBrand},
+    ${ListItemTitle},
+    ${ListItemPrice},
+    ${ListItemLink} {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 `;
