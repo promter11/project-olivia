@@ -38,6 +38,11 @@ class ItemStore {
       items: observable,
       count: computed,
       getItemById: action,
+      getItemPrice: action,
+      getItemPriceWithDiscount: action,
+      getItemDiscount: action,
+      divideNumber: action,
+      zoomImage: action,
     });
   }
 
@@ -45,12 +50,14 @@ class ItemStore {
     {
       id: 0,
       active: true,
-      article: "CE-1409-AV",
+      code: "CE-1409-AV",
       brand: "Creed",
       title: "Aventus",
       description:
         "Парфюмерная вода блистает сладкими и сочными верхними нотами бергамота, черной смородины, яблока и ананаса; дымное, цветочное сердце из интригующего бленда жасмина, березового дерева, пачули и можжевельника; мужественная, теплая база из мускуса, дубового мха,ванили и серой амбры.",
-      gender: "Male",
+      gender: "male",
+      type: "edp",
+      rating: 4.84,
       image: `${AventusImg}`,
       options: [
         {
@@ -115,13 +122,15 @@ class ItemStore {
     {
       id: 1,
       active: true,
-      article: "CE-1410-VIW",
+      code: "CE-1410-VIW",
       brand: "Creed",
       title: "Virgin Island Water",
       description:
         "Экзотическая смесь лайма, белого бергамота, мандарина, иланг-иланга и жасмина, с базовыми нотами мускуса, тропических деревьев, кокоса и цветка тиаре.",
       image: `${VirginIslandWaterImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edp",
+      rating: 4.69,
       options: [
         {
           id: 0,
@@ -185,13 +194,15 @@ class ItemStore {
     {
       id: 2,
       active: true,
-      article: "CD-1411-LIW",
+      code: "CD-1411-LIW",
       brand: "Creed",
       title: "Love In White",
       description:
         "Этот нежный и чистый аромат от CREED с невесомыми нотами гиацинта и магнолии, напоминает свежий весенний ветерок. После нанесения, аромат раскрывается на коже каскадом роскошных оттенков – очень женственных, утонченных, слегка пудровых с отчетливыми нотами белой сирени, белого ириса и бобов Тонка в сердце.",
       image: `${LoveInWhiteImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 4.28,
       options: [
         {
           id: 0,
@@ -249,13 +260,15 @@ class ItemStore {
     {
       id: 3,
       active: true,
-      article: "AB-0290-PS",
+      code: "AB-0290-PS",
       brand: "Antonio Banderas",
       title: "Power of Seduction",
       description:
         "Свежий и чувственный аромат Power of Seduction, перед которым просто невозможно устоять. Гармоничное сочетание бодрящих, легких нот с фруктовыми и пряными тонами подчеркивает уникальность этого контраста.",
       image: `${PowerOfSeductionImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "cologne",
+      rating: 3.67,
       options: [
         {
           id: 0,
@@ -313,13 +326,15 @@ class ItemStore {
     {
       id: 4,
       active: false,
-      article: "CK-9020-O",
+      code: "CK-9020-O",
       brand: "Calvin Klein",
       title: "Obsessed",
       description:
         "Свежий, восточный, зеленый. Женственное олицетворение восточной лаванды. Ярко выраженная маскулинная фужерная структура аромата контрастирует с женственной теплотой; композиция создана на основе ноты белой лаванды, а кремовый мускус окутывает все компоненты и придает аромату чувственность и нежность. Напряжение между ароматическими верхними и мягкими базовыми нотами вторит напряжению между мужской и женской стороной его характера. Верхние ноты: Заветный цитрус Citrus™, эфирное масло нероли, элеми Сердечные ноты: Абсолю листьев фиалки, белая лаванда, шалфей Базовые ноты: Мускус Helvetolide™, амбретта, молекула Muscenone™ Парфюмеры: Annick Menardo и Honorine Blanc",
       image: `${ObsessedImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 3.09,
       options: [
         {
           id: 0,
@@ -383,13 +398,15 @@ class ItemStore {
     {
       id: 5,
       active: true,
-      article: "CK-9021-E",
+      code: "CK-9021-E",
       brand: "Calvin Klein",
       title: "Everyone",
       description:
         "Цитрусовая композиция открывается пикантным органическим апельсиновым маслом, раскрываясь аккордом синего чая в сердце и интенсивной нотой кедра в шлейфе для создания гендерно нейтрального звучания.",
       image: `${EveryoneImg}`,
-      gender: "Unisex",
+      gender: "unisex",
+      type: "edt",
+      rating: 3.27,
       options: [
         {
           id: 0,
@@ -447,13 +464,15 @@ class ItemStore {
     {
       id: 6,
       active: true,
-      article: "DR-1010-S",
+      code: "DR-1010-S",
       brand: "Dior",
       title: "Sauvage",
       description:
         "Невероятно свежая композиция – манифест свободы, продиктованный самим названием. Брутальный и одновременно благородный. Тот самый баланс, который искал Франсуа Демаши, создатель ароматов Dior. Перенасыщенный натуральными компонентами, отобранными с особой заботой, аромат захватывает фруктовой свежестью Калабрийского Бергамота. Амброксан, полученный из драгоценной серой амбры, расстилается величественным древесным шлейфом.",
       image: `${SauvageImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 2.78,
       options: [
         {
           id: 0,
@@ -512,13 +531,15 @@ class ItemStore {
     {
       id: 7,
       active: true,
-      article: "GC-0948-BNDF",
+      code: "GC-0948-BNDF",
       brand: "Gucci",
       title: "Bloom Nettare Di Fiori",
       description:
         "Безгранично чувственный и женственный, новый аромат Gucci Bloom Nettare di Fiori – новая глава в истории Gucci Bloom, воплощение многогранного внутреннего мира женщины. Он вобрал в себя неповторимый аромат распустившихся цветов — насыщенный и чарующий. Композиция, созданная в коллаборации с парфюмером Альберто Морильясом, звучит в новом прочтении. Женственные нотки розы и османтуса переплетаются с нотами сердца: жасмином, рангунской лианой и туберозой. Цветочный букет здесь звучит еще более женственно. Древесные аккорды сочетаются с чувственными верхними нотками имбиря и розы, а мягкость и загадочность аромату придают базовые ноты пачули, мускуса и османтуса.",
       image: `${BloomNettareImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 4.01,
       options: [
         {
           id: 0,
@@ -576,13 +597,15 @@ class ItemStore {
     {
       id: 8,
       active: true,
-      article: "GC-0949-PF",
+      code: "GC-0949-PF",
       brand: "Gucci",
       title: "Pour Femme",
       description:
         "Новая глава в истории Gucci Guilty, аромат Gucci Guilty Pour Femme - это манифест самовыражения и дерзости быть собой, история женщины, свободной от предрассудков. Gucci Guilty Pour Femme - это насыщенная и благородная восточная цветочная композиция, раскрывающаяся фруктовыми нотами мандора, нежной сирени и чувственным дуэтом масел пачули. Женственно-розовый аромат заключен в изящную форму, повторяющую силуэт мужского флакона Guilty. Эта особенная деталь призвана подчеркнуть единство мужчины и женщины, отвергающих гендерные стереотипы.",
       image: `${PourFemmeImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 3.8,
       options: [
         {
           id: 0,
@@ -640,13 +663,15 @@ class ItemStore {
     {
       id: 9,
       active: false,
-      article: "JM-8521-WSSS",
+      code: "JM-8521-WSSS",
       brand: "Jo Malone",
       title: "Wood Sage & Sea Salt",
       description:
         "Побег из повседневности к продуваемому ветрам побережью. Волны разбиваются в белую пену, соленые морские брызги наполняют воздух свежестью. Полный жизни с минеральным запахом скалистых утесов. Тающий в древесной теплоте шалфея. Живой, одухотворенный и абсолютно радостный.",
       image: `${WoodSageSeaSaltImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "cologne",
+      rating: 4.72,
       options: [
         {
           id: 0,
@@ -698,13 +723,15 @@ class ItemStore {
     {
       id: 10,
       active: true,
-      article: "KN-3412-BP",
+      code: "KN-3412-BP",
       brand: "Kilian",
       title: "Black Phantom",
       description:
         "Вечно скитающийся по свету пиратский корабль рассекает темные волны таинственного бурного моря. Black Phantom “Memento Mori” раскрывает свои морские сокровища наблюдателям с тонким обонянием. Аккорд рома из Мартиники, который называют «водой для пиратов», дополнен ароматом крепкого кофе и эссенцией ветивера. Ноты сахарного тростника и гладкого сандалового дерева делают аромат насыщенным и сладким. Древесная гармония для гурманов.",
       image: `${BlackPhantomImg}`,
-      gender: "Unisex",
+      gender: "unisex",
+      type: "edp",
+      rating: 4.21,
       options: [
         {
           id: 0,
@@ -756,13 +783,15 @@ class ItemStore {
     {
       id: 11,
       active: true,
-      article: "KN-3413-DL",
+      code: "KN-3413-DL",
       brand: "Kilian",
       title: "Dark Lord",
       description:
         "Композиция Dark Lord столь же темная и необузданная, тем не менее, создает совершенно иной образ. Словно головокружительная игра света и тени, новый аромат мгновенно захватывает воображение элегантными стойкими аккордами кожи и насыщенного ветивера, акцентами жасмина, тягучими нотами рома и щегольскими оттенками бергамота и перца. Завораживающий переход от тьмы к свету.",
       image: `${DarkLordImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edp",
+      rating: 4.33,
       options: [
         {
           id: 0,
@@ -814,13 +843,15 @@ class ItemStore {
     {
       id: 12,
       active: true,
-      article: "LC-4332-LHT",
+      code: "LC-4332-LHT",
       brand: "Lacoste",
       title: "L'Homme Timeless",
       description:
         "Туалетная вода Lacoste L'Homme Timeless создана для уверенного харизматичного мужчины. Этот новый древесно-пряный аромат наполнен свежестью. Смесь ванили, кедра и мускуса подчеркивают пряные оттенки перца и имбиря, благодаря чему создается сбалансированный букет.",
       image: `${TimelessImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 2.98,
       options: [
         {
           id: 0,
@@ -872,13 +903,15 @@ class ItemStore {
     {
       id: 13,
       active: true,
-      article: "LC-4333-EDLBP",
+      code: "LC-4333-EDLBP",
       brand: "Lacoste",
       title: "Eau De Lacoste L.12.12 Blanc-Pure",
       description:
         "Вдохновленный классической белой рубашкой поло Eau de Lacoste L.12.12 Blanc - Pure открывается свежим древесно – травяным аккордом из грейпфрута, розмарина, кардамона и хвои кедра. Чистые ароматические ноты затем смешиваются с мужественным сердцем, состоящим из туберозы, иланг иланга и смолы олибанум.",
       image: `${BlancPureImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 3.41,
       options: [
         {
           id: 0,
@@ -936,13 +969,15 @@ class ItemStore {
     {
       id: 14,
       active: false,
-      article: "LC-4334-PHM",
+      code: "LC-4334-PHM",
       brand: "Lacoste",
       title: "Pour Homme L.12.12 Magnetic",
       description:
         "Туалетная вода Lacoste Lui Magnetic олицетворяет собой свободу и жажду жизни, сочетая в себе свежесть и энергичность, подчеркивая молодость и активный образ жизни своего обладателя. Начало уникальной композиции Lui Magnetic звучит свежими и бодрящими нотами можжевельника в гармоничном соединении с бамбуком и терпкой полынью. В сердце мужественного и чувственного аромата от Lacoste раскрываются необычным и оригинальным букетом цветочные аккорды герани и фиалки. В неповторимом шлейфе туалетной воды перекликаются восточные ноты изысканного пачули, ветивера и амбры.",
       image: `${MagneticImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 3.26,
       options: [
         {
           id: 0,
@@ -1000,13 +1035,15 @@ class ItemStore {
     {
       id: 15,
       active: true,
-      article: "MR-1110-CB",
+      code: "MR-1110-CB",
       brand: "Mancera",
       title: "Cedrat Boise",
       description:
         "Новый аромат – Cedrat Boise Mancera представляет собой оригинальный взгляд на цитрусовые ноты, возвращение к исконным «гесперидам», славным своей легкостью, стойкостью и обворожительным звучанием. Подлинный гесперид, Cedrat Boise возрождает идею легендарного сада нимф, где растут волшебные плоды, сохраняющие молодость. Именно легенда о гесперидах сподвигла парфюмеров начала века на создание цитрусовых композиций.",
       image: `${CedratBoiseImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edp",
+      rating: 4.45,
       options: [
         {
           id: 0,
@@ -1058,13 +1095,15 @@ class ItemStore {
     {
       id: 16,
       active: true,
-      article: "MR-1111-RT",
+      code: "MR-1111-RT",
       brand: "Mancera",
       title: "Red Tobacco",
       description:
         "Амели и Пьер Мансера выбрали для его воплощения ароматную смесь кубинского табака и карибских пряностей, создав парфюмерный пейзаж вечернего неба окрашенного в бордовые оттенки лучами заходящего в карибское море солнца.",
       image: `${RedTobaccoImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edp",
+      rating: 3.78,
       options: [
         {
           id: 0,
@@ -1118,13 +1157,15 @@ class ItemStore {
     {
       id: 17,
       active: false,
-      article: "MR-1112-RV",
+      code: "MR-1112-RV",
       brand: "Mancera",
       title: "Roses Vanille",
       description:
         "Аромат, посвященный путешествию по острову Бурбон в индийском океане. Здесь произрастает один из самых дорогих и ароматных сортов ванили – бурбонская ваниль, ставшая основой композиции. «Я собирался создать аромат, где господствовала бы ваниль. Для меня это воспоминания о детских каникулах, которые я проводил на юге Франции, недалеко от Марселя. О колониальных лавках и той странной, сладковатой дымке, которая окутывала весь город, когда в порт приходило судно с грузом пряностей – ванилью, шафраном, гуржуном. Словно перед глазами у меня стоит картина, где корабль приходят встречать женщины и дети, семьи моряков, и женщины обязательно украшены розами: цветы в волосах, бутоньерки на платьях, букеты в руках», - Пьер Мансера.",
       image: `${RosesVanilleImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 3.73,
       options: [
         {
           id: 0,
@@ -1176,13 +1217,15 @@ class ItemStore {
     {
       id: 18,
       active: true,
-      article: "MR-8740-A",
+      code: "MR-8740-A",
       brand: "Mugler",
       title: "Alien",
       description:
         "Ароматы Alien – таинственные, мистические, женственные, яркие с успокаивающим и умиротворяющим шлейфом. Уникальное сочетание нот: Цветочная (Самбакский жасмин), Древесная (Кашмерановое дерево), Амбровая (Прозрачная белая амбра).",
       image: `${AlienImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edt",
+      rating: 4.18,
       options: [
         {
           id: 0,
@@ -1240,13 +1283,15 @@ class ItemStore {
     {
       id: 19,
       active: true,
-      article: "MR-8741-APM",
+      code: "MR-8741-APM",
       brand: "Mugler",
       title: "Amen Pure Malt",
       description:
         "Туалетная вода Mugler A*men Pure Malt - это коктейль с виски, который завоевывает сердца не только мужчин, но и женщин. Туалетная вода Amen Pure Malt впервые был выпущен в 2009 году и уже тогда покорила множество сердец. Mugler этим шикарным ароматом, воплощает истинную мужественность и элегантный стиль. Ему удалось соединить прекрасный мир парфюма и престижный виски. Туалетной водой нужно наслаждаться также как хорошим элитным виски. У аромата имеется отличная стойкость и длинный ненавязчивый шлейф. Аромат можно носить в любое время суток и в любое время года. Открывают аромат фруктовые ноты, когда они немного стихают раскрываются древесные аккорды и солод. Заканчивается звучание торфом и восточными нотами.",
       image: `${PureMaltImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 3.84,
       options: [
         {
           id: 0,
@@ -1298,13 +1343,15 @@ class ItemStore {
     {
       id: 20,
       active: true,
-      article: "PD-6400-C",
+      code: "PD-6400-C",
       brand: "Prada",
       title: "Candy",
       description:
         "Парфюмерная вода Prada Candy соблазнительный аромат для женщин из разряда восточных. Данный парфюм от Prada выбирают роковые обольстительницы, предпочитающие стиль, соблазн, а также те, кто готов экспериментировать с новыми образами. В самом верху пирамиды ароматов Prada Candy, ощущаются мускусные ноты, а сердцем парфюма станет шарм карамели. Душистый сладкий запах парфюмерной воды порадует истинных гурманов и ценителей риска и успеха. Аромат медленно испаряется, поэтому способен радовать, не прекращая напоминать о себе до самого вечера.",
       image: `${CandyImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 3.97,
       options: [
         {
           id: 0,
@@ -1356,13 +1403,15 @@ class ItemStore {
     {
       id: 21,
       active: false,
-      article: "PD-6410-CSP",
+      code: "PD-6410-CSP",
       brand: "Prada",
       title: "Candy Sugar Pop",
       description:
         "Prada Candy Sugar Pop – новый аромат в коллекции Candy. Он вызывает зависимость подобно модному музыкальному хиту. Как в поп-арт искусстве, в нем звучит тонкая ирония. Ирония, в которой сахарные ноты леденцов – метафора для непреодолимой сладости объекта желания. Любовь, вызывающая зависимость. Когда сила сладкого удовольствия слишком велика, остается лишь ей поддаться. Нежные аккорды бархатисто-медового персика и насыщенной ванили переплетаются с листьями бергамота и белыми цветами. Композиция дополнена нотами сочного яблока и зеленого цитруса, воплощая неожиданную ольфакторную историю.",
       image: `${CandySugarPopImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 4.11,
       options: [
         {
           id: 0,
@@ -1414,13 +1463,15 @@ class ItemStore {
     {
       id: 22,
       active: true,
-      article: "TF-2094-GV",
+      code: "TF-2094-GV",
       brand: "Tom Ford",
       title: "Grey Vetiver",
       description:
         "Аромат воплощает собой квинтэссенцию философии мужской моды Тома Форда. Grey Vetiver мастерски раскрывает прохладные и интригующие оттенки ветивера — ингредиента, который всегда был «визитной карточкой» классической, строгой и откровенной мужественности.",
       image: `${GreyVetiverImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 4.24,
       options: [
         {
           id: 0,
@@ -1478,13 +1529,15 @@ class ItemStore {
     {
       id: 23,
       active: true,
-      article: "TF-2095-BO",
+      code: "TF-2095-BO",
       brand: "Tom Ford",
       title: "Black Orchid",
       description:
         "Парфюмерная вода Tom Ford Black Orchid (Том Форд Орхидея) Яркий аромат с насыщенными глубокими аккордами и соблазнительными нотами черной орхидеи и специй — воплощение гламура и непреходящей роскоши.",
       image: `${BlackOrchidImg}`,
-      gender: "Unisex",
+      gender: "unisex",
+      type: "edp",
+      rating: 4.09,
       options: [
         {
           id: 0,
@@ -1549,13 +1602,15 @@ class ItemStore {
     {
       id: 24,
       active: true,
-      article: "TF-2096-NDN",
+      code: "TF-2096-NDN",
       brand: "Tom Ford",
       title: "Noir De Noir",
       description:
         "В этом шипрово-восточном аромате с таинственным и мягким характером насыщенные женственные цветочные ноты сочетаются с мужскими землистыми оттенками черного трюфеля, пачули, удовой древесины и древесного мха.",
       image: `${NoirDeNoirImg}`,
-      gender: "Unisex",
+      gender: "unisex",
+      type: "edp",
+      rating: 3.88,
       options: [
         {
           id: 0,
@@ -1613,13 +1668,15 @@ class ItemStore {
     {
       id: 25,
       active: true,
-      article: "VR-1099-S",
+      code: "VR-1099-S",
       brand: "Viktor & Rolf",
       title: "Spicebomb",
       description:
         "Spicebomb рожден от воспламеняющего столкновения двух сочетаний, в сущности противоположных тонов: первый воплощает непреодолимую зависимость, это купаж горячих пряностей – чили и шафрана – с ярко выраженными мужскими нотами ароматов кожи и табака, а также грубой силой нот ветивера. Второй тон взрывоопасный, сочетающий свежие пикантные ноты бергамота и грейпфрута, в то время как холодные пряности – элеми и красный перец – добавляют ему ледяной остроты. Ароматическое потрясение неизбежно.",
       image: `${SpicebombImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 4.7,
       options: [
         {
           id: 0,
@@ -1671,13 +1728,15 @@ class ItemStore {
     {
       id: 26,
       active: true,
-      article: "VR-1100-F",
+      code: "VR-1100-F",
       brand: "Viktor & Rolf",
       title: "Flowerbomb",
       description:
         "Почувствуйте мир мечты, созданный Viktor & Rolf ! Flowerbomb - это неудержимый взрыв цветов. Этот аромат превращает негативное в позитивное, черное - в розовое, а женщину - в цветок. Viktor & Rolf считают, что есть только одно оружие против действительности - мечта.",
       image: `${FlowerbombImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edt",
+      rating: 4.62,
       options: [
         {
           id: 0,
@@ -1736,13 +1795,15 @@ class ItemStore {
     {
       id: 27,
       active: false,
-      article: "VR-1101-SNV",
+      code: "VR-1101-SNV",
       brand: "Viktor & Rolf",
       title: "Spicebomb Night Vision",
       description:
         "Впервые SPICEBOMB играет на ночной территории и делает это очень интригующим способом. С таким же чувством провокации, которое используется для того, чтобы бросить вызов модным кодам, Viktor & Rolf приглашает вас сыграть в новую игру соблазнения, в темноте. Современный аромат — Spicebomb Night Vision - это взрывной контраст зеленой свежести и соблазнительных специй.",
       image: `${SpicebombNightVisionImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 2.87,
       options: [
         {
           id: 0,
@@ -1801,13 +1862,15 @@ class ItemStore {
     {
       id: 28,
       active: true,
-      article: "YSL-1400-LNDLH",
+      code: "YSL-1400-LNDLH",
       brand: "Yves Saint Laurent",
       title: "La Nuit De L'Homme",
       description:
         "Ночью возможно все. Неотразимо привлекательный мужчина, чьи мужественность и обольстительность сметают все на своем пути. Представляем новую грань мужественности от Yves Saint Laurent: Аромат, являющийся воплощением соблазна. Древесный восточный аромат. Таинственная игра света и темноты. Аромат для истинного обольстителя.",
       image: `${LaNuitDeLHommeImg}`,
-      gender: "Male",
+      gender: "male",
+      type: "edt",
+      rating: 3.75,
       options: [
         {
           id: 0,
@@ -1871,13 +1934,15 @@ class ItemStore {
     {
       id: 29,
       active: true,
-      article: "YSL-1401-BO",
+      code: "YSL-1401-BO",
       brand: "Yves Saint Laurent",
       title: "Black Opium",
       description:
         "Black Opium - аромат в стиле глэм-рок, который вызывает настоящую зависимость! Ароматы кофе и цветов провоцируют выработку адреналина, ноты белых цветов соблазняют своей откровенностью, ваниль дарит сладкую чувственность.",
       image: `${BlackOpiumImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 3.66,
       options: [
         {
           id: 0,
@@ -1941,13 +2006,15 @@ class ItemStore {
     {
       id: 30,
       active: false,
-      article: "YSL-1402-O",
+      code: "YSL-1402-O",
       brand: "Yves Saint Laurent",
       title: "Opium",
       description:
         "Легендарный аромат Yves Saint Laurent, который был создан в 1977 году. Как говорил сам Маэстро: «Опиум – магнетическое слово, ключ к самым тайным мечтам, пароль, открывающий двери в Мечту». Это аромат для женщины чувственной и мистической. Для женщины в поисках некоего абсолюта, в поисках новых ощущений. Классический Opium приобрел новую, более современную форму, которая, тем не менее, сохраняет связь со шкатулкой Инро.",
       image: `${OpiumImg}`,
-      gender: "Female",
+      gender: "female",
+      type: "edp",
+      rating: 4.05,
       options: [
         {
           id: 0,
@@ -2007,6 +2074,34 @@ class ItemStore {
 
   getItemById = (id) => {
     return this.items[id];
+  };
+
+  getItemPrice = (id) => {
+    return this.items[id].options[0].price;
+  };
+
+  getItemPriceWithDiscount = (id) => {
+    return this.getItemPrice(id) * this.getItemDiscount(id);
+  };
+
+  getItemDiscount = (id) => {
+    return 1 - this.items[id].options[0].discountPercentage / 100;
+  };
+
+  divideNumber = (number) => {
+    return number.toLocaleString();
+  };
+
+  zoomImage = (event) => {
+    const target = event.target.parentNode;
+
+    const coordinateX = event.pageX;
+    const coordinateY = event.pageY;
+
+    const x = (coordinateX / target.offsetWidth) * 100;
+    const y = (coordinateY / target.offsetHeight) * 100;
+
+    target.style.backgroundPosition = `${x}% ${y}%`;
   };
 }
 

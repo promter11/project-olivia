@@ -14,16 +14,22 @@ export const Wrapper = styled.div`
 
 export const Block = styled.div`
   width: 50%;
+  max-height: 54rem;
 
-  &:not(:last-child) {
-    padding-right: 3rem;
+  &:not(:first-child) {
+    padding-left: 3rem;
   }
 `;
 
 export const Image = styled.img`
   min-height: 54rem;
+  transition: opacity 0.25s ease;
   object-fit: cover;
   cursor: zoom-in;
+
+  &:hover {
+    opacity: 0;
+  }
 `;
 
 export const TitleWrapper = styled.div``;
@@ -32,7 +38,7 @@ export const Title = styled.h2`
   margin-bottom: 0.5rem;
 `;
 
-export const Article = styled.span`
+export const Code = styled.span`
   font-size: 1.6rem;
   line-height: 1.8rem;
   font-weight: 300;
@@ -93,7 +99,6 @@ export const PriceList = styled.ul`
 `;
 
 export const PriceListItem = styled.li`
-  text-decoration: ${(props) => (props.discount ? "line-through" : "normal")};
   margin-right: 3rem;
   color: ${(props) =>
     props.discount ? "var(--gray-color)" : "var(--grey-color)"};
@@ -119,6 +124,94 @@ export const Button = styled.a`
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   padding: 1.5rem 3rem;
+  border: 0.1rem solid var(--grey-color);
+  transition: all 0.25s ease;
   background-color: var(--grey-color);
   color: var(--white-color);
+
+  &:hover {
+    background-color: transparent;
+    color: var(--grey-color);
+  }
 `;
+
+export const Tabs = styled.ul`
+  display: flex;
+  margin-bottom: 3rem;
+  border-bottom: 0.2rem solid var(--lightgray-color);
+`;
+
+export const TabsItem = styled.li`
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+  transition: color 0.25s ease-in-out;
+  color: var(--grey-color);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: ${(props) =>
+      props.active ? "var(--lightgrey-color)" : "var(--lightgray-color)"};
+  }
+
+  &:not(:last-child) {
+    margin-right: 3rem;
+  }
+
+  &:hover {
+    color: var(--gray-color);
+  }
+`;
+
+export const TabsBlock = styled.div`
+  display: ${(props) => (props.active ? "block" : "none")};
+`;
+
+export const SpecsList = styled.ul``;
+
+export const SpecsDotted = styled.div`
+  flex: 1;
+  margin: 0 0.5rem 0.4rem 0.5rem;
+  border-bottom: 0.1rem dotted var(--gray-color);
+`;
+
+export const SpecsItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const SpecsItemTitle = styled.div`
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--gray-color);
+`;
+
+export const SpecsItemDesc = styled.div`
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--grey-color);
+`;
+
+export const Description = styled.p``;
+
+export const NoteBlock = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+`;
+
+export const NoteTitle = styled.h4`
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+`;
+
+export const NoteDescription = styled.p``;

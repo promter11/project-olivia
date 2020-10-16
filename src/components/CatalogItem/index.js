@@ -1,26 +1,37 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
 
 import { Container } from "../../styled/components";
 import * as S from "./style";
 
 import ItemStore from "../../stores/ItemStore";
+import TabsStore from "../../stores/TabsStore";
 
 class CatalogItem extends Component {
   render() {
     const {
       params: { id },
     } = this.props.match;
-    const { getItemById } = ItemStore;
+    const {
+      getItemById,
+      getItemPrice,
+      getItemPriceWithDiscount,
+      divideNumber,
+      zoomImage,
+    } = ItemStore;
+    const { items, activeID, selectItem } = TabsStore;
 
     const {
       active,
-      article,
+      code,
       brand,
       title,
+      description,
       image,
       options,
       specifications,
+      notes,
     } = getItemById(id);
 
     return (
@@ -31,13 +42,22 @@ class CatalogItem extends Component {
               <S.Title>
                 {brand} {title}
               </S.Title>
-              <S.Article>{article}</S.Article>
+              <S.Code>{code}</S.Code>
             </S.TitleWrapper>
             <S.Active>{active ? "Есть в наличии" : "Нет в наличии"}</S.Active>
           </S.Wrapper>
           <S.Wrapper>
-            <S.Block>
-              <S.Image src={image} loading="lazy" alt={`${brand} - ${title}`} />
+            <S.Block
+              style={{
+                background: `url("${image}") no-repeat`,
+              }}
+            >
+              <S.Image
+                src={image}
+                loading="lazy"
+                alt={`${brand} - ${title}`}
+                onMouseMove={(event) => zoomImage(event)}
+              />
             </S.Block>
             <S.Block>
               <S.List>
@@ -57,15 +77,60 @@ class CatalogItem extends Component {
                   <S.ListItemTitle>Цена</S.ListItemTitle>
                   <S.PriceList>
                     <S.PriceListItem>
-                      <S.PriceTitle>3000 P</S.PriceTitle>
+                      <S.PriceTitle>
+                        {divideNumber(getItemPriceWithDiscount(id))} ₽
+                      </S.PriceTitle>
                       <S.PriceText>цена со скидкой</S.PriceText>
                     </S.PriceListItem>
                     <S.PriceListItem discount>
-                      <S.PriceTitle>5550 P</S.PriceTitle>
+                      <S.PriceTitle>
+                        {divideNumber(getItemPrice(id))} ₽
+                      </S.PriceTitle>
                       <S.PriceText>цена без скидки</S.PriceText>
                     </S.PriceListItem>
                   </S.PriceList>
                   <S.Button href="/">Добавить в корзину</S.Button>
+                </S.ListItem>
+                <S.ListItem>
+                  <S.Tabs>
+                    {items.map((el, id) => {
+                      return (
+                        <S.TabsItem
+                          key={id}
+                          active={id === activeID}
+                          onClick={() => selectItem(id)}
+                        >
+                          {el}
+                        </S.TabsItem>
+                      );
+                    })}
+                  </S.Tabs>
+                  <S.TabsBlock active={0 === activeID}>
+                    <S.SpecsList>
+                      {specifications.map(({ id, title, description }, _) => {
+                        return (
+                          <S.SpecsItem key={id}>
+                            <S.SpecsItemTitle>{title}</S.SpecsItemTitle>
+                            <S.SpecsDotted />
+                            <S.SpecsItemDesc>{description}</S.SpecsItemDesc>
+                          </S.SpecsItem>
+                        );
+                      })}
+                    </S.SpecsList>
+                  </S.TabsBlock>
+                  <S.TabsBlock active={1 === activeID}>
+                    <S.Description>{description}</S.Description>
+                  </S.TabsBlock>
+                  <S.TabsBlock active={2 === activeID}>
+                    {notes.map(({ id, title, description }) => {
+                      return (
+                        <S.NoteBlock key={id}>
+                          <S.NoteTitle>{title}</S.NoteTitle>
+                          <S.NoteDescription>{description}</S.NoteDescription>
+                        </S.NoteBlock>
+                      );
+                    })}
+                  </S.TabsBlock>
                 </S.ListItem>
               </S.List>
             </S.Block>
@@ -76,4 +141,4 @@ class CatalogItem extends Component {
   }
 }
 
-export default withRouter(CatalogItem);
+export default withRouter(observer(CatalogItem));

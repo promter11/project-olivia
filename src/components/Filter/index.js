@@ -8,6 +8,13 @@ export default class Filter extends Component {
       <S.Filter>
         <S.Form>
           <S.Block>
+            <S.BlockTitle>Наличие</S.BlockTitle>
+            <S.Label>
+              <S.Checkbox />
+              <S.CheckboxText>Отобразить неактивные товары</S.CheckboxText>
+            </S.Label>
+          </S.Block>
+          <S.Block>
             <S.BlockTitle>Пол</S.BlockTitle>
             <S.Label>
               <S.Checkbox />
@@ -40,19 +47,11 @@ export default class Filter extends Component {
             </S.Label>
             <S.Label>
               <S.Checkbox />
-              <S.CheckboxText>Духи (parfum)</S.CheckboxText>
-            </S.Label>
-            <S.Label>
-              <S.Checkbox />
               <S.CheckboxText>Одеколон (cologne)</S.CheckboxText>
             </S.Label>
           </S.Block>
           <S.Block>
             <S.BlockTitle>Рейтинг</S.BlockTitle>
-            <S.Label>
-              <S.Radio />
-              <S.RadioText>Больше 2 звёзд</S.RadioText>
-            </S.Label>
             <S.Label>
               <S.Radio />
               <S.RadioText>Больше 3 звёзд</S.RadioText>
