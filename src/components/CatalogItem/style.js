@@ -23,7 +23,7 @@ export const Block = styled.div`
 
 export const Image = styled.img`
   min-height: 54rem;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.5s ease;
   object-fit: cover;
   cursor: zoom-in;
 
@@ -150,7 +150,8 @@ export const TabsItem = styled.li`
   padding-bottom: 0.5rem;
   cursor: pointer;
   transition: color 0.25s ease-in-out;
-  color: var(--grey-color);
+  color: ${(props) =>
+    props.active ? "var(--grey-color) !important" : "var(--grey-color)"};
 
   &::after {
     content: "";

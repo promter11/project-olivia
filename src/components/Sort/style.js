@@ -47,7 +47,7 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding: 1rem;
   transition: font-weight 0.25s ease-in-out;
   cursor: pointer;

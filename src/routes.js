@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
 import ItemPage from "./pages/ItemPage";
 import CartPage from "./pages/CartPage";
+import Checkout from "./components/Checkout";
 import EmptyPage from "./pages/EmptyPage";
 import NoMatch from "./components/NoMatch";
 import Breadcrumbs from "./components/Breadcrumbs";
@@ -15,6 +16,7 @@ const routes = [
   { path: "/catalog/:id", Component: ItemPage },
   { path: "/cart", title: "Корзина", Component: CartPage },
   { path: "/cart/empty", title: "Корзина пустая", Component: EmptyPage },
+  { path: "/checkout", title: "Оформление заказа", Component: Checkout },
   { path: "*", Component: NoMatch },
 ];
 

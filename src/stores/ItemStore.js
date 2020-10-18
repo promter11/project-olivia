@@ -2095,8 +2095,8 @@ class ItemStore {
   zoomImage = (event) => {
     const target = event.target.parentNode;
 
-    const coordinateX = event.pageX;
-    const coordinateY = event.pageY;
+    const coordinateX = event.nativeEvent.offsetX;
+    const coordinateY = event.nativeEvent.offsetY;
 
     const x = (coordinateX / target.offsetWidth) * 100;
     const y = (coordinateY / target.offsetHeight) * 100;
