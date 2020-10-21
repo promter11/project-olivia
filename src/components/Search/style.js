@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import SearchImage from "../../assets/images/search.jpg";
 
 export const Search = styled.div`
@@ -10,6 +11,7 @@ export const Search = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
   width: 100vw;
   height: 100vh;
   transition: top 0.5s ease;

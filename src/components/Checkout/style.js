@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Mark from "../../assets/icons/mark.svg";
+
 export const Checkout = styled.section`
   margin: 4rem 0;
 `;
@@ -8,30 +10,40 @@ export const Title = styled.h2`
   margin-bottom: 4rem;
 `;
 
-export const Wrapper = styled.div``;
+export const Inner = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
-export const Block = styled.div``;
+export const Wrapper = styled.div`
+  width: 66.66%;
+  padding-right: 3rem;
+`;
 
-export const BlockTitle = styled.h4`
-  margin-bottom: 2rem;
+export const Block = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+`;
+
+export const BlockTitle = styled.h3`
+  margin-bottom: 3rem;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
-  max-width: 77rem;
-  width: 100%;
 `;
 
 export const Label = styled.label`
   position: relative;
   width: calc((100% / 2) - (6rem / 2));
-  padding: 0.5rem 0;
-  margin-bottom: 3rem;
+  padding-top: 1rem;
   border-bottom: 0.1rem solid var(--gray-color);
 
   &:not(:last-child) {
     margin-right: 3rem;
+    margin-bottom: 3rem;
   }
 `;
 
@@ -44,7 +56,7 @@ export const InputText = styled.span`
   line-height: 1.8rem;
   transition: all 0.25s ease;
   pointer-events: none;
-  color: var(--gray-color);
+  color: var(--grey-color);
 `;
 
 export const Input = styled.input`
@@ -53,9 +65,10 @@ export const Input = styled.input`
   color: var(--grey-color);
 
   &:focus ~ ${InputText}, &:valid ~ ${InputText} {
-    top: 0rem;
+    top: 0.4rem;
     font-size: 1rem;
     line-height: 1.2rem;
+    color: var(--gray-color);
   }
 `;
 
@@ -70,19 +83,230 @@ export const ErrorText = styled.span`
   color: var(--error-color);
 `;
 
-export const CheckboxLabel = styled.label`
-  display: flex;
-  max-width: 42rem;
-`;
-
-export const Checkbox = styled.input`
-  margin-right: 1rem;
-`;
-
 export const CheckboxText = styled.span`
+  display: block;
+  position: relative;
   font-size: 1.4rem;
   line-height: 1.8rem;
-  transition: all 0.25s ease;
-  pointer-events: none;
+  font-weight: 300;
+  padding-left: 3rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.1rem solid var(--gray-color);
+    border-radius: 0.4rem;
+    transition: all 0.25s ease-in-out;
+    background: var(--white-color);
+  }
+
+  &:hover {
+    &::before {
+      border: 0.1rem solid var(--green-color);
+    }
+  }
+`;
+
+export const Checkbox = styled.input.attrs({
+  type: "checkbox",
+})`
+  position: absolute;
+  height: 0;
+  visibility: hidden;
+
+  &:checked + ${CheckboxText}::before {
+    border: 0.1rem solid transparent;
+    background: var(--green-color) url(${Mark}) no-repeat 0.1rem -0.1rem / cover;
+  }
+`;
+
+export const CheckboxLabel = styled.label`
+  max-width: 43rem;
+  cursor: pointer;
+`;
+
+export const RadioText = styled.span`
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  padding-left: 2.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.1rem solid var(--gray-color);
+    border-radius: 50%;
+    transition: all 0.25s ease-in-out;
+    box-sizing: border-box;
+    background: var(--white-color);
+  }
+
+  &:hover {
+    &::before {
+      border: 0.1rem solid var(--green-color);
+    }
+  }
+`;
+
+export const Radio = styled.input.attrs({
+  type: "radio",
+  name: "delivery",
+})`
+  position: absolute;
+  height: 0;
+  visibility: hidden;
+
+  &:checked + ${RadioText}::before {
+    border: 0.4rem solid var(--green-color);
+  }
+`;
+
+export const RadioLabel = styled.label`
+  width: 100%;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+`;
+
+export const Select = styled.select`
+  display: none;
+`;
+
+export const Option = styled.option``;
+
+export const CustomSelect = styled.div`
+  position: relative;
+  width: 100%;
+
+  border: 0.1rem solid var(--gray-color);
+`;
+
+export const CustomSelectItem = styled.div`
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
   color: var(--grey-color);
+`;
+
+export const CustomOptionList = styled.ul`
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: -0.1rem;
+  width: calc(100% + 0.2rem);
+  border: 0.1rem solid var(--lightgray-color);
+  background-color: var(--catalog-item-background-color);
+`;
+
+export const CustomOptionListItem = styled.li`
+  font-size: 1rem;
+  line-height: 1;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
+  color: var(--grey-color);
+
+  &:hover {
+    background-color: var(--lightgray-color);
+  }
+`;
+
+export const Cart = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+  padding: 3rem;
+  border: 0.1rem solid var(--lightgray-color);
+`;
+
+export const CartTitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid var(--lightgray-color);
+`;
+
+export const CartTitle = styled.h4``;
+
+export const CartCount = styled.span`
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--gray-color);
+`;
+
+export const CartWrapper = styled.div`
+  max-height: 47rem;
+  overflow-y: auto;
+`;
+
+export const Product = styled.div`
+  display: flex;
+
+  &:not(:last-child) {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 0.1rem solid var(--lightgray-color);
+  }
+`;
+
+export const ProductWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ProductTitle = styled.h4``;
+
+export const ProductType = styled.p``;
+
+export const ProductVolume = styled.span`
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  color: var(--gray-color);
+`;
+
+export const ProductPrice = styled.p`
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: bold;
+  margin-top: auto;
+`;
+
+export const ProductImage = styled.img`
+  width: 8rem;
+  height: 8rem;
+  margin-right: 1rem;
+  object-fit: cover;
+`;
+
+export const OrderButton = styled.button`
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  padding: 1.5rem 3rem;
+  margin-top: auto;
+  border: 0.1rem solid var(--grey-color);
+  transition: all 0.25s ease;
+  background-color: var(--grey-color);
+  color: var(--white-color);
+
+  &:hover {
+    background-color: transparent;
+    color: var(--grey-color);
+  }
 `;
