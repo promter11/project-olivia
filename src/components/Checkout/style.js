@@ -18,6 +18,19 @@ export const Inner = styled.div`
 export const Wrapper = styled.div`
   width: 66.66%;
   padding-right: 3rem;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    padding-right: 0;
+
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 992px) {
+    width: 50%;
+  }
 `;
 
 export const Block = styled.div`
@@ -37,13 +50,25 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   position: relative;
-  width: calc((100% / 2) - (6rem / 2));
+  width: ${(props) =>
+    props.address ? "100%" : "calc((100% / 2) - (3rem / 2))"};
   padding-top: 1rem;
   border-bottom: 0.1rem solid var(--gray-color);
 
   &:not(:last-child) {
-    margin-right: 3rem;
     margin-bottom: 3rem;
+  }
+
+  &:not(:nth-child(2n)) {
+    margin-right: ${(props) => (props.address ? "0" : "3rem")};
+  }
+
+  @media (max-width: 992px) {
+    width: 100%;
+
+    &:not(:nth-child(2n)) {
+      margin-right: 0;
+    }
   }
 `;
 
@@ -88,7 +113,6 @@ export const CheckboxText = styled.span`
   position: relative;
   font-size: 1.4rem;
   line-height: 1.8rem;
-  font-weight: 300;
   padding-left: 3rem;
 
   &::before {
@@ -127,6 +151,10 @@ export const Checkbox = styled.input.attrs({
 export const CheckboxLabel = styled.label`
   max-width: 43rem;
   cursor: pointer;
+
+  @media (max-width: 992px) {
+    max-width: none;
+  }
 `;
 
 export const RadioText = styled.span`
@@ -188,7 +216,6 @@ export const Option = styled.option``;
 export const CustomSelect = styled.div`
   position: relative;
   width: 100%;
-
   border: 0.1rem solid var(--gray-color);
 `;
 
@@ -198,6 +225,10 @@ export const CustomSelectItem = styled.div`
   padding: 1.5rem 2rem;
   cursor: pointer;
   color: var(--grey-color);
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const CustomOptionList = styled.ul`
@@ -229,6 +260,14 @@ export const Cart = styled.div`
   width: 33.33%;
   padding: 3rem;
   border: 0.1rem solid var(--lightgray-color);
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+
+  @media (min-width: 576px) and (max-width: 992px) {
+    width: 50%;
+  }
 `;
 
 export const CartTitleWrapper = styled.div`
@@ -250,6 +289,7 @@ export const CartCount = styled.span`
 
 export const CartWrapper = styled.div`
   max-height: 47rem;
+  margin-bottom: 3rem;
   overflow-y: auto;
 `;
 
@@ -270,7 +310,12 @@ export const ProductWrapper = styled.div`
 
 export const ProductTitle = styled.h4``;
 
-export const ProductType = styled.p``;
+export const ProductType = styled.p`
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+`;
 
 export const ProductVolume = styled.span`
   font-size: 1.2rem;
@@ -308,5 +353,9 @@ export const OrderButton = styled.button`
   &:hover {
     background-color: transparent;
     color: var(--grey-color);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 `;

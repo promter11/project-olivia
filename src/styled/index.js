@@ -28,18 +28,34 @@ const GlobalStyles = createGlobalStyle`
   
   h1 {
     font-size: 14.4rem;
+    
+    @media (max-width: 576px) {
+      font-size: 7.8rem;
+    }
   }
   
   h2 {
     font-size: 3.6rem;
+    
+    @media (max-width: 576px) {
+      font-size: 1.8rem;
+    }
   }
   
   h3 {
     font-size: 2.4rem;
+    
+    @media (max-width: 576px) {
+      font-size: 1.4rem;
+    }
   }
   
   h4 {
     font-size: 1.4rem;
+    
+    @media (max-width: 576px) {
+      font-size: 1.2rem;
+    }
   }
   
   h1,

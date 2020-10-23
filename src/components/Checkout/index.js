@@ -77,7 +77,7 @@ class Checkout extends Component {
               <S.Block>
                 <S.BlockTitle>Адрес доставки</S.BlockTitle>
                 <S.Form>
-                  <S.Label>
+                  <S.Label address>
                     <S.Input type="text" required />
                     <S.InputText>Введите адрес доставки</S.InputText>
                     <S.ErrorText>

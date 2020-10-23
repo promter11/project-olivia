@@ -33,6 +33,10 @@ export const Description = styled.p`
   font-style: italic;
   margin-bottom: 4rem;
   color: var(--white-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -67,5 +71,9 @@ export const StyledLink = styled(Link)`
     &::before {
       width: calc(100% + 0.2rem);
     }
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
   }
 `;

@@ -7,6 +7,18 @@ export const Filter = styled.aside`
   padding-right: 3rem;
   margin-right: 3rem;
   border-right: 0.1rem solid var(--lightgray-color);
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 4rem;
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const Form = styled.form``;
@@ -23,11 +35,15 @@ export const BlockTitle = styled.h3`
 `;
 
 export const Label = styled.label`
-  margin-bottom: 1.5rem;
   cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const CheckboxText = styled.span`
+  display: block;
   position: relative;
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -37,9 +53,8 @@ export const CheckboxText = styled.span`
   &::before {
     content: "";
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
-    transform: translateY(-50%);
     width: 1.5rem;
     height: 1.5rem;
     border: 0.1rem solid var(--gray-color);
@@ -118,7 +133,7 @@ export const FieldsWrapper = styled.div`
 `;
 
 export const TextField = styled.input.attrs({
-  type: "number",
+  type: "text",
 })`
   width: 100%;
   padding: 0.8rem 1.2rem;

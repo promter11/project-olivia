@@ -14,6 +14,7 @@ export const Search = styled.div`
   max-width: 100%;
   width: 100vw;
   height: 100vh;
+  padding: 1.5rem;
   transition: top 0.5s ease;
   background: rgba(0, 0, 0, 0.5) url(${SearchImage}) no-repeat center center /
     cover;
@@ -23,12 +24,20 @@ export const Search = styled.div`
 export const Title = styled.h2`
   margin-bottom: 4rem;
   color: var(--white-color);
+
+  @media (max-width: 576px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const Description = styled.p`
   font-weight: 300;
   font-style: italic;
   color: var(--white-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const FormWrapper = styled.div`
@@ -52,6 +61,12 @@ export const Input = styled.input.attrs({
   &:focus::placeholder {
     color: transparent;
   }
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const Close = styled.svg.attrs({
@@ -71,5 +86,12 @@ export const Close = styled.svg.attrs({
 
   &:hover > polygon {
     fill: var(--pink-color);
+  }
+
+  @media (max-width: 768px) {
+    width: 2rem;
+    height: auto;
+    top: 2rem;
+    right: 2rem;
   }
 `;

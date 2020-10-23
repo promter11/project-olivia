@@ -14,6 +14,10 @@ export const Option = styled.span`
   border-bottom: 0.1rem dashed var(--pink-color);
   cursor: pointer;
   color: var(--pink-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const List = styled.ul`
@@ -21,6 +25,7 @@ export const List = styled.ul`
   top: calc(100% + 1rem);
   transform: ${(props) =>
     props.active ? "translateY(0)" : "translateY(-1rem)"};
+  z-index: 5;
   width: 100%;
   border: 0.1rem solid var(--gray-color);
   border-radius: 0.8rem;
@@ -47,7 +52,7 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   padding: 1rem;
   transition: font-weight 0.25s ease-in-out;
   cursor: pointer;
@@ -62,5 +67,9 @@ export const ListItem = styled.li`
 
   &:hover {
     font-weight: bold;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
   }
 `;

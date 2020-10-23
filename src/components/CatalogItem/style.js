@@ -5,7 +5,7 @@ export const CatalogItem = styled.section``;
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 4rem 0;
+  margin-top: 4rem;
 
   &:first-child {
     justify-content: space-between;
@@ -19,6 +19,23 @@ export const Block = styled.div`
   &:not(:first-child) {
     padding-left: 3rem;
   }
+
+  @media (max-width: 576px) {
+    min-height: 32rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    min-height: 48rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 4rem;
+
+    &:not(:first-child) {
+      padding-left: 0;
+    }
+  }
 `;
 
 export const Image = styled.img`
@@ -29,6 +46,14 @@ export const Image = styled.img`
 
   &:hover {
     opacity: 0;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 32rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    min-height: 48rem;
   }
 `;
 
@@ -43,12 +68,21 @@ export const Code = styled.span`
   line-height: 1.8rem;
   font-weight: 300;
   color: var(--gray-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const Active = styled.p`
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: var(--green-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 `;
 
 export const List = styled.ul``;
@@ -90,6 +124,15 @@ export const VolumeListItem = styled.li`
     border-color: var(--grey-color);
     background-color: var(--grey-color);
     color: var(--white-color);
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+
+  @media (max-width: 992px) {
+    padding: 1.5rem 2rem;
   }
 `;
 
@@ -133,6 +176,10 @@ export const Button = styled.a`
     background-color: transparent;
     color: var(--grey-color);
   }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Tabs = styled.ul`
@@ -171,6 +218,17 @@ export const TabsItem = styled.li`
   &:hover {
     color: var(--gray-color);
   }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+
+  @media (max-width: 992px) {
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
 `;
 
 export const TabsBlock = styled.div`
@@ -194,15 +252,30 @@ export const SpecsItemTitle = styled.div`
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: var(--gray-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 `;
 
 export const SpecsItemDesc = styled.div`
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: var(--grey-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 `;
 
-export const Description = styled.p``;
+export const Description = styled.p`
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+`;
 
 export const NoteBlock = styled.div`
   &:not(:last-child) {
@@ -215,4 +288,9 @@ export const NoteTitle = styled.h4`
   margin-bottom: 1rem;
 `;
 
-export const NoteDescription = styled.p``;
+export const NoteDescription = styled.p`
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+`;

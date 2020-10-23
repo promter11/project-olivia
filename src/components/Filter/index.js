@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 import * as S from "./style";
 
-export default class Filter extends Component {
+class Filter extends Component {
   render() {
     return (
       <S.Filter>
@@ -10,18 +11,18 @@ export default class Filter extends Component {
           <S.Block>
             <S.BlockTitle>Наличие</S.BlockTitle>
             <S.Label>
-              <S.Checkbox />
+              <S.Checkbox name="active" />
               <S.CheckboxText>Отобразить неактивные товары</S.CheckboxText>
             </S.Label>
           </S.Block>
           <S.Block>
             <S.BlockTitle>Пол</S.BlockTitle>
             <S.Label>
-              <S.Checkbox />
+              <S.Checkbox name="male" />
               <S.CheckboxText>Мужской</S.CheckboxText>
             </S.Label>
             <S.Label>
-              <S.Checkbox />
+              <S.Checkbox name="female" />
               <S.CheckboxText>Женский</S.CheckboxText>
             </S.Label>
           </S.Block>
@@ -38,15 +39,15 @@ export default class Filter extends Component {
           <S.Block>
             <S.BlockTitle>Тип</S.BlockTitle>
             <S.Label>
-              <S.Checkbox />
+              <S.Checkbox name="edt" />
               <S.CheckboxText>Туалетная вода (EDT)</S.CheckboxText>
             </S.Label>
             <S.Label>
-              <S.Checkbox />
+              <S.Checkbox name="edp" />
               <S.CheckboxText>Парфюмерная вода (EDP)</S.CheckboxText>
             </S.Label>
             <S.Label>
-              <S.Checkbox />
+              <S.Checkbox name="cologne" />
               <S.CheckboxText>Одеколон (cologne)</S.CheckboxText>
             </S.Label>
           </S.Block>
@@ -71,3 +72,5 @@ export default class Filter extends Component {
     );
   }
 }
+
+export default observer(Filter);

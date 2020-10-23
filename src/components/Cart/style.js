@@ -40,6 +40,17 @@ export const Image = styled.img`
   margin-right: 2rem;
   flex-shrink: 0;
   object-fit: cover;
+
+  @media (max-width: 576px) {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 1rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    width: 10rem;
+    height: 10rem;
+  }
 `;
 
 export const TitleWrapper = styled.div``;
@@ -52,11 +63,17 @@ export const Volume = styled.span`
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: var(--gray-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 `;
 
 export const Options = styled.div`
   display: flex;
   align-items: center;
+  padding: 0 1rem;
 `;
 
 export const Plus = styled.svg.attrs({
@@ -75,6 +92,10 @@ export const Plus = styled.svg.attrs({
 
   &:hover > path {
     fill: var(--grey-color);
+  }
+
+  @media (max-width: 576px) {
+    width: 1.5rem;
   }
 `;
 
@@ -95,6 +116,10 @@ export const Minus = styled.svg.attrs({
   &:hover > path {
     fill: var(--grey-color);
   }
+
+  @media (max-width: 576px) {
+    width: 1.5rem;
+  }
 `;
 
 export const Count = styled.span`
@@ -103,6 +128,12 @@ export const Count = styled.span`
   font-weight: bold;
   margin: 0 1.5rem;
   color: var(--grey-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    margin: 0 1rem;
+  }
 `;
 
 export const Close = styled.svg.attrs({
@@ -111,7 +142,7 @@ export const Close = styled.svg.attrs({
   height: "357px",
   viewBox: "0 0 357 357",
 })`
-  max-width: 2rem;
+  width: 2rem;
   height: auto;
   cursor: pointer;
   fill: var(--gray-color);
@@ -122,6 +153,10 @@ export const Close = styled.svg.attrs({
 
   &:hover > polygon {
     fill: var(--grey-color);
+  }
+
+  @media (max-width: 576px) {
+    width: 1.5rem;
   }
 `;
 
@@ -134,28 +169,49 @@ export const PriceListItem = styled.li`
   margin-right: 3rem;
   color: ${(props) =>
     props.discount ? "var(--gray-color)" : "var(--grey-color)"};
+
+  @media (max-width: 576px) {
+    margin-right: 1rem;
+  }
 `;
 
 export const PriceTitle = styled.p`
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: bold;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
 `;
 
 export const PriceText = styled.p`
   font-size: 1.4rem;
   line-height: 1.8rem;
   font-weight: 300;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    line-height: 1;
+  }
 `;
 
 export const Result = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 `;
 
 export const ButtonsWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const Button = styled.a`
@@ -184,10 +240,28 @@ export const Button = styled.a`
     color: ${(props) =>
       props.clear ? "var(--gray-color)" : "var(--grey-color)"};
   }
+
+  @media (max-width: 576px) {
+    width: 100%;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const ResultWrapper = styled.div`
   text-align: right;
+
+  @media (max-width: 576px) {
+    text-align: left;
+  }
 `;
 
 export const ResultTitle = styled.p`
@@ -195,10 +269,20 @@ export const ResultTitle = styled.p`
   line-height: 1.8rem;
   text-transform: uppercase;
   color: var(--gray-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 `;
 
 export const ResultPrice = styled.p`
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: bold;
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
 `;

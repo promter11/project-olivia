@@ -16,6 +16,10 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h2`
   margin-right: 3rem;
+
+  @media (max-width: 576px) {
+    margin-right: 1rem;
+  }
 `;
 
 export const Count = styled.span`
@@ -23,6 +27,11 @@ export const Count = styled.span`
   line-height: 2.8rem;
   font-weight: 300;
   color: var(--gray-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -32,6 +41,10 @@ export const Wrapper = styled.div`
   &:not(:last-child) {
     margin-bottom: 4rem;
   }
+
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const List = styled.ul`
@@ -39,6 +52,14 @@ export const List = styled.ul`
   flex-wrap: wrap;
   justify-content: space-between;
   width: 75%;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const ListItemBrand = styled.span`
@@ -101,10 +122,8 @@ export const ListItemLink = styled(Link)`
     background: url(${Arrow}) no-repeat center center / cover;
   }
 
-  &:hover {
-    &::before {
-      right: -0.5rem;
-    }
+  &:hover::before {
+    right: -0.5rem;
   }
 `;
 
@@ -114,9 +133,12 @@ export const ListItem = styled.li`
   width: calc((100% / 3) - (6rem / 3));
   min-height: 36rem;
   padding: 3rem;
-  margin-bottom: 3rem;
   transition: background-color 0.25s ease-in-out;
   background-color: var(--catalog-item-background-color);
+  
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.5) !important;
@@ -128,5 +150,14 @@ export const ListItem = styled.li`
       opacity: 1;
       visibility: visible;
     }
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    min-height: 28rem;
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px) {
+    width: calc((100% / 2) - (3rem / 2));
   }
 `;

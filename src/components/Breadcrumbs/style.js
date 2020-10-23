@@ -26,6 +26,17 @@ export const BreadcrumbsItem = styled.li`
       line-height: 1;
     }
   }
+
+  @media (max-width: 576px) {
+    &:not(:last-child) {
+      margin-right: 4rem;
+
+      &::after {
+        right: -2rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
 `;
 
 export const BreadcrumbsLink = styled(Link)`
@@ -37,5 +48,9 @@ export const BreadcrumbsLink = styled(Link)`
 
   &:hover {
     color: var(--pink-color);
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
   }
 `;
