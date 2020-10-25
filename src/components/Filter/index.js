@@ -3,26 +3,41 @@ import { observer } from "mobx-react";
 
 import * as S from "./style";
 
+import FilterStore from "../../stores/FilterStore";
+
 class Filter extends Component {
   render() {
+    const { handleCheckbox } = FilterStore;
+
     return (
       <S.Filter>
         <S.Form>
           <S.Block>
             <S.BlockTitle>Наличие</S.BlockTitle>
             <S.Label>
-              <S.Checkbox name="active" />
+              <S.Checkbox
+                name="active"
+                onChange={(event) => handleCheckbox(event)}
+              />
               <S.CheckboxText>Отобразить неактивные товары</S.CheckboxText>
             </S.Label>
           </S.Block>
           <S.Block>
             <S.BlockTitle>Пол</S.BlockTitle>
             <S.Label>
-              <S.Checkbox name="male" />
+              <S.Checkbox
+                name="gender"
+                value="male"
+                onChange={(event) => handleCheckbox(event)}
+              />
               <S.CheckboxText>Мужской</S.CheckboxText>
             </S.Label>
             <S.Label>
-              <S.Checkbox name="female" />
+              <S.Checkbox
+                name="gender"
+                value="female"
+                onChange={(event) => handleCheckbox(event)}
+              />
               <S.CheckboxText>Женский</S.CheckboxText>
             </S.Label>
           </S.Block>
@@ -31,9 +46,18 @@ class Filter extends Component {
             <S.Wrapper>
               <S.FieldsWrapper>
                 <S.TextField defaultValue={0} />
-                <S.TextField defaultValue={100000} />
+                <S.TextField defaultValue={1000000} />
               </S.FieldsWrapper>
-              <S.Range />
+              <S.Range>
+                <S.RangeWrapper>
+                  <S.Point />
+                  <S.Point />
+                </S.RangeWrapper>
+                <S.RangeWrapper>
+                  <S.MinValue>0</S.MinValue>
+                  <S.MaxValue>1 000 000</S.MaxValue>
+                </S.RangeWrapper>
+              </S.Range>
             </S.Wrapper>
           </S.Block>
           <S.Block>

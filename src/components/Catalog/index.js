@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 import { Container } from "../../styled/components";
 import * as S from "./style";
@@ -6,11 +7,13 @@ import * as S from "./style";
 import Filter from "../Filter";
 import Sort from "../Sort";
 
-import ItemStore from "../../stores/ItemStore";
+import FilterStore from "../../stores/FilterStore";
 
-export default class Catalog extends Component {
+class Catalog extends Component {
   render() {
-    const { items, count } = ItemStore;
+    const { filteredItems, count } = FilterStore;
+
+    console.log(filteredItems);
 
     return (
       <S.Catalog>
@@ -26,29 +29,27 @@ export default class Catalog extends Component {
             <S.Wrapper>
               <Filter />
               <S.List>
-                {items.map(
-                  ({ id, active, brand, title, image, options }, _) => {
+                {filteredItems.map(
+                  ({ id, brand, title, image, options }, _) => {
                     return (
-                      active && (
-                        <S.ListItem
-                          key={id}
-                          style={{
-                            background: `rgba(0, 0, 0, 0) url("${image}") no-repeat center center / cover`,
-                            backgroundBlendMode: "darken",
-                          }}
-                        >
-                          <S.ListItemBrand>{brand}</S.ListItemBrand>
-                          <S.ListItemTitle>{title}</S.ListItemTitle>
-                          <S.ListItemWrapper>
-                            <S.ListItemPrice>
-                              {options[0].price.toLocaleString()} ₽
-                            </S.ListItemPrice>
-                            <S.ListItemLink to={`/catalog/${id}`}>
-                              Подробнее
-                            </S.ListItemLink>
-                          </S.ListItemWrapper>
-                        </S.ListItem>
-                      )
+                      <S.ListItem
+                        key={id}
+                        style={{
+                          background: `rgba(0, 0, 0, 0) url("${image}") no-repeat center center / cover`,
+                          backgroundBlendMode: "darken",
+                        }}
+                      >
+                        <S.ListItemBrand>{brand}</S.ListItemBrand>
+                        <S.ListItemTitle>{title}</S.ListItemTitle>
+                        <S.ListItemWrapper>
+                          <S.ListItemPrice>
+                            {options[0].price.toLocaleString()} ₽
+                          </S.ListItemPrice>
+                          <S.ListItemLink to={`/catalog/${id}`}>
+                            Подробнее
+                          </S.ListItemLink>
+                        </S.ListItemWrapper>
+                      </S.ListItem>
                     );
                   }
                 )}
@@ -60,3 +61,5 @@ export default class Catalog extends Component {
     );
   }
 }
+
+export default observer(Catalog);

@@ -1,4 +1,4 @@
-import { makeObservable, observable, computed, action } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 
 import AventusImg from "../assets/images/items/Creed Aventus.jpg";
 import VirginIslandWaterImg from "../assets/images/items/Creed Virgin Island Water.jpg";
@@ -36,7 +36,6 @@ class ItemStore {
   constructor() {
     makeObservable(this, {
       items: observable,
-      count: computed,
       getItemById: action,
       getItemPrice: action,
       getItemPriceWithDiscount: action,
@@ -2067,10 +2066,6 @@ class ItemStore {
       ],
     },
   ];
-
-  get count() {
-    return this.items.length;
-  }
 
   getItemById = (id) => {
     return this.items[id];

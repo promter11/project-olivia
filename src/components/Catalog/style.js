@@ -131,7 +131,8 @@ export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   width: calc((100% / 3) - (6rem / 3));
-  min-height: 36rem;
+  max-height: 36rem;
+  height: 100%;
   padding: 3rem;
   transition: background-color 0.25s ease-in-out;
   background-color: var(--catalog-item-background-color);
@@ -154,7 +155,7 @@ export const ListItem = styled.li`
   
   @media (max-width: 768px) {
     width: 100%;
-    min-height: 28rem;
+    max-height: 28rem;
   }
   
   @media (min-width: 768px) and (max-width: 992px) {

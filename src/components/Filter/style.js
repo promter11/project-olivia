@@ -152,28 +152,76 @@ export const TextField = styled.input.attrs({
   }
 `;
 
-export const Range = styled.input.attrs({
-  type: "range",
-  min: 0,
-  max: 1000,
-  step: 100,
-})``;
+export const RangeWrapper = styled.div`
+  position: relative;
+`;
+
+export const Range = styled.div`
+  height: 0.1rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--gray-color);
+`;
+
+export const Point = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  border: 0.1rem solid var(--gray-color);
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--background-color);
+
+  &:first-child {
+    left: 0;
+  }
+
+  &:last-child {
+    right: 0;
+  }
+`;
+
+export const MinValue = styled.div`
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.4rem;
+  margin-top: 1.5rem;
+  color: var(--grey-color);
+`;
+
+export const MaxValue = styled.div`
+  position: absolute;
+  right: 0;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.4rem;
+  margin-top: 1.5rem;
+  color: var(--grey-color);
+`;
 
 export const Button = styled.button`
   width: 100%;
   font-size: 1.4rem;
-  line-height: 1.8rem;
-  font-weight: bold;
-  padding: 1.2rem 2.4rem;
-  border: 0.1rem solid var(--gray-color);
-  border-radius: 0.4rem;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  padding: 1.5rem 3rem;
+  margin-top: auto;
+  border: 0.1rem solid var(--grey-color);
   transition: all 0.25s ease;
   background-color: transparent;
   color: var(--grey-color);
 
   &:hover {
-    border-color: var(--grey-color);
     background-color: var(--grey-color);
     color: var(--white-color);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 `;
