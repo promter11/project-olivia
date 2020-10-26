@@ -3,20 +3,18 @@ import { makeObservable, observable, action } from "mobx";
 import AventusImg from "../assets/images/items/Creed Aventus.jpg";
 import VirginIslandWaterImg from "../assets/images/items/Creed Virgin Island Water.jpg";
 import LoveInWhiteImg from "../assets/images/items/Creed Love In White.jpg";
-import PowerOfSeductionImg from "../assets/images/items/Antonio Banderas Power Of Seduction.jpg";
-import ObsessedImg from "../assets/images/items/CK Obsessed.jpg";
-import EveryoneImg from "../assets/images/items/CK Everyone.jpg";
-import SauvageImg from "../assets/images/items/Dior Sauvage.jpg";
+import InterludeManImg from "../assets/images/items/Amouage Interlude Man.jpg";
+import GypsyWaterImg from "../assets/images/items/Byredo Gypsy Water.jpg";
+import FrenchLoverImg from "../assets/images/items/Frederic Malle French Lover.jpg";
+import AddictiveVibrationImg from "../assets/images/items/Initio Addictive Vibration.jpg";
 import BloomNettareImg from "../assets/images/items/Gucci Bloom Nettare Di Fiori.jpg";
-import PourFemmeImg from "../assets/images/items/Gucci Guilty Pour Femme.jpg";
+import ForHerImg from "../assets/images/items/Narciso Rodriguez For Her.jpg";
 import WoodSageSeaSaltImg from "../assets/images/items/Jo Malone Wood Sage And Sea Salt.jpg";
 import BlackPhantomImg from "../assets/images/items/Kilian Black Phantom.jpg";
 import DarkLordImg from "../assets/images/items/Kilian Dark Lord.jpg";
 import TimelessImg from "../assets/images/items/Lacoste L'Homme Timeless.jpg";
 import BlancPureImg from "../assets/images/items/Lacoste Eau De Lacoste L.12.12 Black-Pure.jpg";
-import MagneticImg from "../assets/images/items/Lacoste Pour Homme L.12.12 Magnetic.jpg";
 import CedratBoiseImg from "../assets/images/items/Mancera Cedrat Boise.jpg";
-import RedTobaccoImg from "../assets/images/items/Mancera Red Tobacco.jpg";
 import RosesVanilleImg from "../assets/images/items/Mancera Roses Vanille.jpg";
 import AlienImg from "../assets/images/items/Mugler Alien.jpg";
 import PureMaltImg from "../assets/images/items/Mugler Amen Pure Malt.jpg";
@@ -27,8 +25,8 @@ import BlackOrchidImg from "../assets/images/items/Tom Ford Black Orchid.jpg";
 import NoirDeNoirImg from "../assets/images/items/Tom Ford Noir De Noir.jpg";
 import SpicebombImg from "../assets/images/items/Viktor & Rolf Spicebomb.jpg";
 import FlowerbombImg from "../assets/images/items/Viktor & Rolf Flowerbomb.jpg";
-import SpicebombNightVisionImg from "../assets/images/items/Viktor & Rolf Spicebomb Night Vision.jpg";
-import LaNuitDeLHommeImg from "../assets/images/items/YSL La Nuit De L'Homme.jpg";
+import DelinaImg from "../assets/images/items/Parfums de Marly Delina.jpg";
+import GodolphinImg from "../assets/images/items/Parfums de Marly Godolphin.jpg";
 import BlackOpiumImg from "../assets/images/items/YSL Black Opium.jpg";
 import OpiumImg from "../assets/images/items/YSL Opium.jpg";
 
@@ -48,7 +46,7 @@ class ItemStore {
   items = [
     {
       id: 0,
-      active: true,
+      active: "true",
       code: "CE-1409-AV",
       brand: "Creed",
       title: "Aventus",
@@ -120,7 +118,7 @@ class ItemStore {
     },
     {
       id: 1,
-      active: true,
+      active: "true",
       code: "CE-1410-VIW",
       brand: "Creed",
       title: "Virgin Island Water",
@@ -192,7 +190,7 @@ class ItemStore {
     },
     {
       id: 2,
-      active: true,
+      active: "true",
       code: "CD-1411-LIW",
       brand: "Creed",
       title: "Love In White",
@@ -258,232 +256,28 @@ class ItemStore {
     },
     {
       id: 3,
-      active: true,
-      code: "AB-0290-PS",
-      brand: "Antonio Banderas",
-      title: "Power of Seduction",
+      active: "true",
+      code: "AU-0290-IM",
+      brand: "Amouage",
+      title: "Interlude Man",
       description:
-        "Свежий и чувственный аромат Power of Seduction, перед которым просто невозможно устоять. Гармоничное сочетание бодрящих, легких нот с фруктовыми и пряными тонами подчеркивает уникальность этого контраста.",
-      image: `${PowerOfSeductionImg}`,
+        "Парфюмерная вода Amouage Interlude Man обладает свежим пряным ароматом с восточными мотивами. Бергамотовые аккорды первыми встречают в Interlude Man. Их оттеняют орегано и перец. Сердечную ноту парфюмерной воды составляют ладан, лабданум и амбра. Бальзамический опопонакс придает пикантность таинственной базе. Благородный шлейф парфюма от Amouage формируют кожа, удовые и сандаловые оттенки, а также легкая горечь пачули.",
+      image: `${InterludeManImg}`,
       gender: "male",
-      type: "cologne",
-      rating: 3.67,
-      options: [
-        {
-          id: 0,
-          volume: 50,
-          price: 1650,
-          discountPercentage: 30,
-        },
-        {
-          id: 1,
-          volume: 100,
-          price: 2290,
-          discountPercentage: 30,
-        },
-      ],
-      specifications: [
-        {
-          id: 0,
-          title: "тип продукта",
-          description: "туалетная вода",
-        },
-        {
-          id: 1,
-          title: "категория",
-          description: "для мужчин",
-        },
-        {
-          id: 2,
-          title: "группа ароматов",
-          description: "фужерные, фруктовые",
-        },
-        {
-          id: 3,
-          title: "год выпуска",
-          description: "2018",
-        },
-      ],
-      notes: [
-        {
-          id: 0,
-          title: "верхние ноты",
-          description: "бергамот, яблоко",
-        },
-        {
-          id: 1,
-          title: "ноты сердца",
-          description: "лаванда, мускатный шалфей",
-        },
-        {
-          id: 2,
-          title: "базовые ноты",
-          description: "амбра, мох, благородные породы дерева",
-        },
-      ],
-    },
-    {
-      id: 4,
-      active: false,
-      code: "CK-9020-O",
-      brand: "Calvin Klein",
-      title: "Obsessed",
-      description:
-        "Свежий, восточный, зеленый. Женственное олицетворение восточной лаванды. Ярко выраженная маскулинная фужерная структура аромата контрастирует с женственной теплотой; композиция создана на основе ноты белой лаванды, а кремовый мускус окутывает все компоненты и придает аромату чувственность и нежность. Напряжение между ароматическими верхними и мягкими базовыми нотами вторит напряжению между мужской и женской стороной его характера. Верхние ноты: Заветный цитрус Citrus™, эфирное масло нероли, элеми Сердечные ноты: Абсолю листьев фиалки, белая лаванда, шалфей Базовые ноты: Мускус Helvetolide™, амбретта, молекула Muscenone™ Парфюмеры: Annick Menardo и Honorine Blanc",
-      image: `${ObsessedImg}`,
-      gender: "female",
       type: "edp",
-      rating: 3.09,
-      options: [
-        {
-          id: 0,
-          volume: 100,
-          price: 3910,
-          discountPercentage: 25,
-        },
-        {
-          id: 1,
-          volume: 150,
-          price: 5200,
-          discountPercentage: 25,
-        },
-        {
-          id: 2,
-          volume: 200,
-          price: 7630,
-          discountPercentage: 25,
-        },
-      ],
-      specifications: [
-        {
-          id: 0,
-          title: "тип продукта",
-          description: "туалетная вода",
-        },
-        {
-          id: 1,
-          title: "категория",
-          description: "для женщин",
-        },
-        {
-          id: 2,
-          title: "группа ароматов",
-          description: "фужерные",
-        },
-        {
-          id: 3,
-          title: "год выпуска",
-          description: "2017",
-        },
-      ],
-      notes: [
-        {
-          id: 0,
-          title: "верхние ноты",
-          description: "нероли, цитрусы, элеми",
-        },
-        {
-          id: 1,
-          title: "ноты сердца",
-          description: "лаванда, лист фиалки, шалфей",
-        },
-        {
-          id: 2,
-          title: "базовые ноты",
-          description: "амбретта, мускус",
-        },
-      ],
-    },
-    {
-      id: 5,
-      active: true,
-      code: "CK-9021-E",
-      brand: "Calvin Klein",
-      title: "Everyone",
-      description:
-        "Цитрусовая композиция открывается пикантным органическим апельсиновым маслом, раскрываясь аккордом синего чая в сердце и интенсивной нотой кедра в шлейфе для создания гендерно нейтрального звучания.",
-      image: `${EveryoneImg}`,
-      gender: "unisex",
-      type: "edt",
-      rating: 3.27,
+      rating: 4.13,
       options: [
         {
           id: 0,
           volume: 50,
-          price: 2920,
-          discountPercentage: 50,
+          price: 22500,
+          discountPercentage: 10,
         },
         {
           id: 1,
           volume: 100,
-          price: 3890,
-          discountPercentage: 50,
-        },
-      ],
-      specifications: [
-        {
-          id: 0,
-          title: "тип продукта",
-          description: "туалетная вода",
-        },
-        {
-          id: 1,
-          title: "категория",
-          description: "унисекс",
-        },
-        {
-          id: 2,
-          title: "группа ароматов",
-          description: "цитрусовые, фужерные",
-        },
-        {
-          id: 3,
-          title: "год выпуска",
-          description: "2020",
-        },
-      ],
-      notes: [
-        {
-          id: 0,
-          title: "верхние ноты",
-          description: "имбирь, масло апельсина",
-        },
-        {
-          id: 1,
-          title: "ноты сердца",
-          description: "чай, водные ноты",
-        },
-        {
-          id: 2,
-          title: "базовые ноты",
-          description: "амбра, белый кедр, мускус, пачули",
-        },
-      ],
-    },
-    {
-      id: 6,
-      active: true,
-      code: "DR-1010-S",
-      brand: "Dior",
-      title: "Sauvage",
-      description:
-        "Невероятно свежая композиция – манифест свободы, продиктованный самим названием. Брутальный и одновременно благородный. Тот самый баланс, который искал Франсуа Демаши, создатель ароматов Dior. Перенасыщенный натуральными компонентами, отобранными с особой заботой, аромат захватывает фруктовой свежестью Калабрийского Бергамота. Амброксан, полученный из драгоценной серой амбры, расстилается величественным древесным шлейфом.",
-      image: `${SauvageImg}`,
-      gender: "male",
-      type: "edt",
-      rating: 2.78,
-      options: [
-        {
-          id: 0,
-          volume: 60,
-          price: 5870,
-          discountPercentage: 0,
-        },
-        {
-          id: 1,
-          volume: 100,
-          price: 8900,
-          discountPercentage: 0,
+          price: 29700,
+          discountPercentage: 10,
         },
       ],
       specifications: [
@@ -500,36 +294,233 @@ class ItemStore {
         {
           id: 2,
           title: "группа ароматов",
-          description: "фужерные",
+          description: "пряные",
         },
         {
           id: 3,
           title: "год выпуска",
-          description: "2015",
+          description: "2012",
         },
       ],
       notes: [
         {
           id: 0,
           title: "верхние ноты",
-          description: "калабрийский бергамот, перец",
+          description: "бергамот, орегано, перец",
         },
         {
           id: 1,
           title: "ноты сердца",
-          description:
-            "ветивер, герань, китайский перец, лаванда, пачули, розовый перец, элеми",
+          description: "ладан, амбра, лабданум, опопонакс",
         },
         {
           id: 2,
           title: "базовые ноты",
-          description: "амброксан, белый кедр, лабданум",
+          description: "кожа, пачули, уд, сандал",
+        },
+      ],
+    },
+    {
+      id: 4,
+      active: "false",
+      code: "BD-9400-GW",
+      brand: "Byredo",
+      title: "Gypsy Water",
+      description:
+        "Gypsy Water является современной интерпретацией цыганской жизни, пронизанной мифами и тайнами. Аромат свежей земли, густых лесов и костров воплощает в себе мечту о свободной, насыщенной красками жизни в гармонии с природой",
+      image: `${GypsyWaterImg}`,
+      gender: "unisex",
+      type: "edp",
+      rating: 3.91,
+      options: [
+        {
+          id: 0,
+          volume: 50,
+          price: 13090,
+          discountPercentage: 20,
+        },
+        {
+          id: 1,
+          volume: 100,
+          price: 19080,
+          discountPercentage: 20,
+        },
+      ],
+      specifications: [
+        {
+          id: 0,
+          title: "тип продукта",
+          description: "парфюмерная вода",
+        },
+        {
+          id: 1,
+          title: "категория",
+          description: "унисекс",
+        },
+        {
+          id: 2,
+          title: "группа ароматов",
+          description: "древесные, фужерные",
+        },
+        {
+          id: 3,
+          title: "год выпуска",
+          description: "2008",
+        },
+      ],
+      notes: [
+        {
+          id: 0,
+          title: "верхние ноты",
+          description: "бергамот, лимон, перец, можжевельник",
+        },
+        {
+          id: 1,
+          title: "ноты сердца",
+          description: "ланад, иглы сосны, корень ириса",
+        },
+        {
+          id: 2,
+          title: "базовые ноты",
+          description: "амбра, ваниль, сандал",
+        },
+      ],
+    },
+    {
+      id: 5,
+      active: "true",
+      code: "FM-3992-FL",
+      brand: "Frederic Malle",
+      title: "French Lover",
+      description:
+        "Благодаря уникальной композиции прочтение аромата масла семян ангелики в исполнении Пьера Бурдона кардинальным образом отличается от результата работы Жан-Клода Эллена. К ветиверу и кедру, безупречно сочетающимся с ключевым ингредиентом, парфюмер добавил флорентийский ирис, придав таким образом композиции утонченность. Верхние растительные ноты образуют масла душистого перца и гальбанума. Аккорд пачули, каранала, ладана и мускуса придает аромату глубину и возвышенность.",
+      image: `${FrenchLoverImg}`,
+      gender: "male",
+      type: "edp",
+      rating: 4.43,
+      options: [
+        {
+          id: 0,
+          volume: 30,
+          price: 8800,
+          discountPercentage: 20,
+        },
+        {
+          id: 1,
+          volume: 50,
+          price: 12700,
+          discountPercentage: 20,
+        },
+        {
+          id: 2,
+          volume: 100,
+          price: 18500,
+          discountPercentage: 20,
+        },
+      ],
+      specifications: [
+        {
+          id: 0,
+          title: "тип продукта",
+          description: "парфюмерная вода",
+        },
+        {
+          id: 1,
+          title: "категория",
+          description: "для мужчин",
+        },
+        {
+          id: 2,
+          title: "группа ароматов",
+          description: "травяные",
+        },
+        {
+          id: 3,
+          title: "год выпуска",
+          description: "2007",
+        },
+      ],
+      notes: [
+        {
+          id: 0,
+          title: "верхние ноты",
+          description: "специи, гальбанум",
+        },
+        {
+          id: 1,
+          title: "ноты сердца",
+          description: "ладан, белый кедр, ангелика",
+        },
+        {
+          id: 2,
+          title: "базовые ноты",
+          description: "дубовый мох, ветивер, белый мускус",
+        },
+      ],
+    },
+    {
+      id: 6,
+      active: "true",
+      code: "IT-7440-AV",
+      brand: "Initio Parfums Prives",
+      title: "Addictive Vibration",
+      description:
+        "Композиция Initio Parfums Prives Addictive Vibration воплощает чисто женскую радость жизни. Она начинается с невинных, почти девических, весенних мотивов, но с каждым мгновением набирает влекущую силу обольщения, захватывает и манит, вызывая чувственную дрожь. Волнующееся великолепие моря флердоранжа и нежнейшего яблоневого цвета символизируют пробуждение жизни, в этом образе чувствуется пульсация весеннего обновления.",
+      image: `${AddictiveVibrationImg}`,
+      gender: "female",
+      type: "edp",
+      rating: 4.66,
+      options: [
+        {
+          id: 0,
+          volume: 90,
+          price: 24120,
+          discountPercentage: 10,
+        },
+      ],
+      specifications: [
+        {
+          id: 0,
+          title: "тип продукта",
+          description: "парфюмерная вода",
+        },
+        {
+          id: 1,
+          title: "категория",
+          description: "для женщин",
+        },
+        {
+          id: 2,
+          title: "группа ароматов",
+          description: "цветочные",
+        },
+        {
+          id: 3,
+          title: "год выпуска",
+          description: "2016",
+        },
+      ],
+      notes: [
+        {
+          id: 0,
+          title: "верхние ноты",
+          description: "апельсиновый цвет, яблоневый цвет",
+        },
+        {
+          id: 1,
+          title: "ноты сердца",
+          description: "ванильная орхидея, мускус",
+        },
+        {
+          id: 2,
+          title: "базовые ноты",
+          description: "мед",
         },
       ],
     },
     {
       id: 7,
-      active: true,
+      active: "true",
       code: "GC-0948-BNDF",
       brand: "Gucci",
       title: "Bloom Nettare Di Fiori",
@@ -595,35 +586,41 @@ class ItemStore {
     },
     {
       id: 8,
-      active: true,
-      code: "GC-0949-PF",
-      brand: "Gucci",
-      title: "Pour Femme",
+      active: "true",
+      code: "NR-8832-FH",
+      brand: "Narciso Rodriguez",
+      title: "For Her",
       description:
-        "Новая глава в истории Gucci Guilty, аромат Gucci Guilty Pour Femme - это манифест самовыражения и дерзости быть собой, история женщины, свободной от предрассудков. Gucci Guilty Pour Femme - это насыщенная и благородная восточная цветочная композиция, раскрывающаяся фруктовыми нотами мандора, нежной сирени и чувственным дуэтом масел пачули. Женственно-розовый аромат заключен в изящную форму, повторяющую силуэт мужского флакона Guilty. Эта особенная деталь призвана подчеркнуть единство мужчины и женщины, отвергающих гендерные стереотипы.",
-      image: `${PourFemmeImg}`,
+        "Туалетная вода Narciso Rodriguez For Her относится к цветочно-шипровой категории женских ароматов. Парфюм For Her олицетворяет настоящую женственность, стиль и свободу. Окунувшись однажды в калейдоскоп разносторонних сочетаний этой туалетной воды, вы надолго станете ее кумиром. Начальные цветочные ноты мягко устилают первую ступень раскрытия аромата, плавно сменяясь пряно-древесными отголосками, ванилью и мускусом. Вода Narciso Rodriguez образует стойкий шлейф вокруг своего обладателя, который следует за ним повсюду. Игривая роскошь аромата будет ощущаться вами даже в завершении дня.",
+      image: `${ForHerImg}`,
       gender: "female",
-      type: "edp",
-      rating: 3.8,
+      type: "edt",
+      rating: 3.77,
       options: [
         {
           id: 0,
-          volume: 50,
-          price: 6230,
-          discountPercentage: 30,
+          volume: 30,
+          price: 3600,
+          discountPercentage: 25,
         },
         {
           id: 1,
-          volume: 90,
-          price: 8850,
-          discountPercentage: 30,
+          volume: 50,
+          price: 4800,
+          discountPercentage: 25,
+        },
+        {
+          id: 1,
+          volume: 100,
+          price: 6900,
+          discountPercentage: 25,
         },
       ],
       specifications: [
         {
           id: 0,
           title: "тип продукта",
-          description: "парфюмерная вода",
+          description: "туалетная вода",
         },
         {
           id: 1,
@@ -633,35 +630,35 @@ class ItemStore {
         {
           id: 2,
           title: "группа ароматов",
-          description: "фруктовые",
+          description: "цветочные",
         },
         {
           id: 3,
           title: "год выпуска",
-          description: "2019",
+          description: "2003",
         },
       ],
       notes: [
         {
           id: 0,
           title: "верхние ноты",
-          description: "розовый перец, бергамот, мандарин",
+          description: "апельсиновый цвет, османтус, бергамот",
         },
         {
           id: 1,
           title: "ноты сердца",
-          description: "сирень, герань, роза, фиалка",
+          description: "мускус, амбра",
         },
         {
           id: 2,
           title: "базовые ноты",
-          description: "пачули, амбра",
+          description: "ветивер, ваниль, пачули",
         },
       ],
     },
     {
       id: 9,
-      active: false,
+      active: "false",
       code: "JM-8521-WSSS",
       brand: "Jo Malone",
       title: "Wood Sage & Sea Salt",
@@ -721,7 +718,7 @@ class ItemStore {
     },
     {
       id: 10,
-      active: true,
+      active: "true",
       code: "KN-3412-BP",
       brand: "Kilian",
       title: "Black Phantom",
@@ -781,7 +778,7 @@ class ItemStore {
     },
     {
       id: 11,
-      active: true,
+      active: "true",
       code: "KN-3413-DL",
       brand: "Kilian",
       title: "Dark Lord",
@@ -841,7 +838,7 @@ class ItemStore {
     },
     {
       id: 12,
-      active: true,
+      active: "true",
       code: "LC-4332-LHT",
       brand: "Lacoste",
       title: "L'Homme Timeless",
@@ -901,7 +898,7 @@ class ItemStore {
     },
     {
       id: 13,
-      active: true,
+      active: "true",
       code: "LC-4333-EDLBP",
       brand: "Lacoste",
       title: "Eau De Lacoste L.12.12 Blanc-Pure",
@@ -967,73 +964,7 @@ class ItemStore {
     },
     {
       id: 14,
-      active: false,
-      code: "LC-4334-PHM",
-      brand: "Lacoste",
-      title: "Pour Homme L.12.12 Magnetic",
-      description:
-        "Туалетная вода Lacoste Lui Magnetic олицетворяет собой свободу и жажду жизни, сочетая в себе свежесть и энергичность, подчеркивая молодость и активный образ жизни своего обладателя. Начало уникальной композиции Lui Magnetic звучит свежими и бодрящими нотами можжевельника в гармоничном соединении с бамбуком и терпкой полынью. В сердце мужественного и чувственного аромата от Lacoste раскрываются необычным и оригинальным букетом цветочные аккорды герани и фиалки. В неповторимом шлейфе туалетной воды перекликаются восточные ноты изысканного пачули, ветивера и амбры.",
-      image: `${MagneticImg}`,
-      gender: "male",
-      type: "edt",
-      rating: 3.26,
-      options: [
-        {
-          id: 0,
-          volume: 50,
-          price: 5780,
-          discountPercentage: 15,
-        },
-        {
-          id: 1,
-          volume: 100,
-          price: 7810,
-          discountPercentage: 15,
-        },
-      ],
-      specifications: [
-        {
-          id: 0,
-          title: "тип продукта",
-          description: "туалетная вода",
-        },
-        {
-          id: 1,
-          title: "категория",
-          description: "для мужчин",
-        },
-        {
-          id: 2,
-          title: "группа ароматов",
-          description: "фужерные, пряные",
-        },
-        {
-          id: 3,
-          title: "год выпуска",
-          description: "2016",
-        },
-      ],
-      notes: [
-        {
-          id: 0,
-          title: "верхние ноты",
-          description: "артемизия, бамбук, можжевельник",
-        },
-        {
-          id: 1,
-          title: "ноты сердца",
-          description: "герань, фиалка, чай",
-        },
-        {
-          id: 2,
-          title: "базовые ноты",
-          description: "амбра, ветивер, пачули",
-        },
-      ],
-    },
-    {
-      id: 15,
-      active: true,
+      active: "true",
       code: "MR-1110-CB",
       brand: "Mancera",
       title: "Cedrat Boise",
@@ -1092,70 +1023,8 @@ class ItemStore {
       ],
     },
     {
-      id: 16,
-      active: true,
-      code: "MR-1111-RT",
-      brand: "Mancera",
-      title: "Red Tobacco",
-      description:
-        "Амели и Пьер Мансера выбрали для его воплощения ароматную смесь кубинского табака и карибских пряностей, создав парфюмерный пейзаж вечернего неба окрашенного в бордовые оттенки лучами заходящего в карибское море солнца.",
-      image: `${RedTobaccoImg}`,
-      gender: "male",
-      type: "edp",
-      rating: 3.78,
-      options: [
-        {
-          id: 0,
-          volume: 60,
-          price: 11150,
-          discountPercentage: 10,
-        },
-      ],
-      specifications: [
-        {
-          id: 0,
-          title: "тип продукта",
-          description: "парфюмерная вода",
-        },
-        {
-          id: 1,
-          title: "категория",
-          description: "для мужчин",
-        },
-        {
-          id: 2,
-          title: "группа ароматов",
-          description: "пряные, древесные, табачные",
-        },
-        {
-          id: 3,
-          title: "год выпуска",
-          description: "2017",
-        },
-      ],
-      notes: [
-        {
-          id: 0,
-          title: "верхние ноты",
-          description:
-            "зеленое яблоко, корица, ладан, мускатный орех, уд, шафран, белая груша",
-        },
-        {
-          id: 1,
-          title: "ноты сердца",
-          description: "жасмин, пачули",
-        },
-        {
-          id: 2,
-          title: "базовые ноты",
-          description:
-            "амбра, белый мускус, гуаяк, мадагаскарская ваниль, сандал, табак, таитянский ветивер",
-        },
-      ],
-    },
-    {
-      id: 17,
-      active: false,
+      id: 15,
+      active: "false",
       code: "MR-1112-RV",
       brand: "Mancera",
       title: "Roses Vanille",
@@ -1214,8 +1083,8 @@ class ItemStore {
       ],
     },
     {
-      id: 18,
-      active: true,
+      id: 16,
+      active: "true",
       code: "MR-8740-A",
       brand: "Mugler",
       title: "Alien",
@@ -1280,8 +1149,8 @@ class ItemStore {
       ],
     },
     {
-      id: 19,
-      active: true,
+      id: 17,
+      active: "true",
       code: "MR-8741-APM",
       brand: "Mugler",
       title: "Amen Pure Malt",
@@ -1340,8 +1209,8 @@ class ItemStore {
       ],
     },
     {
-      id: 20,
-      active: true,
+      id: 18,
+      active: "true",
       code: "PD-6400-C",
       brand: "Prada",
       title: "Candy",
@@ -1400,8 +1269,8 @@ class ItemStore {
       ],
     },
     {
-      id: 21,
-      active: false,
+      id: 19,
+      active: "false",
       code: "PD-6410-CSP",
       brand: "Prada",
       title: "Candy Sugar Pop",
@@ -1460,8 +1329,8 @@ class ItemStore {
       ],
     },
     {
-      id: 22,
-      active: true,
+      id: 20,
+      active: "true",
       code: "TF-2094-GV",
       brand: "Tom Ford",
       title: "Grey Vetiver",
@@ -1526,8 +1395,8 @@ class ItemStore {
       ],
     },
     {
-      id: 23,
-      active: true,
+      id: 21,
+      active: "true",
       code: "TF-2095-BO",
       brand: "Tom Ford",
       title: "Black Orchid",
@@ -1599,8 +1468,8 @@ class ItemStore {
       ],
     },
     {
-      id: 24,
-      active: true,
+      id: 22,
+      active: "true",
       code: "TF-2096-NDN",
       brand: "Tom Ford",
       title: "Noir De Noir",
@@ -1665,8 +1534,8 @@ class ItemStore {
       ],
     },
     {
-      id: 25,
-      active: true,
+      id: 23,
+      active: "true",
       code: "VR-1099-S",
       brand: "Viktor & Rolf",
       title: "Spicebomb",
@@ -1725,13 +1594,13 @@ class ItemStore {
       ],
     },
     {
-      id: 26,
-      active: true,
+      id: 24,
+      active: "true",
       code: "VR-1100-F",
       brand: "Viktor & Rolf",
       title: "Flowerbomb",
       description:
-        "Почувствуйте мир мечты, созданный Viktor & Rolf ! Flowerbomb - это неудержимый взрыв цветов. Этот аромат превращает негативное в позитивное, черное - в розовое, а женщину - в цветок. Viktor & Rolf считают, что есть только одно оружие против действительности - мечта.",
+        "Почувствуйте мир мечты, созданный Viktor & Rolf Flowerbomb - это неудержимый взрыв цветов. Этот аромат превращает негативное в позитивное, черное - в розовое, а женщину - в цветок. Viktor & Rolf считают, что есть только одно оружие против действительности - мечта.",
       image: `${FlowerbombImg}`,
       gender: "female",
       type: "edt",
@@ -1792,28 +1661,22 @@ class ItemStore {
       ],
     },
     {
-      id: 27,
-      active: false,
-      code: "VR-1101-SNV",
-      brand: "Viktor & Rolf",
-      title: "Spicebomb Night Vision",
+      id: 25,
+      active: "true",
+      code: "PM-1994-D",
+      brand: "Parfums de Marly",
+      title: "Delina",
       description:
-        "Впервые SPICEBOMB играет на ночной территории и делает это очень интригующим способом. С таким же чувством провокации, которое используется для того, чтобы бросить вызов модным кодам, Viktor & Rolf приглашает вас сыграть в новую игру соблазнения, в темноте. Современный аромат — Spicebomb Night Vision - это взрывной контраст зеленой свежести и соблазнительных специй.",
-      image: `${SpicebombNightVisionImg}`,
-      gender: "male",
-      type: "edt",
-      rating: 2.87,
+        "Аромат для женщин Parfums de Marly Delina уже только своим внешним видом не оставляет никого равнодушным. Пройти мимо столь изящно оформленного флакона просто невозможно! Цветочную композицию парфюмер Quentin Bisch создавал для элегантных дам, обладающих чувством стиля и безупречным вкусом. В начале благородного мотива доминируют ревень и личи. Бергамот присутствует в стартовом аккорде лишь символически. Пион – полноправный обладатель сердца – дополнен розой и ландышем. Красивый букет вышит на тончайшей дорогой ткани базы из мускуса, ванили и кашмерана.",
+      image: `${DelinaImg}`,
+      gender: "female",
+      type: "edp",
+      rating: 4.39,
       options: [
         {
           id: 0,
-          volume: 50,
-          price: 5510,
-          discountPercentage: 10,
-        },
-        {
-          id: 1,
-          volume: 90,
-          price: 6400,
+          volume: 75,
+          price: 24300,
           discountPercentage: 10,
         },
       ],
@@ -1821,7 +1684,67 @@ class ItemStore {
         {
           id: 0,
           title: "тип продукта",
-          description: "туалетная вода",
+          description: "парфюмерная вода",
+        },
+        {
+          id: 1,
+          title: "категория",
+          description: "для женщин",
+        },
+        {
+          id: 2,
+          title: "группа ароматов",
+          description: "фруктовые",
+        },
+        {
+          id: 3,
+          title: "год выпуска",
+          description: "2017",
+        },
+      ],
+      notes: [
+        {
+          id: 0,
+          title: "верхние ноты",
+          description: "бергамот, ревень, личи, мускатный орех",
+        },
+        {
+          id: 1,
+          title: "ноты сердца",
+          description: "турецкая роза, пион, петалия, ваниль, мускус",
+        },
+        {
+          id: 2,
+          title: "базовые ноты",
+          description: "кашмеран, таитянский ветивер, белый кедр, ладан",
+        },
+      ],
+    },
+    {
+      id: 26,
+      active: "true",
+      code: "PM-1402-GP",
+      brand: "Parfums de Marly",
+      title: "Godolphin",
+      description:
+        "Это благородный аромат, соединивший в себе пряные, цветочные и древесные ноты. Парфюмерная вода находится во флаконе золотистого цвета, имеющего традиционную округлую прямоугольную форму. Упаковку украшает эмблема в виде двух скакунов, вставших на дыбы. Godolphin назван в честь знаменитого жеребца, неоднократного лидера скачек, явившегося прародителем легендарных арабских скакунов. Это аромат для смелых, благородных и уверенных в себе мужчин, чувствующих свою уникальность и аристократичность.",
+      image: `${GodolphinImg}`,
+      gender: "male",
+      type: "edp",
+      rating: 4.77,
+      options: [
+        {
+          id: 0,
+          volume: 125,
+          price: 23310,
+          discountPercentage: 10,
+        },
+      ],
+      specifications: [
+        {
+          id: 0,
+          title: "тип продукта",
+          description: "парфюмерная вода",
         },
         {
           id: 1,
@@ -1831,108 +1754,37 @@ class ItemStore {
         {
           id: 2,
           title: "группа ароматов",
-          description: "восточные, фужерные",
+          description: "кожаные",
         },
         {
           id: 3,
           title: "год выпуска",
-          description: "2019",
+          description: "2010",
         },
       ],
       notes: [
         {
           id: 0,
           title: "верхние ноты",
-          description: "грейпфрут, кардамон, зеленый мандарин, яблоко",
-        },
-        {
-          id: 1,
-          title: "ноты сердца",
           description:
-            "красный перец чили, перец, гвоздика, мускатный орех, шалфей, герань",
-        },
-        {
-          id: 2,
-          title: "базовые ноты",
-          description: "бобы тонка, миндаль, древесные ноты",
-        },
-      ],
-    },
-    {
-      id: 28,
-      active: true,
-      code: "YSL-1400-LNDLH",
-      brand: "Yves Saint Laurent",
-      title: "La Nuit De L'Homme",
-      description:
-        "Ночью возможно все. Неотразимо привлекательный мужчина, чьи мужественность и обольстительность сметают все на своем пути. Представляем новую грань мужественности от Yves Saint Laurent: Аромат, являющийся воплощением соблазна. Древесный восточный аромат. Таинственная игра света и темноты. Аромат для истинного обольстителя.",
-      image: `${LaNuitDeLHommeImg}`,
-      gender: "male",
-      type: "edt",
-      rating: 3.75,
-      options: [
-        {
-          id: 0,
-          volume: 40,
-          price: 5280,
-          discountPercentage: 15,
-        },
-        {
-          id: 1,
-          volume: 60,
-          price: 6600,
-          discountPercentage: 15,
-        },
-        {
-          id: 2,
-          volume: 100,
-          price: 8740,
-          discountPercentage: 20,
-        },
-      ],
-      specifications: [
-        {
-          id: 0,
-          title: "тип продукта",
-          description: "туалетная вода",
-        },
-        {
-          id: 1,
-          title: "категория",
-          description: "для мужчин",
-        },
-        {
-          id: 2,
-          title: "группа ароматов",
-          description: "древесные",
-        },
-        {
-          id: 3,
-          title: "год выпуска",
-          description: "2009",
-        },
-      ],
-      notes: [
-        {
-          id: 0,
-          title: "верхние ноты",
-          description: "бергамот, кардамон, лаванда",
+            "чабрец, зеленые ноты, шафран, фруктовые ноты, кипарис, мате",
         },
         {
           id: 1,
           title: "ноты сердца",
-          description: "герань, черный перец, кедровое дерево",
+          description: "жасмин, роза, ирис",
         },
         {
           id: 2,
           title: "базовые ноты",
-          description: "бобы тонка, ветивер, кумарин",
+          description:
+            "ветивер, мускус, кедр из Вирджинии, амбра, ваниль, кожа",
         },
       ],
     },
     {
-      id: 29,
-      active: true,
+      id: 27,
+      active: "true",
       code: "YSL-1401-BO",
       brand: "Yves Saint Laurent",
       title: "Black Opium",
@@ -2003,8 +1855,8 @@ class ItemStore {
       ],
     },
     {
-      id: 30,
-      active: false,
+      id: 28,
+      active: "false",
       code: "YSL-1402-O",
       brand: "Yves Saint Laurent",
       title: "Opium",

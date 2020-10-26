@@ -15,14 +15,16 @@ class FilterStore {
 
   items = ItemStore.items;
   filters = {
-    active: true,
+    active: ["true"],
+    gender: ["male", "female", "unisex"],
+    type: ["edt", "edp", "cologne"],
   };
 
   get filteredItems() {
     const keys = Object.keys(this.filters);
 
     return this.items.filter((item, _) => {
-      return keys.every((key, _) => item[key] === this.filters[key]);
+      return keys.every((key, _) => this.filters[key].includes(item[key]));
     });
   }
 
@@ -36,10 +38,12 @@ class FilterStore {
     const key = target.getAttribute("name");
     const value = target.getAttribute("value");
 
-    if (key === "active") {
-      this.filters[key] = !this.filters[key];
-    } else if (key === "gender") {
-      this.filters[key] = value;
+    if (target.checked) {
+      this.filters[key].push(value);
+    } else {
+      const index = this.filters[key].indexOf(value);
+
+      this.filters[key].splice(index, 1);
     }
   };
 }

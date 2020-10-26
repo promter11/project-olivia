@@ -13,8 +13,6 @@ class Catalog extends Component {
   render() {
     const { filteredItems, count } = FilterStore;
 
-    console.log(filteredItems);
-
     return (
       <S.Catalog>
         <Container>

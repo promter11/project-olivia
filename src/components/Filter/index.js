@@ -17,6 +17,7 @@ class Filter extends Component {
             <S.Label>
               <S.Checkbox
                 name="active"
+                value="false"
                 onChange={(event) => handleCheckbox(event)}
               />
               <S.CheckboxText>Отобразить неактивные товары</S.CheckboxText>
@@ -63,30 +64,42 @@ class Filter extends Component {
           <S.Block>
             <S.BlockTitle>Тип</S.BlockTitle>
             <S.Label>
-              <S.Checkbox name="edt" />
+              <S.Checkbox
+                name="type"
+                value="edt"
+                onChange={(event) => handleCheckbox(event)}
+              />
               <S.CheckboxText>Туалетная вода (EDT)</S.CheckboxText>
             </S.Label>
             <S.Label>
-              <S.Checkbox name="edp" />
+              <S.Checkbox
+                name="type"
+                value="edp"
+                onChange={(event) => handleCheckbox(event)}
+              />
               <S.CheckboxText>Парфюмерная вода (EDP)</S.CheckboxText>
             </S.Label>
             <S.Label>
-              <S.Checkbox name="cologne" />
+              <S.Checkbox
+                name="type"
+                value="cologne"
+                onChange={(event) => handleCheckbox(event)}
+              />
               <S.CheckboxText>Одеколон (cologne)</S.CheckboxText>
             </S.Label>
           </S.Block>
           <S.Block>
             <S.BlockTitle>Рейтинг</S.BlockTitle>
             <S.Label>
-              <S.Radio />
+              <S.Radio value="3" />
               <S.RadioText>Больше 3 звёзд</S.RadioText>
             </S.Label>
             <S.Label>
-              <S.Radio />
+              <S.Radio value="4" />
               <S.RadioText>Больше 4 звёзд</S.RadioText>
             </S.Label>
             <S.Label>
-              <S.Radio />
+              <S.Radio value="all" />
               <S.RadioText>Любой</S.RadioText>
             </S.Label>
           </S.Block>

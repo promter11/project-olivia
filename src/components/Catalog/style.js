@@ -51,6 +51,7 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
   width: 75%;
 
   @media (max-width: 576px) {
@@ -131,15 +132,11 @@ export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   width: calc((100% / 3) - (6rem / 3));
-  max-height: 36rem;
-  height: 100%;
+  min-height: 36rem;
   padding: 3rem;
+  margin-bottom: 3rem;
   transition: background-color 0.25s ease-in-out;
   background-color: var(--catalog-item-background-color);
-  
-  &:not(:last-child) {
-    margin-bottom: 3rem;
-  }
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.5) !important;
@@ -155,7 +152,11 @@ export const ListItem = styled.li`
   
   @media (max-width: 768px) {
     width: 100%;
-    max-height: 28rem;
+    min-height: 28rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   
   @media (min-width: 768px) and (max-width: 992px) {
