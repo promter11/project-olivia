@@ -8,6 +8,7 @@ import Filter from "../Filter";
 import Sort from "../Sort";
 
 import FilterStore from "../../stores/FilterStore";
+import SortStore from "../../stores/SortStore";
 
 class Catalog extends Component {
   render() {

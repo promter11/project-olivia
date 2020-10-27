@@ -9,41 +9,48 @@ class FilterStore {
       filters: observable,
       filteredItems: computed,
       count: computed,
-      handleCheckbox: action,
+      handleInput: action,
     });
   }
 
   items = ItemStore.items;
   filters = {
     active: ["true"],
-    gender: ["male", "female", "unisex"],
+    gender: [],
     type: ["edt", "edp", "cologne"],
   };
 
   get filteredItems() {
     const keys = Object.keys(this.filters);
 
-    return this.items.filter((item, _) => {
+    const filtered = this.items.filter((item, _) => {
       return keys.every((key, _) => this.filters[key].includes(item[key]));
     });
+    const filteredActive = this.items.filter((item) => item.active === "true");
+
+    return filtered.length ? filtered : filteredActive;
   }
 
   get count() {
     return this.filteredItems.length;
   }
 
-  handleCheckbox = (event) => {
+  handleInput = (event) => {
     const target = event.target;
 
     const key = target.getAttribute("name");
     const value = target.getAttribute("value");
 
-    if (target.checked) {
-      this.filters[key].push(value);
-    } else {
-      const index = this.filters[key].indexOf(value);
+    if (target.getAttribute("type") === "checkbox") {
+      if (target.checked) {
+        this.filters[key].push(value);
+      } else {
+        const index = this.filters[key].indexOf(value);
 
-      this.filters[key].splice(index, 1);
+        this.filters[key].splice(index, 1);
+      }
+    } else {
+      console.log(key, value);
     }
   };
 }

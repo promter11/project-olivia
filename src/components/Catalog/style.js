@@ -61,6 +61,10 @@ export const List = styled.ul`
   @media (min-width: 576px) and (max-width: 768px) {
     width: 50%;
   }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    width: 66.66%;
+  }
 `;
 
 export const ListItemBrand = styled.span`

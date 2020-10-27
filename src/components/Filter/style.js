@@ -19,6 +19,10 @@ export const Filter = styled.aside`
   @media (min-width: 576px) and (max-width: 768px) {
     width: 50%;
   }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    width: 33.33%;
+  }
 `;
 
 export const Form = styled.form``;
@@ -204,12 +208,12 @@ export const MaxValue = styled.div`
 
 export const Button = styled.button`
   width: 100%;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem;
   margin-top: auto;
   border: 0.1rem solid var(--grey-color);
   transition: all 0.25s ease;
@@ -219,9 +223,5 @@ export const Button = styled.button`
   &:hover {
     background-color: var(--grey-color);
     color: var(--white-color);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
   }
 `;
