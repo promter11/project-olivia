@@ -5,7 +5,7 @@ export const CatalogItem = styled.section``;
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 4rem;
+  margin: 4rem 0;
 
   &:first-child {
     justify-content: space-between;

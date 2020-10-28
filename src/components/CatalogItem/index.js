@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
+import { observer } from "mobx-react";
 
 import { Container } from "../../styled/components";
 import * as S from "./style";
@@ -15,9 +15,8 @@ class CatalogItem extends Component {
     } = this.props.match;
     const {
       getItemById,
-      getItemPrice,
       getItemPriceWithDiscount,
-      divideNumber,
+      splitNumber,
       zoomImage,
     } = ItemStore;
     const { items, activeID, selectItem } = TabsStore;
@@ -29,6 +28,7 @@ class CatalogItem extends Component {
       title,
       description,
       image,
+      price,
       options,
       specifications,
       notes,
@@ -67,7 +67,7 @@ class CatalogItem extends Component {
                     {options.map(({ id, volume }, _) => {
                       return (
                         <S.VolumeListItem key={id}>
-                          {volume} ML
+                          {volume}&nbsp;ML
                         </S.VolumeListItem>
                       );
                     })}
@@ -78,18 +78,22 @@ class CatalogItem extends Component {
                   <S.PriceList>
                     <S.PriceListItem>
                       <S.PriceTitle>
-                        {divideNumber(getItemPriceWithDiscount(id))} ₽
+                        {splitNumber(
+                          getItemPriceWithDiscount(
+                            price,
+                            options[0].discountPercentage
+                          )
+                        )}
+                        &nbsp;₽
                       </S.PriceTitle>
-                      <S.PriceText>цена со скидкой</S.PriceText>
+                      <S.PriceText>цена со&nbsp;скидкой</S.PriceText>
                     </S.PriceListItem>
                     <S.PriceListItem discount>
-                      <S.PriceTitle>
-                        {divideNumber(getItemPrice(id))} ₽
-                      </S.PriceTitle>
+                      <S.PriceTitle>{splitNumber(price)}&nbsp;₽</S.PriceTitle>
                       <S.PriceText>цена без скидки</S.PriceText>
                     </S.PriceListItem>
                   </S.PriceList>
-                  <S.Button href="/">Добавить в корзину</S.Button>
+                  <S.Button href="/">Добавить в&nbsp;корзину</S.Button>
                 </S.ListItem>
                 <S.ListItem>
                   <S.Tabs>

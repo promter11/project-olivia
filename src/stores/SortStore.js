@@ -7,26 +7,33 @@ class SortStore {
     makeObservable(this, {
       items: observable,
       elements: observable,
-      currentElement: observable,
+      currentElementInfo: observable,
       activeSortBlock: observable,
       sortedItems: computed,
       toggleSortBlock: action,
       selectElement: action,
-      sortItemsBy: action,
     });
   }
 
   items = ItemStore.items;
   elements = [
     { id: 0, title: "по популярности", parameter: "rating" },
-    { id: 1, title: "по названию", parameter: "title" },
-    { id: 2, title: "по цене", parameter: "price" },
+    { id: 1, title: "по названию бренда", parameter: "brand" },
+    { id: 2, title: "по названию аромата", parameter: "title" },
+    { id: 3, title: "по цене", parameter: "price" },
   ];
-  currentElement = "по популярности";
+  currentElementInfo = { ...this.elements[0] };
   activeSortBlock = false;
 
   get sortedItems() {
-    return this.items;
+    return this.items
+      .slice(0)
+      .sort((a, b) =>
+        a[this.currentElementInfo.parameter] <
+        b[this.currentElementInfo.parameter]
+          ? 1
+          : -1
+      );
   }
 
   toggleSortBlock = () => {
@@ -34,13 +41,10 @@ class SortStore {
   };
 
   selectElement = (id) => {
-    this.currentElement = this.elements[id].title;
-  };
-
-  sortItemsBy = (parameter) => {
-    this.items = this.items
-      .slice()
-      .sort((a, b) => (a[parameter] > b[parameter] ? 1 : -1));
+    this.currentElementInfo = {
+      title: this.elements[id].title,
+      parameter: this.elements[id].parameter,
+    };
   };
 }
 

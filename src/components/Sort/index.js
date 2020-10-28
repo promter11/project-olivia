@@ -6,16 +6,15 @@ import * as S from "./style";
 import SortStore from "../../stores/SortStore";
 
 class Sort extends Component {
-  handleItem(id, value) {
+  handleItem(id) {
     SortStore.toggleSortBlock();
     SortStore.selectElement(id);
-    SortStore.sortItemsBy(value);
   }
 
   render() {
     const {
       elements,
-      currentElement,
+      currentElementInfo: { title: currentElementTitle },
       activeSortBlock,
       toggleSortBlock,
     } = SortStore;
@@ -25,16 +24,13 @@ class Sort extends Component {
         <S.Title>
           Сортировка:&nbsp;
           <S.Option onClick={() => toggleSortBlock()}>
-            {currentElement}
+            {currentElementTitle}
           </S.Option>
         </S.Title>
         <S.List active={activeSortBlock}>
-          {elements.map(({ id, title, parameter }, _) => {
+          {elements.map(({ id, title }, _) => {
             return (
-              <S.ListItem
-                key={id}
-                onClick={() => this.handleItem(id, parameter)}
-              >
+              <S.ListItem key={id} onClick={() => this.handleItem(id)}>
                 {title}
               </S.ListItem>
             );

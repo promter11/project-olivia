@@ -35,10 +35,8 @@ class ItemStore {
     makeObservable(this, {
       items: observable,
       getItemById: action,
-      getItemPrice: action,
       getItemPriceWithDiscount: action,
-      getItemDiscount: action,
-      divideNumber: action,
+      splitNumber: action,
       zoomImage: action,
     });
   }
@@ -52,10 +50,11 @@ class ItemStore {
       title: "Aventus",
       description:
         "Парфюмерная вода блистает сладкими и сочными верхними нотами бергамота, черной смородины, яблока и ананаса; дымное, цветочное сердце из интригующего бленда жасмина, березового дерева, пачули и можжевельника; мужественная, теплая база из мускуса, дубового мха,ванили и серой амбры.",
+      image: `${AventusImg}`,
       gender: "male",
       type: "edp",
+      price: 19200,
       rating: 4.84,
-      image: `${AventusImg}`,
       options: [
         {
           id: 0,
@@ -127,6 +126,7 @@ class ItemStore {
       image: `${VirginIslandWaterImg}`,
       gender: "male",
       type: "edp",
+      price: 17920,
       rating: 4.69,
       options: [
         {
@@ -199,6 +199,7 @@ class ItemStore {
       image: `${LoveInWhiteImg}`,
       gender: "female",
       type: "edp",
+      price: 21800,
       rating: 4.28,
       options: [
         {
@@ -265,6 +266,7 @@ class ItemStore {
       image: `${InterludeManImg}`,
       gender: "male",
       type: "edp",
+      price: 22500,
       rating: 4.13,
       options: [
         {
@@ -331,6 +333,7 @@ class ItemStore {
       image: `${GypsyWaterImg}`,
       gender: "unisex",
       type: "edp",
+      price: 13090,
       rating: 3.91,
       options: [
         {
@@ -397,6 +400,7 @@ class ItemStore {
       image: `${FrenchLoverImg}`,
       gender: "male",
       type: "edp",
+      price: 8800,
       rating: 4.43,
       options: [
         {
@@ -469,6 +473,7 @@ class ItemStore {
       image: `${AddictiveVibrationImg}`,
       gender: "female",
       type: "edp",
+      price: 24120,
       rating: 4.66,
       options: [
         {
@@ -529,6 +534,7 @@ class ItemStore {
       image: `${BloomNettareImg}`,
       gender: "female",
       type: "edp",
+      price: 6670,
       rating: 4.01,
       options: [
         {
@@ -595,6 +601,7 @@ class ItemStore {
       image: `${ForHerImg}`,
       gender: "female",
       type: "edt",
+      price: 3600,
       rating: 3.77,
       options: [
         {
@@ -667,6 +674,7 @@ class ItemStore {
       image: `${WoodSageSeaSaltImg}`,
       gender: "female",
       type: "cologne",
+      price: 4350,
       rating: 4.72,
       options: [
         {
@@ -727,6 +735,7 @@ class ItemStore {
       image: `${BlackPhantomImg}`,
       gender: "unisex",
       type: "edp",
+      price: 23000,
       rating: 4.21,
       options: [
         {
@@ -787,6 +796,7 @@ class ItemStore {
       image: `${DarkLordImg}`,
       gender: "male",
       type: "edp",
+      price: 23500,
       rating: 4.33,
       options: [
         {
@@ -847,6 +857,7 @@ class ItemStore {
       image: `${TimelessImg}`,
       gender: "male",
       type: "edt",
+      price: 5820,
       rating: 2.98,
       options: [
         {
@@ -907,6 +918,7 @@ class ItemStore {
       image: `${BlancPureImg}`,
       gender: "male",
       type: "edt",
+      price: 5740,
       rating: 3.41,
       options: [
         {
@@ -973,6 +985,7 @@ class ItemStore {
       image: `${CedratBoiseImg}`,
       gender: "male",
       type: "edp",
+      price: 9480,
       rating: 4.45,
       options: [
         {
@@ -1033,6 +1046,7 @@ class ItemStore {
       image: `${RosesVanilleImg}`,
       gender: "female",
       type: "edp",
+      price: 9450,
       rating: 3.73,
       options: [
         {
@@ -1093,6 +1107,7 @@ class ItemStore {
       image: `${AlienImg}`,
       gender: "female",
       type: "edt",
+      price: 5460,
       rating: 4.18,
       options: [
         {
@@ -1159,6 +1174,7 @@ class ItemStore {
       image: `${PureMaltImg}`,
       gender: "male",
       type: "edt",
+      price: 7930,
       rating: 3.84,
       options: [
         {
@@ -1219,6 +1235,7 @@ class ItemStore {
       image: `${CandyImg}`,
       gender: "female",
       type: "edp",
+      price: 6830,
       rating: 3.97,
       options: [
         {
@@ -1279,6 +1296,7 @@ class ItemStore {
       image: `${CandySugarPopImg}`,
       gender: "female",
       type: "edp",
+      price: 7010,
       rating: 4.11,
       options: [
         {
@@ -1339,6 +1357,7 @@ class ItemStore {
       image: `${GreyVetiverImg}`,
       gender: "male",
       type: "edt",
+      price: 10500,
       rating: 4.24,
       options: [
         {
@@ -1405,6 +1424,7 @@ class ItemStore {
       image: `${BlackOrchidImg}`,
       gender: "unisex",
       type: "edp",
+      price: 7350,
       rating: 4.09,
       options: [
         {
@@ -1478,6 +1498,7 @@ class ItemStore {
       image: `${NoirDeNoirImg}`,
       gender: "unisex",
       type: "edp",
+      price: 10500,
       rating: 3.88,
       options: [
         {
@@ -1544,6 +1565,7 @@ class ItemStore {
       image: `${SpicebombImg}`,
       gender: "male",
       type: "edt",
+      price: 5510,
       rating: 4.7,
       options: [
         {
@@ -1604,6 +1626,7 @@ class ItemStore {
       image: `${FlowerbombImg}`,
       gender: "female",
       type: "edt",
+      price: 5760,
       rating: 4.62,
       options: [
         {
@@ -1671,6 +1694,7 @@ class ItemStore {
       image: `${DelinaImg}`,
       gender: "female",
       type: "edp",
+      price: 24300,
       rating: 4.39,
       options: [
         {
@@ -1731,6 +1755,7 @@ class ItemStore {
       image: `${GodolphinImg}`,
       gender: "male",
       type: "edp",
+      price: 23310,
       rating: 4.77,
       options: [
         {
@@ -1793,6 +1818,7 @@ class ItemStore {
       image: `${BlackOpiumImg}`,
       gender: "female",
       type: "edp",
+      price: 6090,
       rating: 3.66,
       options: [
         {
@@ -1865,6 +1891,7 @@ class ItemStore {
       image: `${OpiumImg}`,
       gender: "female",
       type: "edp",
+      price: 6260,
       rating: 4.05,
       options: [
         {
@@ -1923,32 +1950,24 @@ class ItemStore {
     return this.items[id];
   };
 
-  getItemPrice = (id) => {
-    return this.items[id].options[0].price;
+  getItemPriceWithDiscount = (price, discount) => {
+    return price * (1 - discount / 100);
   };
 
-  getItemPriceWithDiscount = (id) => {
-    return this.getItemPrice(id) * this.getItemDiscount(id);
-  };
-
-  getItemDiscount = (id) => {
-    return 1 - this.items[id].options[0].discountPercentage / 100;
-  };
-
-  divideNumber = (number) => {
+  splitNumber = (number) => {
     return number.toLocaleString();
   };
 
   zoomImage = (event) => {
     const target = event.target.parentNode;
 
-    const coordinateX = event.nativeEvent.offsetX;
-    const coordinateY = event.nativeEvent.offsetY;
+    const offsetX = event.nativeEvent.offsetX;
+    const offsetY = event.nativeEvent.offsetY;
 
-    const x = (coordinateX / target.offsetWidth) * 100;
-    const y = (coordinateY / target.offsetHeight) * 100;
+    const coordinateX = (offsetX / target.offsetWidth) * 100;
+    const coordinateY = (offsetY / target.offsetHeight) * 100;
 
-    target.style.backgroundPosition = `${x}% ${y}%`;
+    target.style.backgroundPosition = `${coordinateX}% ${coordinateY}%`;
   };
 }
 

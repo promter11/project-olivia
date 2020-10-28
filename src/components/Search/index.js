@@ -25,7 +25,9 @@ class Search extends Component {
               value={query}
             />
           </S.Form>
-          <S.Description>Гармония - это ещё не всё.</S.Description>
+          <S.Description>
+            Гармония&nbsp;&mdash; это ещё не&nbsp;всё.
+          </S.Description>
         </S.FormWrapper>
         <S.Close onClick={() => toggleSearch()}>
           <polygon

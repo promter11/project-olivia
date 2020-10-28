@@ -92,11 +92,11 @@ class Filter extends Component {
             <S.BlockTitle>Рейтинг</S.BlockTitle>
             <S.Label>
               <S.Radio value="3" onChange={(event) => handleInput(event)} />
-              <S.RadioText>Больше 3 звёзд</S.RadioText>
+              <S.RadioText>Больше 3&nbsp;звёзд</S.RadioText>
             </S.Label>
             <S.Label>
               <S.Radio value="4" onChange={(event) => handleInput(event)} />
-              <S.RadioText>Больше 4 звёзд</S.RadioText>
+              <S.RadioText>Больше 4&nbsp;звёзд</S.RadioText>
             </S.Label>
             <S.Label>
               <S.Radio value="all" onChange={(event) => handleInput(event)} />

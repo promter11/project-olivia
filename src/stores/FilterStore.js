@@ -1,6 +1,6 @@
 import { makeObservable, observable, computed, action } from "mobx";
 
-import ItemStore from "./ItemStore";
+import SortStore from "./SortStore";
 
 class FilterStore {
   constructor() {
@@ -13,11 +13,11 @@ class FilterStore {
     });
   }
 
-  items = ItemStore.items;
+  items = SortStore.sortedItems;
   filters = {
     active: ["true"],
     gender: [],
-    type: ["edt", "edp", "cologne"],
+    type: [],
   };
 
   get filteredItems() {

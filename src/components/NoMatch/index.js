@@ -78,11 +78,12 @@ export default class NoMatch extends Component {
               <circle fill="#FFFFFF" cx="245.76" cy="352.333" r="15.852" />
             </g>
           </S.Image>
-          <S.Title>Страница не найдена</S.Title>
+          <S.Title>Страница не&nbsp;найдена</S.Title>
           <S.Description>
-            Похоже, страница, которую вы пытаетесь найти, не существует.
+            Похоже, страницы, которую вы&nbsp;пытаетесь найти,
+            не&nbsp;существует.
           </S.Description>
-          <S.StyledLink to="/">Перейти на главную</S.StyledLink>
+          <S.StyledLink to="/">Перейти на&nbsp;главную</S.StyledLink>
         </Container>
       </S.NoMatch>
     );

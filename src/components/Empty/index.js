@@ -51,9 +51,9 @@ export default class Empty extends Component {
           </S.Image>
           <S.Title>Ваша корзина пустая</S.Title>
           <S.Description>
-            Похоже, ваша корзина не содержит ни одного товара.
+            Похоже, ваша корзина не&nbsp;содержит ни&nbsp;одного товара.
           </S.Description>
-          <S.StyledLink to="/">Вернуться на главную</S.StyledLink>
+          <S.StyledLink to="/">Вернуться на&nbsp;главную</S.StyledLink>
         </Container>
       </S.Empty>
     );
