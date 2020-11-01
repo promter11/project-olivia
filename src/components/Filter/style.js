@@ -143,67 +143,87 @@ export const TextField = styled.input.attrs({
   padding: 0.8rem 1.2rem;
   border: 0.1rem solid var(--gray-color);
   border-radius: 0.4rem;
+  pointer-events: none;
 
   &:not(:last-child) {
     margin-right: 1.5rem;
   }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    margin: 0;
-  }
 `;
 
 export const RangeWrapper = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const Range = styled.div`
-  height: 0.1rem;
-  margin-bottom: 1.5rem;
-  background-color: var(--gray-color);
-`;
+export const Range = styled.input.attrs({
+  type: "range",
+})`
+  width: 100%;
+  margin: 1rem 0;
+  -webkit-appearance: none;
 
-export const Point = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 2rem;
-  height: 2rem;
-  border: 0.1rem solid var(--gray-color);
-  border-radius: 50%;
-  cursor: pointer;
-  background-color: var(--background-color);
-
-  &:first-child {
-    left: 0;
+  &:focus {
+    outline: none;
   }
 
-  &:last-child {
-    right: 0;
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.1rem;
+    background-color: var(--gray-color);
   }
-`;
 
-export const MinValue = styled.div`
-  position: absolute;
-  left: 0;
-  font-size: 1.2rem;
-  font-weight: 300;
-  line-height: 1.4rem;
-  margin-top: 1.5rem;
-  color: var(--grey-color);
-`;
+  &::-webkit-slider-thumb {
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    border: 0.1rem solid var(--gray-color);
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-color: var(--background-color);
+  }
 
-export const MaxValue = styled.div`
-  position: absolute;
-  right: 0;
-  font-size: 1.2rem;
-  font-weight: 300;
-  line-height: 1.4rem;
-  margin-top: 1.5rem;
-  color: var(--grey-color);
+  &::-moz-range-track {
+    width: 100%;
+    height: 0.1rem;
+    background-color: var(--gray-color);
+  }
+
+  &::-moz-range-thumb {
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    border: 0.1rem solid var(--gray-color);
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-color: var(--background-color);
+  }
+
+  &::-ms-track {
+    width: 100%;
+    height: 0.1rem;
+    background-color: var(--gray-color);
+  }
+
+  &::-ms-thumb {
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    border: 0.1rem solid var(--gray-color);
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-color: var(--background-color);
+  }
+
+  &::-ms-fill-lower {
+    background-color: var(--gray-color);
+  }
+
+  &::-ms-fill-upper {
+    background-color: var(--gray-color);
+  }
 `;
 
 export const Button = styled.button`

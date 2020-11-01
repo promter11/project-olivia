@@ -6,14 +6,23 @@ class FilterStore {
   constructor() {
     makeObservable(this, {
       items: observable,
+      price: observable,
       filters: observable,
       filteredItems: computed,
       count: computed,
+      averagePrice: computed,
+      maxPrice: computed,
       handleInput: action,
+      handleRange: action,
     });
   }
 
   items = SortStore.sortedItems;
+  price = {
+    min: 0,
+    average: this.averagePrice,
+    max: this.maxPrice,
+  };
   filters = {
     active: ["true"],
     gender: [],
@@ -35,8 +44,18 @@ class FilterStore {
     return this.filteredItems.length;
   }
 
+  get averagePrice() {
+    return Math.floor(this.maxPrice / 2);
+  }
+
+  get maxPrice() {
+    return this.items.reduce((acc, item) =>
+      acc > item.price ? acc : item.price
+    );
+  }
+
   handleInput = (event) => {
-    const target = event.target;
+    const { target } = event;
 
     const key = target.getAttribute("name");
     const value = target.getAttribute("value");
@@ -52,6 +71,17 @@ class FilterStore {
     } else {
       console.log(key, value);
     }
+  };
+
+  handleRange = (event) => {
+    const {
+      target,
+      target: { value },
+    } = event;
+
+    target.getAttribute("data-range") === "min"
+      ? (this.price.min = Number(value))
+      : (this.price.max = Number(value));
   };
 }
 

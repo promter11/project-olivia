@@ -7,7 +7,12 @@ import FilterStore from "../../stores/FilterStore";
 
 class Filter extends Component {
   render() {
-    const { handleInput } = FilterStore;
+    const {
+      price: { min, average, max },
+      maxPrice,
+      handleInput,
+      handleRange,
+    } = FilterStore;
 
     return (
       <S.Filter>
@@ -46,19 +51,27 @@ class Filter extends Component {
             <S.BlockTitle>Цена</S.BlockTitle>
             <S.Wrapper>
               <S.FieldsWrapper>
-                <S.TextField defaultValue={0} />
-                <S.TextField defaultValue={1000000} />
+                <S.TextField readOnly value={min} />
+                <S.TextField readOnly value={max} />
               </S.FieldsWrapper>
-              <S.Range>
-                <S.RangeWrapper>
-                  <S.Point />
-                  <S.Point />
-                </S.RangeWrapper>
-                <S.RangeWrapper>
-                  <S.MinValue>0</S.MinValue>
-                  <S.MaxValue>1 000 000</S.MaxValue>
-                </S.RangeWrapper>
-              </S.Range>
+              <S.RangeWrapper>
+                <S.Range
+                  step="10"
+                  min={0}
+                  max={average}
+                  defaultValue={min}
+                  onInput={(event) => handleRange(event)}
+                  data-range="min"
+                />
+                <S.Range
+                  step="10"
+                  min={average}
+                  max={maxPrice}
+                  defaultValue={max}
+                  onInput={(event) => handleRange(event)}
+                  data-range="max"
+                />
+              </S.RangeWrapper>
             </S.Wrapper>
           </S.Block>
           <S.Block>
