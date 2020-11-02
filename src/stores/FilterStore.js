@@ -24,20 +24,31 @@ class FilterStore {
     max: this.maxPrice,
   };
   filters = {
-    active: ["true"],
-    gender: [],
-    type: [],
+    active: [{ value: "active", checked: false }],
+    gender: [
+      { value: "male", checked: false },
+      { value: "female", checked: false },
+    ],
+    type: [
+      { value: "edt", checked: false },
+      { value: "edp", checked: false },
+      { value: "cologne", checked: false },
+    ],
+    rating: [
+      { value: ">3", checked: false },
+      { value: ">4", checked: false },
+      { value: "all", checked: false },
+    ],
   };
 
   get filteredItems() {
     const keys = Object.keys(this.filters);
 
-    const filtered = this.items.filter((item, _) => {
-      return keys.every((key, _) => this.filters[key].includes(item[key]));
-    });
-    const filteredActive = this.items.filter((item) => item.active === "true");
+    const checkedKeys = ["female", "edt"];
 
-    return filtered.length ? filtered : filteredActive;
+    return this.items.filter((item, _) => {
+      return checkedKeys.every((key, _) => console.log(item[key]));
+    });
   }
 
   get count() {
@@ -61,13 +72,9 @@ class FilterStore {
     const value = target.getAttribute("value");
 
     if (target.getAttribute("type") === "checkbox") {
-      if (target.checked) {
-        this.filters[key].push(value);
-      } else {
-        const index = this.filters[key].indexOf(value);
+      const checkbox = this.filters[key].find((el, _) => el.value === value);
 
-        this.filters[key].splice(index, 1);
-      }
+      checkbox.checked = !checkbox.checked;
     } else {
       console.log(key, value);
     }

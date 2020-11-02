@@ -26,6 +26,12 @@ const GlobalStyles = createGlobalStyle`
     font-size: 10px;
   }
   
+  body {
+    &.modal--opened {
+      overflow: hidden;
+    }
+  }
+  
   h1 {
     font-size: 14.4rem;
     

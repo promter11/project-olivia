@@ -16,6 +16,8 @@ class SearchStore {
 
   toggleSearch = () => {
     this.opened = !this.opened;
+
+    document.body.classList.toggle("modal--opened");
   };
 
   updateSearch = (value) => {

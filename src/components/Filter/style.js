@@ -235,13 +235,13 @@ export const Button = styled.button`
   letter-spacing: 0.3rem;
   padding: 1.5rem;
   margin-top: auto;
-  border: 0.1rem solid var(--grey-color);
+  border: 0.1rem solid var(--gray-color);
   transition: all 0.25s ease;
   background-color: transparent;
   color: var(--grey-color);
 
   &:hover {
-    background-color: var(--grey-color);
+    background-color: var(--gray-color);
     color: var(--white-color);
   }
 `;

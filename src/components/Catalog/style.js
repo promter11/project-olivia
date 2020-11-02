@@ -50,12 +50,13 @@ export const Wrapper = styled.div`
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: flex-start;
   width: 75%;
+  margin: 0 -1.5rem;
 
   @media (max-width: 576px) {
     width: 100%;
+    margin: 0;
   }
 
   @media (min-width: 576px) and (max-width: 768px) {
@@ -91,6 +92,7 @@ export const ListItemPrice = styled.span`
   font-size: 1.4rem;
   line-height: 1.8rem;
   font-weight: 600;
+  padding-right: 1.5rem;
   opacity: 0;
   visibility: hidden;
   transition: all 0.25s ease-in-out;
@@ -99,6 +101,7 @@ export const ListItemPrice = styled.span`
 
 export const ListItemWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
@@ -135,12 +138,16 @@ export const ListItemLink = styled(Link)`
 export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
-  width: calc((100% / 3) - (6rem / 3));
+  width: calc(((1 / 3) * 100%) - 3rem);
   min-height: 36rem;
   padding: 3rem;
-  margin-bottom: 3rem;
+  margin: 0 1.5rem;
   transition: background-color 0.25s ease-in-out;
   background-color: var(--catalog-item-background-color);
+  
+  &:not(:nth-last-child(-n + 3)) {
+    margin-bottom: 3rem;
+  }
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.5) !important;
@@ -154,16 +161,19 @@ export const ListItem = styled.li`
     }
   }
   
+  @media (max-width: 576px) {
+    margin: 0;
+  }
+  
   @media (max-width: 768px) {
     width: 100%;
-    min-height: 28rem;
     
-    &:last-child {
-      margin-bottom: 0;
+    &:not(:last-child) {
+      margin-bottom: 3rem;
     }
   }
   
   @media (min-width: 768px) and (max-width: 992px) {
-    width: calc((100% / 2) - (3rem / 2));
+    width: calc(((1 / 2) * 100%) - 3rem);
   }
 `;

@@ -23,9 +23,11 @@ export const Option = styled.span`
 export const List = styled.ul`
   position: absolute;
   top: calc(100% + 1rem);
+  right: 0;
   transform: ${(props) =>
     props.active ? "translateY(0)" : "translateY(-1rem)"};
   z-index: 5;
+  min-width: 21rem;
   width: 100%;
   border: 0.1rem solid var(--gray-color);
   border-radius: 0.8rem;
@@ -39,7 +41,7 @@ export const List = styled.ul`
     content: "";
     position: absolute;
     bottom: 100%;
-    right: 4rem;
+    right: 1.5rem;
     border-bottom: 1rem solid var(--white-color);
     border-left: 1rem solid transparent;
     border-right: 1rem solid transparent;
