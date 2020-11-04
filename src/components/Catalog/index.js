@@ -29,11 +29,12 @@ class Catalog extends Component {
             <S.Wrapper>
               <Filter />
               <S.List>
-                {filteredItems.map(({ id, brand, title, image }, _) => {
+                {filteredItems.map(({ id, active, brand, title, image }, _) => {
                   return (
                     <S.ListItem
                       key={id}
                       style={{
+                        opacity: `${active === "Y" ? "" : "0.25"}`,
                         background: `rgba(0, 0, 0, 0) url("${image}") no-repeat center center / cover`,
                         backgroundBlendMode: "darken",
                       }}

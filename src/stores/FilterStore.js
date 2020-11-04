@@ -10,10 +10,11 @@ class FilterStore {
       filters: observable,
       filteredItems: computed,
       count: computed,
-      averagePrice: computed,
       maxPrice: computed,
-      handleInput: action,
+      handleCheckbox: action,
+      handleRadio: action,
       handleRange: action,
+      clearFilters: action,
     });
   }
 
@@ -24,30 +25,20 @@ class FilterStore {
     max: this.maxPrice,
   };
   filters = {
-    active: [{ value: "active", checked: false }],
-    gender: [
-      { value: "male", checked: false },
-      { value: "female", checked: false },
-    ],
-    type: [
-      { value: "edt", checked: false },
-      { value: "edp", checked: false },
-      { value: "cologne", checked: false },
-    ],
-    rating: [
-      { value: ">3", checked: false },
-      { value: ">4", checked: false },
-      { value: "all", checked: false },
-    ],
+    active: ["Y"],
+    gender: [],
+    price: [],
+    type: [],
+    rating: [],
   };
 
   get filteredItems() {
-    const keys = Object.keys(this.filters);
-
-    const checkedKeys = ["female", "edt"];
+    const entries = Object.entries(this.filters).filter(
+      ([key, values], _) => values.length
+    );
 
     return this.items.filter((item, _) => {
-      return checkedKeys.every((key, _) => console.log(item[key]));
+      return entries.every(([key, values]) => values.includes(item[key]));
     });
   }
 
@@ -60,23 +51,60 @@ class FilterStore {
   }
 
   get maxPrice() {
-    return this.items.reduce((acc, item) =>
-      acc > item.price ? acc : item.price
-    );
+    return this.items.reduce((acc, item) => {
+      return acc > item.price ? acc : item.price;
+    });
   }
 
-  handleInput = (event) => {
+  handleCheckbox = (event) => {
     const { target } = event;
 
     const key = target.getAttribute("name");
     const value = target.getAttribute("value");
 
     if (target.getAttribute("type") === "checkbox") {
-      const checkbox = this.filters[key].find((el, _) => el.value === value);
+      if (target.checked) {
+        this.filters[key].push(value);
+      } else {
+        const index = this.filters[key].indexOf(value);
 
-      checkbox.checked = !checkbox.checked;
-    } else {
-      console.log(key, value);
+        this.filters[key].splice(index, 1);
+      }
+    }
+  };
+
+  handleRadio = (event) => {
+    const { target } = event;
+
+    const value = target.getAttribute("value");
+
+    if (target.checked) {
+      switch (value) {
+        case "3":
+          this.filters.rating.replace(
+            this.items
+              .filter((item, _) => item.rating >= 3)
+              .map((item, _) => item.rating)
+          );
+
+          break;
+        case "4":
+          this.filters.rating.replace(
+            this.items
+              .filter((item, _) => item.rating >= 4)
+              .map((item, _) => item.rating)
+          );
+
+          break;
+        default:
+          this.filters.rating.replace(
+            this.items
+              .filter((item, _) => item.rating >= 0)
+              .map((item, _) => item.rating)
+          );
+
+          break;
+      }
     }
   };
 
@@ -89,6 +117,27 @@ class FilterStore {
     target.getAttribute("data-range") === "min"
       ? (this.price.min = Number(value))
       : (this.price.max = Number(value));
+
+    this.filters.price.replace(
+      this.items
+        .filter(
+          (item, _) =>
+            item.price >= this.price.min && item.price <= this.price.max
+        )
+        .map((item, _) => item.price)
+    );
+  };
+
+  clearFilters = (event) => {
+    event.preventDefault();
+
+    this.filters = {
+      active: ["Y"],
+      gender: [],
+      price: [],
+      type: [],
+      rating: [],
+    };
   };
 }
 

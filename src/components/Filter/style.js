@@ -230,18 +230,17 @@ export const Button = styled.button`
   width: 100%;
   font-size: 1.2rem;
   line-height: 1;
-  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   padding: 1.5rem;
   margin-top: auto;
-  border: 0.1rem solid var(--gray-color);
+  border: 0.1rem solid var(--grey-color);
   transition: all 0.25s ease;
   background-color: transparent;
   color: var(--grey-color);
 
   &:hover {
-    background-color: var(--gray-color);
+    background-color: var(--grey-color);
     color: var(--white-color);
   }
 `;
