@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import SearchImage from "../../assets/images/search.jpg";
 
@@ -41,6 +42,7 @@ export const Description = styled.p`
 `;
 
 export const FormWrapper = styled.div`
+  position: relative;
   max-width: 77rem;
   width: 100%;
 `;
@@ -95,3 +97,43 @@ export const Close = styled.svg.attrs({
     right: 2rem;
   }
 `;
+
+export const List = styled.ul`
+  display: ${(props) => (props.active ? "block" : "none")};
+  position: absolute;
+  top: 6rem;
+  width: 100%;
+  max-height: 21rem;
+  overflow-y: auto;
+  background-color: var(--background-color);
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--lightgray-color);
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+    background-color: var(--lightgray-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray-color);
+  }
+`;
+
+export const ListItem = styled.li``;
+
+export const ListItemLink = styled(Link)`
+  display: block;
+  padding: 1.5rem 3rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--grey-color);
+
+  &:hover {
+    background-color: var(--lightgray-color);
+    color: var(--grey-color);
+  }
+`;
+
+export const ListItemBrand = styled.strong``;

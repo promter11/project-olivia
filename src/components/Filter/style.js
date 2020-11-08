@@ -118,7 +118,6 @@ export const RadioText = styled.span`
 
 export const Radio = styled.input.attrs({
   type: "radio",
-  name: "rating",
 })`
   position: absolute;
   height: 0;

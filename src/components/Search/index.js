@@ -7,27 +7,33 @@ import SearchStore from "../../stores/SearchStore";
 
 class Search extends Component {
   render() {
-    const {
-      query,
-      opened,
-      toggleSearch,
-      updateSearch,
-      sendRequest,
-    } = SearchStore;
+    const { items } = SearchStore;
+    const { query, opened, active, toggleSearch, updateSearch } = SearchStore;
 
     return (
       <S.Search active={opened}>
         <S.Title>Поиск аромата</S.Title>
         <S.FormWrapper>
-          <S.Form onSubmit={(event) => sendRequest(event)}>
-            <S.Input
-              onChange={(event) => updateSearch(event.target.value)}
-              value={query}
-            />
+          <S.Form onSubmit={(event) => event.preventDefault()}>
+            <S.Input onChange={(event) => updateSearch(event)} value={query} />
           </S.Form>
           <S.Description>
             Гармония&nbsp;&mdash; это ещё не&nbsp;всё.
           </S.Description>
+          <S.List active={active}>
+            {items.map(({ id, brand, title }, _) => {
+              return (
+                <S.ListItem key={id}>
+                  <S.ListItemLink
+                    to={`/catalog/${id}`}
+                    onClick={() => toggleSearch()}
+                  >
+                    <S.ListItemBrand>{brand}</S.ListItemBrand> {title}
+                  </S.ListItemLink>
+                </S.ListItem>
+              );
+            })}
+          </S.List>
         </S.FormWrapper>
         <S.Close onClick={() => toggleSearch()}>
           <polygon

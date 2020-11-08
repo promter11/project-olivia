@@ -10,6 +10,7 @@ class Filter extends Component {
     const {
       price: { min, average, max },
       maxPrice,
+      checked: { active, gender, type, rating },
       handleCheckbox,
       handleRange,
       handleRadio,
@@ -26,6 +27,7 @@ class Filter extends Component {
                 name="active"
                 value="N"
                 onChange={(event) => handleCheckbox(event)}
+                checked={active.N}
               />
               <S.CheckboxText>Отобразить неактивные товары</S.CheckboxText>
             </S.Label>
@@ -37,6 +39,7 @@ class Filter extends Component {
                 name="gender"
                 value="male"
                 onChange={(event) => handleCheckbox(event)}
+                checked={gender.male}
               />
               <S.CheckboxText>Мужской</S.CheckboxText>
             </S.Label>
@@ -45,6 +48,7 @@ class Filter extends Component {
                 name="gender"
                 value="female"
                 onChange={(event) => handleCheckbox(event)}
+                checked={gender.female}
               />
               <S.CheckboxText>Женский</S.CheckboxText>
             </S.Label>
@@ -58,20 +62,20 @@ class Filter extends Component {
               </S.FieldsWrapper>
               <S.RangeWrapper>
                 <S.Range
+                  data-range="min"
                   step="10"
                   min={0}
                   max={average}
-                  defaultValue={min}
-                  onInput={(event) => handleRange(event)}
-                  data-range="min"
+                  value={min}
+                  onChange={(event) => handleRange(event)}
                 />
                 <S.Range
+                  data-range="max"
                   step="10"
                   min={average}
                   max={maxPrice}
-                  defaultValue={max}
-                  onInput={(event) => handleRange(event)}
-                  data-range="max"
+                  value={max}
+                  onChange={(event) => handleRange(event)}
                 />
               </S.RangeWrapper>
             </S.Wrapper>
@@ -83,6 +87,7 @@ class Filter extends Component {
                 name="type"
                 value="edt"
                 onChange={(event) => handleCheckbox(event)}
+                checked={type.edt}
               />
               <S.CheckboxText>Туалетная вода (EDT)</S.CheckboxText>
             </S.Label>
@@ -91,6 +96,7 @@ class Filter extends Component {
                 name="type"
                 value="edp"
                 onChange={(event) => handleCheckbox(event)}
+                checked={type.edp}
               />
               <S.CheckboxText>Парфюмерная вода (EDP)</S.CheckboxText>
             </S.Label>
@@ -99,6 +105,7 @@ class Filter extends Component {
                 name="type"
                 value="cologne"
                 onChange={(event) => handleCheckbox(event)}
+                checked={type.cologne}
               />
               <S.CheckboxText>Одеколон (cologne)</S.CheckboxText>
             </S.Label>
@@ -106,15 +113,30 @@ class Filter extends Component {
           <S.Block>
             <S.BlockTitle>Рейтинг</S.BlockTitle>
             <S.Label>
-              <S.Radio value="3" onChange={(event) => handleRadio(event)} />
+              <S.Radio
+                name="rating"
+                value=">3"
+                onChange={(event) => handleRadio(event)}
+                checked={rating === ">3"}
+              />
               <S.RadioText>Больше 3&nbsp;звёзд</S.RadioText>
             </S.Label>
             <S.Label>
-              <S.Radio value="4" onChange={(event) => handleRadio(event)} />
+              <S.Radio
+                name="rating"
+                value=">4"
+                onChange={(event) => handleRadio(event)}
+                checked={rating === ">4"}
+              />
               <S.RadioText>Больше 4&nbsp;звёзд</S.RadioText>
             </S.Label>
             <S.Label>
-              <S.Radio value="all" onChange={(event) => handleRadio(event)} />
+              <S.Radio
+                name="rating"
+                value="all"
+                onChange={(event) => handleRadio(event)}
+                checked={rating === "all"}
+              />
               <S.RadioText>Любой</S.RadioText>
             </S.Label>
           </S.Block>
