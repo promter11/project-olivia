@@ -77,7 +77,8 @@ export const Code = styled.span`
 export const Active = styled.p`
   font-size: 1.4rem;
   line-height: 1.8rem;
-  color: var(--green-color);
+  color: ${(props) =>
+    props.active ? "var(--green-color)" : "var(--error-color)"};
 
   @media (max-width: 576px) {
     font-size: 1.2rem;
@@ -100,11 +101,18 @@ export const ListItemTitle = styled.h4`
   border-bottom: 0.1rem solid var(--lightgray-color);
 `;
 
-export const VolumeList = styled.ul`
+export const VolumeForm = styled.form`
   display: flex;
 `;
 
-export const VolumeListItem = styled.li`
+export const VolumeFormLabel = styled.label`
+  &:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+`;
+
+export const VolumeRadioText = styled.span`
+  display: block;
   font-size: 1.4rem;
   line-height: 1.8rem;
   font-weight: bold;
@@ -115,10 +123,6 @@ export const VolumeListItem = styled.li`
   cursor: pointer;
   background-color: transparent;
   color: var(--grey-color);
-
-  &:not(:last-child) {
-    margin-right: 1.5rem;
-  }
 
   &:hover {
     border-color: var(--grey-color);
@@ -133,6 +137,21 @@ export const VolumeListItem = styled.li`
 
   @media (max-width: 992px) {
     padding: 1.5rem 2rem;
+  }
+`;
+
+export const VolumeRadio = styled.input.attrs({
+  type: "radio",
+  name: "volume",
+})`
+  position: absolute;
+  height: 0;
+  visibility: hidden;
+
+  &:checked + ${VolumeRadioText} {
+    border-color: var(--grey-color);
+    background-color: var(--grey-color);
+    color: var(--white-color);
   }
 `;
 
@@ -167,10 +186,15 @@ export const Button = styled.a`
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   padding: 1.5rem 3rem;
-  border: 0.1rem solid var(--grey-color);
+  border: 0.1rem solid
+    ${(props) =>
+      props.disabled ? "var(--lightgray-color)" : "var(--grey-color)"};
   transition: all 0.25s ease;
-  background-color: var(--grey-color);
-  color: var(--white-color);
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
+  background-color: ${(props) =>
+    props.disabled ? "var(--lightgray-color)" : "var(--grey-color)"};
+  color: ${(props) =>
+    props.disabled ? "var(--gray-color)" : "var(--white-color)"};
 
   &:hover {
     background-color: transparent;
@@ -207,6 +231,7 @@ export const TabsItem = styled.li`
     left: 0;
     width: 100%;
     height: 0.2rem;
+    transition: background-color 0.25s ease-in-out;
     background-color: ${(props) =>
       props.active ? "var(--lightgrey-color)" : "var(--lightgray-color)"};
   }
@@ -216,7 +241,10 @@ export const TabsItem = styled.li`
   }
 
   &:hover {
-    color: var(--gray-color);
+    &::after {
+      background-color: ${(props) =>
+        props.active ? "var(--lightgrey-color)" : "var(--gray-color)"};
+    }
   }
 
   @media (max-width: 576px) {
@@ -246,6 +274,10 @@ export const SpecsDotted = styled.div`
 export const SpecsItem = styled.li`
   display: flex;
   justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
 `;
 
 export const SpecsItemTitle = styled.div`

@@ -15,7 +15,11 @@ class Search extends Component {
         <S.Title>Поиск аромата</S.Title>
         <S.FormWrapper>
           <S.Form onSubmit={(event) => event.preventDefault()}>
-            <S.Input onChange={(event) => updateSearch(event)} value={query} />
+            <S.Input
+              onChange={(event) => updateSearch(event)}
+              placeholder="Введите название бренда или аромата"
+              value={query}
+            />
           </S.Form>
           <S.Description>
             Гармония&nbsp;&mdash; это ещё не&nbsp;всё.

@@ -51,7 +51,6 @@ export const Form = styled.form``;
 
 export const Input = styled.input.attrs({
   type: "text",
-  placeholder: "Введите название аромата",
 })`
   width: 100%;
   font-size: 1.8rem;

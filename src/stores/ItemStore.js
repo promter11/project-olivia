@@ -206,13 +206,13 @@ class ItemStore {
           id: 0,
           volume: 75,
           price: 21800,
-          discountPercentage: 0,
+          discountPercentage: 5,
         },
         {
           id: 1,
           volume: 125,
           price: 25320,
-          discountPercentage: 0,
+          discountPercentage: 10,
         },
       ],
       specifications: [
@@ -681,7 +681,7 @@ class ItemStore {
           id: 0,
           volume: 30,
           price: 4350,
-          discountPercentage: 0,
+          discountPercentage: 5,
         },
       ],
       specifications: [
@@ -1303,7 +1303,7 @@ class ItemStore {
           id: 0,
           volume: 100,
           price: 7010,
-          discountPercentage: 0,
+          discountPercentage: 10,
         },
       ],
       specifications: [
@@ -1898,7 +1898,7 @@ class ItemStore {
           id: 0,
           volume: 30,
           price: 6260,
-          discountPercentage: 0,
+          discountPercentage: 10,
         },
       ],
       specifications: [

@@ -15,7 +15,7 @@ const routes = [
   { path: "/catalog", title: "Каталог", Component: CatalogPage },
   { path: "/catalog/:id", Component: ItemPage },
   { path: "/cart", title: "Корзина", Component: CartPage },
-  { path: "/cart/empty", title: "Корзина пустая", Component: EmptyPage },
+  { path: "/cart/empty", title: "Корзина пуста", Component: EmptyPage },
   { path: "/checkout", title: "Оформление заказа", Component: Checkout },
   { path: "*", Component: NoMatch },
 ];
@@ -32,7 +32,10 @@ class Routes extends Component {
               exact
               render={(props) => {
                 const crumbs = routes
-                  .filter(({ path }) => props.match.path.includes(path))
+                  .filter(
+                    ({ path, title }) =>
+                      props.match.path.includes(path) && title
+                  )
                   .map(({ path, ...rest }) => ({
                     path: Object.keys(props.match.params).length
                       ? Object.keys(props.match.params).reduce(

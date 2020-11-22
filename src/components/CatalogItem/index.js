@@ -44,7 +44,9 @@ class CatalogItem extends Component {
               </S.Title>
               <S.Code>{code}</S.Code>
             </S.TitleWrapper>
-            <S.Active>{active ? "Есть в наличии" : "Нет в наличии"}</S.Active>
+            <S.Active active={active === "Y"}>
+              {active === "Y" ? "Есть в наличии" : "Нет в наличии"}
+            </S.Active>
           </S.Wrapper>
           <S.Wrapper>
             <S.Block
@@ -63,15 +65,21 @@ class CatalogItem extends Component {
               <S.List>
                 <S.ListItem>
                   <S.ListItemTitle>Объем</S.ListItemTitle>
-                  <S.VolumeList>
+                  <S.VolumeForm>
                     {options.map(({ id, volume }, _) => {
                       return (
-                        <S.VolumeListItem key={id}>
-                          {volume}&nbsp;ML
-                        </S.VolumeListItem>
+                        <S.VolumeFormLabel key={id}>
+                          <S.VolumeRadio
+                            value={volume}
+                            defaultChecked={id === 0}
+                          />
+                          <S.VolumeRadioText>
+                            {volume}&nbsp;ML
+                          </S.VolumeRadioText>
+                        </S.VolumeFormLabel>
                       );
                     })}
-                  </S.VolumeList>
+                  </S.VolumeForm>
                 </S.ListItem>
                 <S.ListItem>
                   <S.ListItemTitle>Цена</S.ListItemTitle>
@@ -93,7 +101,9 @@ class CatalogItem extends Component {
                       <S.PriceText>цена без скидки</S.PriceText>
                     </S.PriceListItem>
                   </S.PriceList>
-                  <S.Button href="/">Добавить в&nbsp;корзину</S.Button>
+                  <S.Button href="/" disabled={active !== "Y"}>
+                    Добавить в&nbsp;корзину
+                  </S.Button>
                 </S.ListItem>
                 <S.ListItem>
                   <S.Tabs>

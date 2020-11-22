@@ -36,8 +36,11 @@ class SearchStore {
     this.active = value.length > 1;
 
     if (value.length > 1) {
-      this.items = this.items.filter(({ title }, _) => {
-        return title.toLowerCase().includes(value.toLowerCase());
+      this.items = this.items.filter(({ brand, title }, _) => {
+        return (
+          brand.toLowerCase().includes(value.toLowerCase()) ||
+          title.toLowerCase().includes(value.toLowerCase())
+        );
       });
     } else {
       this.items = ItemStore.items;
