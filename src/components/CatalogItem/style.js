@@ -178,7 +178,7 @@ export const PriceText = styled.p`
   font-weight: 300;
 `;
 
-export const Button = styled.a`
+export const Button = styled.button`
   display: inline-block;
   font-size: 1.4rem;
   line-height: 1;

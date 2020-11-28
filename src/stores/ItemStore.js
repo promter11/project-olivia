@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 
 import AventusImg from "../assets/images/items/Creed Aventus.jpg";
 import VirginIslandWaterImg from "../assets/images/items/Creed Virgin Island Water.jpg";
@@ -36,6 +36,8 @@ class ItemStore {
       items: observable,
       getItemById: action,
       getItemPriceWithDiscount: action,
+      getItemsCurrentOption: action,
+      setItemsCurrentOption: action,
       splitNumber: action,
       zoomImage: action,
     });
@@ -61,18 +63,24 @@ class ItemStore {
           volume: 30,
           price: 19200,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 24610,
           discountPercentage: 15,
+          countInCart: 0,
+          current: false,
         },
         {
           id: 2,
           volume: 100,
           price: 29480,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -134,18 +142,24 @@ class ItemStore {
           volume: 30,
           price: 17920,
           discountPercentage: 0,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 22400,
           discountPercentage: 5,
+          countInCart: 0,
+          current: false,
         },
         {
           id: 2,
           volume: 125,
           price: 32520,
           discountPercentage: 10,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -207,12 +221,16 @@ class ItemStore {
           volume: 75,
           price: 21800,
           discountPercentage: 5,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 125,
           price: 25320,
           discountPercentage: 10,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -274,12 +292,16 @@ class ItemStore {
           volume: 50,
           price: 22500,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 100,
           price: 29700,
           discountPercentage: 10,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -341,12 +363,16 @@ class ItemStore {
           volume: 50,
           price: 13090,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 100,
           price: 19080,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -408,18 +434,24 @@ class ItemStore {
           volume: 30,
           price: 8800,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 12700,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
         {
           id: 2,
           volume: 100,
           price: 18500,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -481,6 +513,8 @@ class ItemStore {
           volume: 90,
           price: 24120,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -542,12 +576,16 @@ class ItemStore {
           volume: 30,
           price: 6670,
           discountPercentage: 15,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 9600,
           discountPercentage: 15,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -609,18 +647,24 @@ class ItemStore {
           volume: 30,
           price: 3600,
           discountPercentage: 25,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 4800,
           discountPercentage: 25,
+          countInCart: 0,
+          current: false,
         },
         {
           id: 1,
           volume: 100,
           price: 6900,
           discountPercentage: 25,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -682,6 +726,8 @@ class ItemStore {
           volume: 30,
           price: 4350,
           discountPercentage: 5,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -743,6 +789,8 @@ class ItemStore {
           volume: 50,
           price: 23000,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -804,6 +852,8 @@ class ItemStore {
           volume: 50,
           price: 23500,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -865,6 +915,8 @@ class ItemStore {
           volume: 50,
           price: 5820,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -926,12 +978,16 @@ class ItemStore {
           volume: 50,
           price: 5740,
           discountPercentage: 15,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 100,
           price: 7810,
           discountPercentage: 15,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -993,6 +1049,8 @@ class ItemStore {
           volume: 60,
           price: 9480,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1054,6 +1112,8 @@ class ItemStore {
           volume: 60,
           price: 9450,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1115,12 +1175,16 @@ class ItemStore {
           volume: 30,
           price: 5460,
           discountPercentage: 30,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 60,
           price: 8050,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -1182,6 +1246,8 @@ class ItemStore {
           volume: 100,
           price: 7930,
           discountPercentage: 25,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1243,6 +1309,8 @@ class ItemStore {
           volume: 90,
           price: 6830,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1304,6 +1372,8 @@ class ItemStore {
           volume: 100,
           price: 7010,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1365,12 +1435,16 @@ class ItemStore {
           volume: 50,
           price: 10500,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 100,
           price: 14600,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -1432,18 +1506,24 @@ class ItemStore {
           volume: 30,
           price: 7350,
           discountPercentage: 30,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 10500,
           discountPercentage: 30,
+          countInCart: 0,
+          current: false,
         },
         {
           id: 2,
           volume: 100,
           price: 14600,
           discountPercentage: 30,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -1506,12 +1586,16 @@ class ItemStore {
           volume: 50,
           price: 10500,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 100,
           price: 14600,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -1573,6 +1657,8 @@ class ItemStore {
           volume: 50,
           price: 5510,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1634,12 +1720,16 @@ class ItemStore {
           volume: 30,
           price: 5760,
           discountPercentage: 25,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 8180,
           discountPercentage: 25,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -1702,6 +1792,8 @@ class ItemStore {
           volume: 75,
           price: 24300,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1763,6 +1855,8 @@ class ItemStore {
           volume: 125,
           price: 23310,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1826,18 +1920,24 @@ class ItemStore {
           volume: 30,
           price: 6090,
           discountPercentage: 20,
+          countInCart: 0,
+          current: true,
         },
         {
           id: 1,
           volume: 50,
           price: 8590,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
         {
           id: 2,
           volume: 90,
           price: 11200,
           discountPercentage: 20,
+          countInCart: 0,
+          current: false,
         },
       ],
       specifications: [
@@ -1899,6 +1999,8 @@ class ItemStore {
           volume: 30,
           price: 6260,
           discountPercentage: 10,
+          countInCart: 0,
+          current: true,
         },
       ],
       specifications: [
@@ -1946,17 +2048,25 @@ class ItemStore {
     },
   ];
 
-  getItemById = (id) => {
-    return this.items[id];
-  };
+  getItemById = (id) => this.items[id];
 
   getItemPriceWithDiscount = (price, discount) => {
-    return price * (1 - discount / 100);
+    return Math.ceil(price * (1 - discount / 100));
   };
 
-  splitNumber = (number) => {
-    return number.toLocaleString();
+  getItemsCurrentOption = (id) => {
+    return this.items[id].options.find((option, _) => option.current);
   };
+
+  setItemsCurrentOption = (id, optionID) => {
+    this.items[id].options = this.items[id].options.map((option, _) => {
+      option.current = option.id === optionID;
+
+      return option;
+    });
+  };
+
+  splitNumber = (number) => number.toLocaleString();
 
   zoomImage = (event) => {
     const target = event.target.parentNode;

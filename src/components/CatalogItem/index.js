@@ -7,19 +7,23 @@ import * as S from "./style";
 
 import ItemStore from "../../stores/ItemStore";
 import TabsStore from "../../stores/TabsStore";
+import CartStore from "../../stores/CartStore";
 
 class CatalogItem extends Component {
   render() {
     const {
-      params: { id },
+      params: { id: itemID },
     } = this.props.match;
     const {
       getItemById,
       getItemPriceWithDiscount,
+      getItemsCurrentOption,
+      setItemsCurrentOption,
       splitNumber,
       zoomImage,
     } = ItemStore;
     const { items, activeID, selectItem } = TabsStore;
+    const { addItem } = CartStore;
 
     const {
       active,
@@ -28,11 +32,11 @@ class CatalogItem extends Component {
       title,
       description,
       image,
-      price,
       options,
       specifications,
       notes,
-    } = getItemById(id);
+    } = getItemById(itemID);
+    const { price, discountPercentage } = getItemsCurrentOption(itemID);
 
     return (
       <S.CatalogItem>
@@ -68,7 +72,10 @@ class CatalogItem extends Component {
                   <S.VolumeForm>
                     {options.map(({ id, volume }, _) => {
                       return (
-                        <S.VolumeFormLabel key={id}>
+                        <S.VolumeFormLabel
+                          key={id}
+                          onClick={() => setItemsCurrentOption(itemID, id)}
+                        >
                           <S.VolumeRadio
                             value={volume}
                             defaultChecked={id === 0}
@@ -87,10 +94,7 @@ class CatalogItem extends Component {
                     <S.PriceListItem>
                       <S.PriceTitle>
                         {splitNumber(
-                          getItemPriceWithDiscount(
-                            price,
-                            options[0].discountPercentage
-                          )
+                          getItemPriceWithDiscount(price, discountPercentage)
                         )}
                         &nbsp;₽
                       </S.PriceTitle>
@@ -101,7 +105,10 @@ class CatalogItem extends Component {
                       <S.PriceText>цена без скидки</S.PriceText>
                     </S.PriceListItem>
                   </S.PriceList>
-                  <S.Button href="/" disabled={active !== "Y"}>
+                  <S.Button
+                    disabled={active !== "Y"}
+                    onClick={() => addItem(getItemById(itemID))}
+                  >
                     Добавить в&nbsp;корзину
                   </S.Button>
                 </S.ListItem>

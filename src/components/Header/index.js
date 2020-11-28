@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 import { Container } from "../../styled/components";
 import * as S from "./style";
@@ -6,12 +7,14 @@ import * as S from "./style";
 import Search from "../Search";
 
 import SearchStore from "../../stores/SearchStore";
+import CartStore from "../../stores/CartStore";
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
     const { active } = this.props;
 
     const { toggleSearch } = SearchStore;
+    const { count } = CartStore;
 
     return (
       <S.Header active={active}>
@@ -87,6 +90,7 @@ export default class Header extends Component {
                     strokeWidth="1.5"
                   />
                 </S.BagIcon>
+                <S.BagCount active={count > 0}>{count}</S.BagCount>
               </S.StyledLink>
             </S.ItemsWrapper>
           </S.Wrapper>
@@ -96,3 +100,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default observer(Header);

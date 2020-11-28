@@ -60,6 +60,8 @@ export const BagIcon = styled.svg.attrs({
 `;
 
 export const StyledLink = styled(Link)`
+  position: relative;
+
   &:hover ${LogoIcon} > path {
     fill: var(--pink-color);
   }
@@ -67,6 +69,23 @@ export const StyledLink = styled(Link)`
   &:hover ${BagIcon} > path {
     stroke: var(--pink-color);
   }
+`;
+
+export const BagCount = styled.span`
+  display: ${(props) => (props.active ? "flex" : "none")};
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  border-radius: 50%;
+  background-color: var(--pink-color);
+  color: var(--grey-color);
 `;
 
 export const Button = styled.button`
