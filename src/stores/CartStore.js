@@ -13,25 +13,27 @@ class CartStore {
   items = [];
 
   get count() {
-    return this.items.length;
+    return this.items.map((item, _) => {
+      return item.options.reduce((acc, option) => acc + option.countInCart, 1);
+    });
   }
 
   addItem = (object) => {
-    const similarItem = this.items.find((item, _) => item.id === object.id);
+    const sameItem = this.items.find((item, _) => item.id === object.id);
 
-    if (similarItem) {
-      const currentOption = similarItem.options.find(
+    if (sameItem) {
+      const currentOption = sameItem.options.find(
         (option, _) => option.current
       );
 
-      this.items[similarItem.id].options[currentOption.id].countInCart++;
+      sameItem.options[currentOption.id].countInCart++;
     } else {
       this.items.push(object);
     }
   };
 
   removeItem = (id) => {
-    this.items.splice(id, 0);
+    this.items.splice(id, 1);
   };
 }
 

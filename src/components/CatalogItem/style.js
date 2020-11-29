@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const CatalogItem = styled.section``;
 
@@ -186,6 +187,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   padding: 1.5rem 3rem;
+  margin: 0 1.5rem 1.5rem 0;
   border: 0.1rem solid
     ${(props) =>
       props.disabled ? "var(--lightgray-color)" : "var(--grey-color)"};
@@ -198,6 +200,29 @@ export const Button = styled.button`
 
   &:hover {
     background-color: transparent;
+    color: var(--grey-color);
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+  }
+`;
+
+export const OrderButton = styled(Link)`
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  padding: 1.5rem 3rem;
+  border: 0.1rem solid var(--gray-color);
+  transition: all 0.25s ease;
+  background-color: var(--catalog-item-background-color);
+  color: var(--grey-color);
+
+  &:hover {
+    border: 0.1rem solid var(--grey-color);
     color: var(--grey-color);
   }
 

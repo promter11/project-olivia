@@ -111,6 +111,7 @@ class CatalogItem extends Component {
                   >
                     Добавить в&nbsp;корзину
                   </S.Button>
+                  <S.OrderButton to="/cart">Оформить заказ</S.OrderButton>
                 </S.ListItem>
                 <S.ListItem>
                   <S.Tabs>

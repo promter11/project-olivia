@@ -49,11 +49,11 @@ export default class Empty extends Component {
               </clipPath>
             </defs>
           </S.Image>
-          <S.Title>Ваша корзина пустая</S.Title>
+          <S.Title>Ваша корзина пуста</S.Title>
           <S.Description>
             Похоже, ваша корзина не&nbsp;содержит ни&nbsp;одного товара.
           </S.Description>
-          <S.StyledLink to="/">Вернуться на&nbsp;главную</S.StyledLink>
+          <S.StyledLink to="/catalog">Перейти в&nbsp;каталог</S.StyledLink>
         </Container>
       </S.Empty>
     );
