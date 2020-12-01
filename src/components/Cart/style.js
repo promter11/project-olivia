@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Cart = styled.section`
   margin: 4rem 0;
@@ -214,7 +215,7 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Button = styled.a`
+export const Button = styled(Link)`
   display: inline-block;
   font-size: 1.4rem;
   line-height: 1;
@@ -255,6 +256,8 @@ export const Button = styled.a`
     font-size: 1.2rem;
   }
 `;
+
+export const ClearButton = Button.withComponent("button");
 
 export const ResultWrapper = styled.div`
   text-align: right;

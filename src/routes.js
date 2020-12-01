@@ -15,8 +15,8 @@ const routes = [
   { path: "/catalog", title: "Каталог", Component: CatalogPage },
   { path: "/catalog/:id", Component: ItemPage },
   { path: "/cart", title: "Корзина", Component: CartPage },
+  { path: "/cart/checkout", title: "Оформление заказа", Component: Checkout },
   { path: "/cart/empty", title: "Корзина пуста", Component: EmptyPage },
-  { path: "/checkout", title: "Оформление заказа", Component: Checkout },
   { path: "*", Component: NoMatch },
 ];
 

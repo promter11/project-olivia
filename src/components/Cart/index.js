@@ -11,11 +11,19 @@ import CartStore from "../../stores/CartStore";
 class Cart extends Component {
   render() {
     const {
+      getItemById,
       getItemPriceWithDiscount,
       getItemsCurrentOption,
       splitNumber,
     } = ItemStore;
-    const { items, removeItem } = CartStore;
+    const {
+      items,
+      totalPrice,
+      addItem,
+      minusItem,
+      removeItem,
+      clearCart,
+    } = CartStore;
 
     if (!items.length) {
       return <Redirect to="/cart/empty" />;
@@ -28,6 +36,7 @@ class Cart extends Component {
           <S.Wrapper>
             {items.map(({ id, brand, title, image }, _) => {
               const {
+                id: optionID,
                 price,
                 volume,
                 discountPercentage,
@@ -69,14 +78,14 @@ class Cart extends Component {
                   </S.BlockWrapper>
                   <S.BlockWrapper>
                     <S.Options>
-                      <S.Plus>
+                      <S.Plus onClick={() => addItem(getItemById(id))}>
                         <path
                           d="M10 0C4.48578 0 0 4.48578 0 10C0 15.5142 4.48578 20 10 20C15.5142 20 20 15.5142 20 10C20 4.48578 15.5142 0 10 0ZM14.375 10.8333H10.8333V14.375C10.8333 14.8351 10.4601 15.2083 10 15.2083C9.53995 15.2083 9.16672 14.8351 9.16672 14.375V10.8333H5.625C5.16495 10.8333 4.79172 10.4601 4.79172 10C4.79172 9.53995 5.16495 9.16672 5.625 9.16672H9.16672V5.625C9.16672 5.16495 9.53995 4.79172 10 4.79172C10.4601 4.79172 10.8333 5.16495 10.8333 5.625V9.16672H14.375C14.8351 9.16672 15.2083 9.53995 15.2083 10C15.2083 10.4601 14.8351 10.8333 14.375 10.8333Z"
                           fill="#CCCCCC"
                         />
                       </S.Plus>
                       <S.Count>{countInCart}</S.Count>
-                      <S.Minus>
+                      <S.Minus onClick={() => minusItem(id, optionID)}>
                         <path
                           d="M10 0C4.48578 0 0 4.48578 0 10C0 15.5142 4.48578 20 10 20C15.5142 20 20 15.5142 20 10C20 4.48578 15.5142 0 10 0ZM14.375 10.8333H5.625C5.16495 10.8333 4.79172 10.4601 4.79172 10C4.79172 9.53995 5.16495 9.16672 5.625 9.16672H14.375C14.8351 9.16672 15.2083 9.53995 15.2083 10C15.2083 10.4601 14.8351 10.8333 14.375 10.8333Z"
                           fill="#CCCCCC"
@@ -94,14 +103,14 @@ class Cart extends Component {
             })}
             <S.Result>
               <S.ButtonsWrapper>
-                <S.Button href="/">Оформить заказ</S.Button>
-                <S.Button href="/" clear>
+                <S.Button to="/cart/checkout">Оформить заказ</S.Button>
+                <S.ClearButton clear onClick={() => clearCart()}>
                   Очистить корзину
-                </S.Button>
+                </S.ClearButton>
               </S.ButtonsWrapper>
               <S.ResultWrapper>
                 <S.ResultTitle>Итого</S.ResultTitle>
-                <S.ResultPrice>43 010 ₽</S.ResultPrice>
+                <S.ResultPrice>{splitNumber(totalPrice)}&nbsp;₽</S.ResultPrice>
               </S.ResultWrapper>
             </S.Result>
           </S.Wrapper>
