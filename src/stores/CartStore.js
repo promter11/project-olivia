@@ -1,4 +1,4 @@
-import { makeObservable, observable, computed, action } from "mobx";
+import { makeObservable, observable, computed, action, toJS } from "mobx";
 
 import ItemStore from "../stores/ItemStore";
 
@@ -12,61 +12,62 @@ class CartStore {
       minusItem: action,
       removeItem: action,
       clearCart: action,
+      getItemWithTheSameVolume: action,
+      getItemsCurrentOption: action,
     });
   }
 
   items = [];
 
   get count() {
-    return this.items.map((item, _) => {
-      return item.options.reduce((acc, option) => acc + option.countInCart, 0);
-    });
+    return this.items.reduce((acc, item) => {
+      return (
+        acc + item.options.reduce((acc, option) => acc + option.countInCart, 0)
+      );
+    }, 0);
   }
 
   get totalPrice() {
-    return this.items.map((item, _) => {
+    return this.items.reduce((acc, item) => {
       const options = item.options.filter(
         (option, _) => option.countInCart > 0
       );
 
-      return options.reduce(
-        (acc, option) =>
-          acc +
-          ItemStore.getItemPriceWithDiscount(
-            option.price,
-            option.discountPercentage
-          ) *
-            option.countInCart,
-        0
+      return (
+        acc +
+        options.reduce(
+          (acc, option) =>
+            acc +
+            ItemStore.getItemPriceWithDiscount(
+              option.price,
+              option.discountPercentage
+            ) *
+              option.countInCart,
+          0
+        )
       );
-    });
+    }, 0);
   }
 
   addItem = (object) => {
-    const itemWithTheSameID = this.items.find(
-      (item, _) => item.id === object.id
-    );
+    const item = this.getItemWithTheSameVolume(object);
 
-    if (itemWithTheSameID) {
-      const currentOption = itemWithTheSameID.options.find(
-        (option, _) => option.current
-      );
+    if (item) {
+      const current = this.getItemsCurrentOption(item);
 
-      itemWithTheSameID.options[currentOption.id].countInCart++;
+      current.countInCart++;
     } else {
-      const copy = Object.assign({}, object);
+      const clone = toJS(object);
 
-      copy.options.forEach((option, _) => option.countInCart++);
-
-      this.items.push(copy);
+      this.items.push(clone);
     }
   };
 
   minusItem = (id, optionID) => {
-    const itemWithTheSameID = this.items.find((item, _) => item.id === id);
+    const index = this.items.findIndex((item, _) => item.id === id);
 
-    if (itemWithTheSameID.options[optionID].countInCart > 1) {
-      itemWithTheSameID.options[optionID].countInCart--;
+    if (this.items[index].options[optionID].countInCart > 1) {
+      this.items[index].options[optionID].countInCart--;
     }
   };
 
@@ -74,10 +75,29 @@ class CartStore {
     const index = this.items.findIndex((item, _) => item.id === id);
 
     this.items.splice(index, 1);
+
+    console.log(this.items);
   };
 
   clearCart = () => {
     this.items = [];
+  };
+
+  getItemWithTheSameVolume = (object) => {
+    return this.items.find((item, _) => {
+      const currentItemOption = item.options.find(
+        (option, _) => option.current
+      );
+      const currentObjectOption = object.options.find(
+        (option, _) => option.current
+      );
+
+      return currentItemOption.volume === currentObjectOption.volume;
+    });
+  };
+
+  getItemsCurrentOption = (object) => {
+    return object.options.find((option, _) => option.current);
   };
 }
 
