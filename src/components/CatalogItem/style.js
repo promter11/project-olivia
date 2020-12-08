@@ -216,14 +216,19 @@ export const OrderButton = styled(Link)`
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   padding: 1.5rem 3rem;
-  border: 0.1rem solid var(--gray-color);
+  border: 0.1rem solid
+    ${(props) =>
+      props.disabled ? "var(--lightgray-color)" : "var(--gray-color)"};
   transition: all 0.25s ease;
-  background-color: var(--catalog-item-background-color);
-  color: var(--grey-color);
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
+  background-color: ${(props) =>
+    props.disabled ? "var(--lightgray-color)" : "var(--gray-color)"};
+  color: ${(props) =>
+    props.disabled ? "var(--gray-color)" : "var(--white-color)"};
 
   &:hover {
-    border: 0.1rem solid var(--grey-color);
-    color: var(--grey-color);
+    background-color: transparent;
+    color: var(--gray-color);
   }
 
   @media (max-width: 576px) {

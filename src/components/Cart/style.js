@@ -15,6 +15,10 @@ export const Wrapper = styled.div`
 
 export const BlockWrapper = styled.div`
   display: flex;
+
+  &:first-child {
+    width: 66.66%;
+  }
 `;
 
 export const Block = styled.div`

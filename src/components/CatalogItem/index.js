@@ -36,7 +36,7 @@ class CatalogItem extends Component {
       specifications,
       notes,
     } = getItemById(itemID);
-    const { price, discountPercentage } = getItemsCurrentOption(itemID);
+    const { price, volume, discountPercentage } = getItemsCurrentOption(itemID);
 
     return (
       <S.CatalogItem>
@@ -107,11 +107,11 @@ class CatalogItem extends Component {
                   </S.PriceList>
                   <S.Button
                     disabled={active !== "Y"}
-                    onClick={() => addItem(getItemById(itemID))}
+                    onClick={() => addItem(getItemById(itemID), volume)}
                   >
                     Добавить в&nbsp;корзину
                   </S.Button>
-                  <S.OrderButton to="/cart">
+                  <S.OrderButton disabled={active !== "Y"} to="/cart">
                     Перейти в&nbsp;корзину
                   </S.OrderButton>
                 </S.ListItem>

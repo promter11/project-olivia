@@ -49,7 +49,7 @@ class CartStore {
     }, 0);
   }
 
-  addItem = (object) => {
+  addItem = (object, volume) => {
     const item = this.getItemWithTheSameVolume(object);
 
     if (item) {
@@ -59,24 +59,24 @@ class CartStore {
     } else {
       const clone = toJS(object);
 
+      clone.options.find(
+        (option, _) => option.volume === +volume && option.countInCart++
+      );
+
       this.items.push(clone);
     }
   };
 
-  minusItem = (id, optionID) => {
-    const index = this.items.findIndex((item, _) => item.id === id);
+  minusItem = (index) => {
+    const current = this.getItemsCurrentOption(this.items[index]);
 
-    if (this.items[index].options[optionID].countInCart > 1) {
-      this.items[index].options[optionID].countInCart--;
+    if (current.countInCart > 1) {
+      current.countInCart--;
     }
   };
 
-  removeItem = (id) => {
-    const index = this.items.findIndex((item, _) => item.id === id);
-
+  removeItem = (index) => {
     this.items.splice(index, 1);
-
-    console.log(this.items);
   };
 
   clearCart = () => {
@@ -92,7 +92,10 @@ class CartStore {
         (option, _) => option.current
       );
 
-      return currentItemOption.volume === currentObjectOption.volume;
+      return (
+        object.title === item.title &&
+        currentItemOption.volume === currentObjectOption.volume
+      );
     });
   };
 
