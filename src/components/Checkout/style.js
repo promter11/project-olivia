@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   width: 66.66%;
   padding-right: 3rem;
 
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     width: 100%;
     padding-right: 0;
 
@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media (min-width: 576px) and (max-width: 992px) {
+  @media (min-width: 768px) and (max-width: 992px) {
     width: 50%;
   }
 `;
@@ -261,11 +261,12 @@ export const Cart = styled.div`
   padding: 3rem;
   border: 0.1rem solid var(--lightgray-color);
 
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     width: 100%;
+    padding: 2rem;
   }
 
-  @media (min-width: 576px) and (max-width: 992px) {
+  @media (min-width: 768px) and (max-width: 992px) {
     width: 50%;
   }
 `;
@@ -291,6 +292,10 @@ export const CartWrapper = styled.div`
   max-height: 47rem;
   margin-bottom: 3rem;
   overflow-y: auto;
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    max-height: calc(62.5rem - 4rem);
+  }
 `;
 
 export const Product = styled.div`

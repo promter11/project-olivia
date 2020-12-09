@@ -36,7 +36,12 @@ class CatalogItem extends Component {
       specifications,
       notes,
     } = getItemById(itemID);
-    const { price, volume, discountPercentage } = getItemsCurrentOption(itemID);
+    const {
+      id: optionID,
+      price,
+      volume,
+      discountPercentage,
+    } = getItemsCurrentOption(itemID);
 
     return (
       <S.CatalogItem>
@@ -78,7 +83,7 @@ class CatalogItem extends Component {
                         >
                           <S.VolumeRadio
                             value={volume}
-                            defaultChecked={id === 0}
+                            defaultChecked={id === optionID}
                           />
                           <S.VolumeRadioText>
                             {volume}&nbsp;ML
