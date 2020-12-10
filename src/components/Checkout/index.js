@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Redirect } from "react-router-dom";
 
 import { Container } from "../../styled/components";
 import * as S from "./style";
 
-import AventusImg from "../../assets/images/items/Creed Aventus.jpg";
+import ItemStore from "../../stores/ItemStore";
+import CartStore from "../../stores/CartStore";
+import ValidationStore from "../../stores/ValidationStore";
 
 class Checkout extends Component {
   render() {
+    const { splitNumber } = ItemStore;
+    const { items, count, getItemsCurrentOption } = CartStore;
+    const { fields, validateFields, submitForm } = ValidationStore;
+
+    if (!items.length) {
+      return <Redirect to="/cart/empty" />;
+    }
+
     return (
       <S.Checkout>
         <Container>
@@ -17,46 +28,33 @@ class Checkout extends Component {
               <S.Block>
                 <S.BlockTitle>Данные получателя</S.BlockTitle>
                 <S.Form>
-                  <S.Label>
-                    <S.Input type="text" required />
-                    <S.InputText>Фамилия</S.InputText>
-                    <S.ErrorText>
-                      Пожалуйста, проверьте корректность введенных данных
-                    </S.ErrorText>
-                  </S.Label>
-                  <S.Label>
-                    <S.Input type="text" required />
-                    <S.InputText>Имя</S.InputText>
-                    <S.ErrorText>
-                      Пожалуйста, проверьте корректность введенных данных
-                    </S.ErrorText>
-                  </S.Label>
-                  <S.Label>
-                    <S.Input type="text" required />
-                    <S.InputText>Отчество</S.InputText>
-                    <S.ErrorText>
-                      Пожалуйста, проверьте корректность введенных данных
-                    </S.ErrorText>
-                  </S.Label>
-                  <S.Label>
-                    <S.Input type="text" required />
-                    <S.InputText>Телефон</S.InputText>
-                    <S.ErrorText>
-                      Пожалуйста, проверьте корректность введенных данных
-                    </S.ErrorText>
-                  </S.Label>
-                  <S.Label>
-                    <S.Input type="text" required />
-                    <S.InputText>Адрес электронной почты</S.InputText>
-                    <S.ErrorText>
-                      Пожалуйста, проверьте корректность введенных данных
-                    </S.ErrorText>
-                  </S.Label>
+                  {fields.map(
+                    (
+                      { type, name, title, error: { status, message } },
+                      index
+                    ) => {
+                      return (
+                        <S.Label key={index}>
+                          <S.Input
+                            type={type}
+                            name={name}
+                            error={status}
+                            required
+                            onChange={({ target: { value } }) =>
+                              validateFields(index, fields[index], value)
+                            }
+                          />
+                          <S.InputText>{title}</S.InputText>
+                          <S.ErrorText>{message}</S.ErrorText>
+                        </S.Label>
+                      );
+                    }
+                  )}
                   <S.CheckboxLabel>
                     <S.Checkbox />
                     <S.CheckboxText>
-                      Я принимаю условия пользовательского соглашения и согласен
-                      на обработку персональных данных
+                      Я&nbsp;принимаю условия пользовательского соглашения
+                      и&nbsp;согласен(-на) на&nbsp;обработку персональных данных
                     </S.CheckboxText>
                   </S.CheckboxLabel>
                 </S.Form>
@@ -65,11 +63,11 @@ class Checkout extends Component {
                 <S.BlockTitle>Способ доставки</S.BlockTitle>
                 <S.Form>
                   <S.RadioLabel>
-                    <S.Radio />
+                    <S.Radio value="delivery" />
                     <S.RadioText>Доставка курьером</S.RadioText>
                   </S.RadioLabel>
                   <S.RadioLabel>
-                    <S.Radio />
+                    <S.Radio value="pickup" />
                     <S.RadioText>Самовывоз</S.RadioText>
                   </S.RadioLabel>
                 </S.Form>
@@ -117,65 +115,42 @@ class Checkout extends Component {
             <S.Cart>
               <S.CartTitleWrapper>
                 <S.CartTitle>Ваш заказ</S.CartTitle>
-                <S.CartCount>10 товаров</S.CartCount>
+                <S.CartCount>Товаров в&nbsp;корзине: {count}</S.CartCount>
               </S.CartTitleWrapper>
               <S.CartWrapper>
-                <S.Product>
-                  <S.ProductImage src={AventusImg} alt="Creed" />
-                  <S.ProductWrapper>
-                    <S.ProductType>Парфюмерная вода</S.ProductType>
-                    <S.ProductTitle>Creed Aventus</S.ProductTitle>
-                    <S.ProductVolume>50 ML</S.ProductVolume>
-                    <S.ProductPrice>19 920 P</S.ProductPrice>
-                  </S.ProductWrapper>
-                </S.Product>
-                <S.Product>
-                  <S.ProductImage src={AventusImg} alt="Creed" />
-                  <S.ProductWrapper>
-                    <S.ProductType>Парфюмерная вода</S.ProductType>
-                    <S.ProductTitle>Creed Aventus</S.ProductTitle>
-                    <S.ProductVolume>50 ML</S.ProductVolume>
-                    <S.ProductPrice>19 920 P</S.ProductPrice>
-                  </S.ProductWrapper>
-                </S.Product>
-                <S.Product>
-                  <S.ProductImage src={AventusImg} alt="Creed" />
-                  <S.ProductWrapper>
-                    <S.ProductType>Парфюмерная вода</S.ProductType>
-                    <S.ProductTitle>Creed Aventus</S.ProductTitle>
-                    <S.ProductVolume>50 ML</S.ProductVolume>
-                    <S.ProductPrice>19 920 P</S.ProductPrice>
-                  </S.ProductWrapper>
-                </S.Product>
-                <S.Product>
-                  <S.ProductImage src={AventusImg} alt="Creed" />
-                  <S.ProductWrapper>
-                    <S.ProductType>Парфюмерная вода</S.ProductType>
-                    <S.ProductTitle>Creed Aventus</S.ProductTitle>
-                    <S.ProductVolume>50 ML</S.ProductVolume>
-                    <S.ProductPrice>19 920 P</S.ProductPrice>
-                  </S.ProductWrapper>
-                </S.Product>
-                <S.Product>
-                  <S.ProductImage src={AventusImg} alt="Creed" />
-                  <S.ProductWrapper>
-                    <S.ProductType>Парфюмерная вода</S.ProductType>
-                    <S.ProductTitle>Creed Aventus</S.ProductTitle>
-                    <S.ProductVolume>50 ML</S.ProductVolume>
-                    <S.ProductPrice>19 920 P</S.ProductPrice>
-                  </S.ProductWrapper>
-                </S.Product>
-                <S.Product>
-                  <S.ProductImage src={AventusImg} alt="Creed" />
-                  <S.ProductWrapper>
-                    <S.ProductType>Парфюмерная вода</S.ProductType>
-                    <S.ProductTitle>Creed Aventus</S.ProductTitle>
-                    <S.ProductVolume>50 ML</S.ProductVolume>
-                    <S.ProductPrice>19 920 P</S.ProductPrice>
-                  </S.ProductWrapper>
-                </S.Product>
+                {items.map(({ id, brand, title, image }, index) => {
+                  const {
+                    type,
+                    volume,
+                    price,
+                    countInCart,
+                  } = getItemsCurrentOption(items[index]);
+
+                  return (
+                    <S.Product key={index}>
+                      <S.ProductImage src={image} alt={brand} />
+                      <S.ProductWrapper>
+                        <S.ProductType>{type}</S.ProductType>
+                        <S.ProductTitle>
+                          {brand} {title}
+                        </S.ProductTitle>
+                        <S.ProductVolume>{volume}&nbsp;ML</S.ProductVolume>
+                        <S.ProductInner>
+                          <S.ProductCount>
+                            Количество: {countInCart}
+                          </S.ProductCount>
+                          <S.ProductPrice>
+                            {splitNumber(price)}&nbsp;₽
+                          </S.ProductPrice>
+                        </S.ProductInner>
+                      </S.ProductWrapper>
+                    </S.Product>
+                  );
+                })}
               </S.CartWrapper>
-              <S.OrderButton>Оформить заказ</S.OrderButton>
+              <S.OrderButton onClick={(event) => submitForm(event)}>
+                Оформить заказ
+              </S.OrderButton>
             </S.Cart>
           </S.Inner>
         </Container>

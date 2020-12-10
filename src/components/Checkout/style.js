@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media (min-width: 768px) and (max-width: 992px) {
+  @media (min-width: 769px) and (max-width: 992px) {
     width: 50%;
   }
 `;
@@ -53,10 +53,9 @@ export const Label = styled.label`
   width: ${(props) =>
     props.address ? "100%" : "calc((100% / 2) - (3rem / 2))"};
   padding-top: 1rem;
-  border-bottom: 0.1rem solid var(--gray-color);
 
   &:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   &:not(:nth-child(2n)) {
@@ -85,7 +84,9 @@ export const InputText = styled.span`
 `;
 
 export const Input = styled.input`
+  width: 100%;
   border: 0;
+  border-bottom: 0.1rem solid var(--gray-color);
   background-color: transparent;
   color: var(--grey-color);
 
@@ -97,14 +98,10 @@ export const Input = styled.input`
   }
 `;
 
-export const ErrorText = styled.span`
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
+export const ErrorText = styled.p`
   font-size: 1.2rem;
   line-height: 1.4rem;
-  opacity: 0;
-  visibility: hidden;
+  margin-top: 0.5rem;
   color: var(--error-color);
 `;
 
@@ -266,7 +263,7 @@ export const Cart = styled.div`
     padding: 2rem;
   }
 
-  @media (min-width: 768px) and (max-width: 992px) {
+  @media (min-width: 769px) and (max-width: 992px) {
     width: 50%;
   }
 `;
@@ -291,9 +288,10 @@ export const CartCount = styled.span`
 export const CartWrapper = styled.div`
   max-height: 47rem;
   margin-bottom: 3rem;
+  padding-right: 1.5rem;
   overflow-y: auto;
 
-  @media (min-width: 768px) and (max-width: 992px) {
+  @media (min-width: 769px) and (max-width: 992px) {
     max-height: calc(62.5rem - 4rem);
   }
 `;
@@ -311,6 +309,7 @@ export const Product = styled.div`
 export const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const ProductTitle = styled.h4``;
@@ -328,11 +327,18 @@ export const ProductVolume = styled.span`
   color: var(--gray-color);
 `;
 
+export const ProductInner = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+`;
+
 export const ProductPrice = styled.p`
   font-size: 1.4rem;
   line-height: 1.8rem;
   font-weight: bold;
-  margin-top: auto;
 `;
 
 export const ProductImage = styled.img`
@@ -342,7 +348,14 @@ export const ProductImage = styled.img`
   object-fit: cover;
 `;
 
-export const OrderButton = styled.button`
+export const ProductCount = styled.span`
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+`;
+
+export const OrderButton = styled.button.attrs({
+  type: "button",
+})`
   font-size: 1.4rem;
   line-height: 1;
   font-weight: 300;
