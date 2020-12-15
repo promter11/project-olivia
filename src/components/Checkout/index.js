@@ -7,13 +7,20 @@ import * as S from "./style";
 
 import ItemStore from "../../stores/ItemStore";
 import CartStore from "../../stores/CartStore";
-import ValidationStore from "../../stores/ValidationStore";
+import CheckoutStore from "../../stores/CheckoutStore";
 
 class Checkout extends Component {
   render() {
     const { splitNumber } = ItemStore;
     const { items, count, getItemsCurrentOption } = CartStore;
-    const { fields, validateFields, submitForm } = ValidationStore;
+    const {
+      form,
+      validateField,
+      validateChecked,
+      handleBlocks,
+      handleSelect,
+      submitForm,
+    } = CheckoutStore;
 
     if (!items.length) {
       return <Redirect to="/cart/empty" />;
@@ -25,92 +32,117 @@ class Checkout extends Component {
           <S.Title>Оформление заказа</S.Title>
           <S.Inner>
             <S.Wrapper>
-              <S.Block>
-                <S.BlockTitle>Данные получателя</S.BlockTitle>
-                <S.Form>
-                  {fields.map(
-                    (
-                      { type, name, title, error: { status, message } },
-                      index
-                    ) => {
-                      return (
-                        <S.Label key={index}>
-                          <S.Input
-                            type={type}
-                            name={name}
-                            error={status}
-                            required
-                            onChange={({ target: { value } }) =>
-                              validateFields(index, fields[index], value)
-                            }
-                          />
-                          <S.InputText>{title}</S.InputText>
-                          <S.ErrorText>{message}</S.ErrorText>
-                        </S.Label>
-                      );
-                    }
-                  )}
-                  <S.CheckboxLabel>
-                    <S.Checkbox />
-                    <S.CheckboxText>
-                      Я&nbsp;принимаю условия пользовательского соглашения
-                      и&nbsp;согласен(-на) на&nbsp;обработку персональных данных
-                    </S.CheckboxText>
-                  </S.CheckboxLabel>
-                </S.Form>
-              </S.Block>
-              <S.Block>
-                <S.BlockTitle>Способ доставки</S.BlockTitle>
-                <S.Form>
-                  <S.RadioLabel>
-                    <S.Radio value="delivery" />
-                    <S.RadioText>Доставка курьером</S.RadioText>
-                  </S.RadioLabel>
-                  <S.RadioLabel>
-                    <S.Radio value="pickup" />
-                    <S.RadioText>Самовывоз</S.RadioText>
-                  </S.RadioLabel>
-                </S.Form>
-              </S.Block>
-              <S.Block>
-                <S.BlockTitle>Адрес доставки</S.BlockTitle>
-                <S.Form>
-                  <S.Label address>
-                    <S.Input type="text" required />
-                    <S.InputText>Введите адрес доставки</S.InputText>
-                    <S.ErrorText>
-                      Пожалуйста, проверьте корректность введенных данных
-                    </S.ErrorText>
-                  </S.Label>
-                </S.Form>
-              </S.Block>
-              <S.Block>
-                <S.BlockTitle>Адрес магазина</S.BlockTitle>
-                <S.Form>
-                  <S.CustomSelect>
-                    <S.CustomSelectItem>
-                      Выберите адрес магазина из списка
-                    </S.CustomSelectItem>
-                    <S.CustomOptionList>
-                      <S.CustomOptionListItem>
-                        ул. Усачева, 1, Москва, 119048
-                      </S.CustomOptionListItem>
-                      <S.CustomOptionListItem>
-                        наб. реки Смоленки, 2, Санкт-Петербург, 199178
-                      </S.CustomOptionListItem>
-                      <S.CustomOptionListItem>
-                        ул. Новорядская, 124, Волгоград, Волгоградская обл.,
-                        400081
-                      </S.CustomOptionListItem>
-                    </S.CustomOptionList>
-                  </S.CustomSelect>
-                  <S.Select>
-                    <S.Option value="ул. Усачева, 1, Москва, 119048" />
-                    <S.Option value="наб. реки Смоленки, 2, Санкт-Петербург, 199178" />
-                    <S.Option value="ул. Новорядская, 124, Волгоград, Волгоградская обл., 400081" />
-                  </S.Select>
-                </S.Form>
-              </S.Block>
+              {form.blocks.map(({ id, title, hidden, fields }, _) => {
+                return (
+                  <S.Block key={id} hidden={hidden}>
+                    <S.BlockTitle>{title}</S.BlockTitle>
+                    <S.Form>
+                      {fields.map(
+                        (
+                          {
+                            attr,
+                            type,
+                            name,
+                            text,
+                            opened,
+                            checked,
+                            value,
+                            options,
+                            error: { status, message },
+                          },
+                          index
+                        ) => {
+                          if (type === "checkbox") {
+                            return (
+                              <S.CheckboxLabel key={index}>
+                                <S.Checkbox
+                                  required
+                                  onChange={() =>
+                                    validateChecked(fields[index])
+                                  }
+                                />
+                                <S.CheckboxText error={status}>
+                                  {text}
+                                </S.CheckboxText>
+                              </S.CheckboxLabel>
+                            );
+                          } else if (type === "radio") {
+                            return (
+                              <S.RadioLabel
+                                key={index}
+                                onChange={() => handleBlocks(value)}
+                              >
+                                <S.Radio
+                                  value={value}
+                                  required
+                                  onChange={() =>
+                                    validateChecked(fields[index])
+                                  }
+                                />
+                                <S.RadioText error={status}>{text}</S.RadioText>
+                              </S.RadioLabel>
+                            );
+                          } else if (type === "select") {
+                            return (
+                              <S.CustomSelect key={index}>
+                                <S.CustomSelectItem
+                                  onClick={() => handleSelect(id)}
+                                >
+                                  {text}
+                                </S.CustomSelectItem>
+                                <S.CustomOptionList opened={opened}>
+                                  {options.map(({ value, selected }, index) => {
+                                    return (
+                                      <S.CustomOptionListItem
+                                        key={index}
+                                        onClick={() => handleSelect(id, value)}
+                                      >
+                                        {value}
+                                      </S.CustomOptionListItem>
+                                    );
+                                  })}
+                                </S.CustomOptionList>
+                                <S.Select>
+                                  {options.map((option, index) => {
+                                    return (
+                                      <S.Option
+                                        key={index}
+                                        value={option}
+                                        error={status}
+                                        required
+                                        onChange={({ target: { value } }) =>
+                                          validateField(fields[index], value)
+                                        }
+                                      />
+                                    );
+                                  })}
+                                </S.Select>
+                              </S.CustomSelect>
+                            );
+                          } else {
+                            return (
+                              <S.Label key={index} attr={attr}>
+                                <S.Input
+                                  type={type}
+                                  name={name}
+                                  placeholder="&nbsp;"
+                                  error={status}
+                                  required
+                                  onChange={({ target: { value } }) =>
+                                    validateField(fields[index], value)
+                                  }
+                                />
+                                <S.InputText>{text}</S.InputText>
+                                <S.ErrorText>{message}</S.ErrorText>
+                              </S.Label>
+                            );
+                          }
+                        }
+                      )}
+                    </S.Form>
+                  </S.Block>
+                );
+              })}
             </S.Wrapper>
             <S.Cart>
               <S.CartTitleWrapper>

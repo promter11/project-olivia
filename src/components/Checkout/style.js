@@ -34,6 +34,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Block = styled.div`
+  display: ${(props) => (props.hidden ? "none" : "block")};
+
   &:not(:last-child) {
     margin-bottom: 4rem;
   }
@@ -50,8 +52,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   position: relative;
-  width: ${(props) =>
-    props.address ? "100%" : "calc((100% / 2) - (3rem / 2))"};
+  width: ${(props) => (props.attr ? "100%" : "calc((100% / 2) - (3rem / 2))")};
   padding-top: 1rem;
 
   &:not(:last-child) {
@@ -59,7 +60,7 @@ export const Label = styled.label`
   }
 
   &:not(:nth-child(2n)) {
-    margin-right: ${(props) => (props.address ? "0" : "3rem")};
+    margin-right: ${(props) => (props.attr ? "0" : "3rem")};
   }
 
   @media (max-width: 992px) {
@@ -73,9 +74,8 @@ export const Label = styled.label`
 
 export const InputText = styled.span`
   position: absolute;
-  top: 50%;
+  top: 0.5rem;
   left: 0;
-  transform: translateY(-50%);
   font-size: 1.4rem;
   line-height: 1.8rem;
   transition: all 0.25s ease;
@@ -90,8 +90,8 @@ export const Input = styled.input`
   background-color: transparent;
   color: var(--grey-color);
 
-  &:focus ~ ${InputText}, &:valid ~ ${InputText} {
-    top: 0.4rem;
+  &:focus ~ ${InputText}, &:not(:placeholder-shown) ~ ${InputText} {
+    top: -0.2rem;
     font-size: 1rem;
     line-height: 1.2rem;
     color: var(--gray-color);
@@ -119,10 +119,11 @@ export const CheckboxText = styled.span`
     left: 0;
     width: 1.5rem;
     height: 1.5rem;
-    border: 0.1rem solid var(--gray-color);
+    border: 0.1rem solid
+      ${(props) => (props.error ? "var(--error-color)" : "var(--gray-color)")};
     border-radius: 0.4rem;
     transition: all 0.25s ease-in-out;
-    background: var(--white-color);
+    background-color: var(--white-color);
   }
 
   &:hover {
@@ -168,11 +169,12 @@ export const RadioText = styled.span`
     transform: translateY(-50%);
     width: 1.5rem;
     height: 1.5rem;
-    border: 0.1rem solid var(--gray-color);
+    border: 0.1rem solid
+      ${(props) => (props.error ? "var(--error-color)" : "var(--gray-color)")};
     border-radius: 50%;
     transition: all 0.25s ease-in-out;
     box-sizing: border-box;
-    background: var(--white-color);
+    background-color: var(--white-color);
   }
 
   &:hover {
@@ -229,19 +231,19 @@ export const CustomSelectItem = styled.div`
 `;
 
 export const CustomOptionList = styled.ul`
-  display: none;
+  display: ${(props) => (props.opened ? "block" : "none")};
   position: absolute;
   bottom: calc(100% + 0.5rem);
   left: -0.1rem;
   width: calc(100% + 0.2rem);
-  border: 0.1rem solid var(--lightgray-color);
-  background-color: var(--catalog-item-background-color);
+  border: 0.1rem solid var(--gray-color);
+  background-color: var(--background-color);
 `;
 
 export const CustomOptionListItem = styled.li`
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   cursor: pointer;
   transition: background-color 0.25s ease-in-out;
   color: var(--grey-color);
