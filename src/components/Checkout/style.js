@@ -215,7 +215,8 @@ export const Option = styled.option``;
 export const CustomSelect = styled.div`
   position: relative;
   width: 100%;
-  border: 0.1rem solid var(--gray-color);
+  border: 0.1rem solid
+    ${(props) => (props.error ? "var(--error-color)" : "var(--gray-color)")};
 `;
 
 export const CustomSelectItem = styled.div`
@@ -364,6 +365,39 @@ export const OrderButton = styled.button.attrs({
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   padding: 1.5rem 3rem;
+  margin-top: auto;
+  border: 0.1rem solid var(--grey-color);
+  transition: all 0.25s ease;
+  background-color: var(--grey-color);
+  color: var(--white-color);
+
+  &:hover {
+    background-color: transparent;
+    color: var(--grey-color);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+export const ModalTitle = styled.h2`
+  margin-bottom: 3rem;
+`;
+
+export const ModalDesc = styled.p`
+  margin-bottom: 3rem;
+`;
+
+export const ModalButton = styled.button.attrs({
+  type: "button",
+})`
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  padding: 1rem 2rem;
   margin-top: auto;
   border: 0.1rem solid var(--grey-color);
   transition: all 0.25s ease;

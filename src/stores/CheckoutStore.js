@@ -138,19 +138,9 @@ class CheckoutStore {
             text: "Выберите адрес магазина",
             opened: false,
             options: [
-              {
-                value: "ул. Усачева, 1, Москва, 119048",
-                selected: false,
-              },
-              {
-                value: "наб. реки Смоленки, 2, Санкт-Петербург, 199178",
-                selected: false,
-              },
-              {
-                value:
-                  "ул. Новорядская, 124, Волгоград, Волгоградская обл., 400081",
-                selected: false,
-              },
+              "ул. Усачева, 1, Москва, 119048",
+              "наб. реки Смоленки, 2, Санкт-Петербург, 199178",
+              "ул. Новорядская, 124, Волгоград, Волгоградская обл., 400081",
             ],
             value: "",
             error: {
@@ -195,7 +185,7 @@ class CheckoutStore {
       field.error.status = false;
       field.error.message = "";
 
-      validate = true;
+      validate = !validate;
     } else {
       field.error.status = true;
       field.error.message = message;
@@ -207,12 +197,25 @@ class CheckoutStore {
   validateChecked = (field) => {
     let validate = false;
 
-    if (field.checked) {
-      field.error.status = false;
-
-      validate = true;
+    if (field.type === "radio") {
+      if (field.error.status) {
+        field.error.status = false;
+      }
+      // if (field.error.status) {
+      //   const block = this.form.blocks.find((block, _) =>
+      //     block.fields.find((item, _) => item.name === field.name)
+      //   );
+      //
+      //   block.fields.forEach((item, _) => {
+      //     item.error.status = false;
+      //   });
+      // } else {
+      //   field.error.status = true;
+      // }
     } else {
-      field.error.status = true;
+      field.error.status = !field.error.status;
+
+      validate = !validate;
     }
 
     return validate;
@@ -223,15 +226,13 @@ class CheckoutStore {
     this.form.blocks[id].hidden = true;
   };
 
-  handleSelect = (id, value) => {
-    const field = this.form.blocks[id].fields.find(
-      (field, _) => field.type === "select"
-    );
-
+  handleSelect = (field, value = "") => {
     field.opened = !field.opened;
 
-    if (value) {
+    if (value.length) {
       field.text = value;
+      field.value = value;
+      field.error.status = false;
     }
   };
 

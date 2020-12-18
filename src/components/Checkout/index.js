@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 import { Redirect } from "react-router-dom";
 
+import Modal from "../Modal";
+
 import { Container } from "../../styled/components";
 import * as S from "./style";
 
@@ -84,32 +86,32 @@ class Checkout extends Component {
                             );
                           } else if (type === "select") {
                             return (
-                              <S.CustomSelect key={index}>
+                              <S.CustomSelect key={index} error={status}>
                                 <S.CustomSelectItem
-                                  onClick={() => handleSelect(id)}
+                                  onClick={() => handleSelect(fields[index])}
                                 >
                                   {text}
                                 </S.CustomSelectItem>
                                 <S.CustomOptionList opened={opened}>
-                                  {options.map(({ value, selected }, index) => {
+                                  {options.map((option, optionIndex) => {
                                     return (
                                       <S.CustomOptionListItem
-                                        key={index}
-                                        onClick={() => handleSelect(id, value)}
+                                        key={optionIndex}
+                                        onClick={() =>
+                                          handleSelect(fields[index], option)
+                                        }
                                       >
-                                        {value}
+                                        {option}
                                       </S.CustomOptionListItem>
                                     );
                                   })}
                                 </S.CustomOptionList>
                                 <S.Select>
-                                  {options.map((option, index) => {
+                                  {options.map((option, optionIndex) => {
                                     return (
                                       <S.Option
-                                        key={index}
+                                        key={optionIndex}
                                         value={option}
-                                        error={status}
-                                        required
                                         onChange={({ target: { value } }) =>
                                           validateField(fields[index], value)
                                         }
@@ -185,6 +187,14 @@ class Checkout extends Component {
               </S.OrderButton>
             </S.Cart>
           </S.Inner>
+          <Modal>
+            <S.ModalTitle>Отлично!</S.ModalTitle>
+            <S.ModalDesc>
+              Ваш заказ отправлен. Наш менеджер свяжется с&nbsp;вами
+              в&nbsp;ближайшее время.
+            </S.ModalDesc>
+            <S.ModalButton>Понятно</S.ModalButton>
+          </Modal>
         </Container>
       </S.Checkout>
     );
