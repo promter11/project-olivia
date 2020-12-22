@@ -27,10 +27,12 @@ class Portal extends Component {
 
 class Modal extends Component {
   render() {
+    const { hidden, children } = this.props;
+
     return (
       <Portal>
-        <S.Modal>
-          <S.Content>{this.props.children}</S.Content>
+        <S.Modal hidden={hidden}>
+          <S.Content>{children}</S.Content>
         </S.Modal>
       </Portal>
     );

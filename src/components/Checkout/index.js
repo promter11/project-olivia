@@ -17,11 +17,13 @@ class Checkout extends Component {
     const { items, count, getItemsCurrentOption } = CartStore;
     const {
       form,
+      modalHiddenStatus,
       validateField,
       validateChecked,
       handleBlocks,
       handleSelect,
       submitForm,
+      clearForm,
     } = CheckoutStore;
 
     if (!items.length) {
@@ -50,6 +52,7 @@ class Checkout extends Component {
                             checked,
                             value,
                             options,
+                            toggleBlock,
                             error: { status, message },
                           },
                           index
@@ -59,8 +62,8 @@ class Checkout extends Component {
                               <S.CheckboxLabel key={index}>
                                 <S.Checkbox
                                   required
-                                  onChange={() =>
-                                    validateChecked(fields[index])
+                                  onChange={(event) =>
+                                    validateChecked(fields[index], event)
                                   }
                                 />
                                 <S.CheckboxText error={status}>
@@ -72,13 +75,13 @@ class Checkout extends Component {
                             return (
                               <S.RadioLabel
                                 key={index}
-                                onChange={() => handleBlocks(value)}
+                                onChange={() => handleBlocks(toggleBlock)}
                               >
                                 <S.Radio
                                   value={value}
                                   required
-                                  onChange={() =>
-                                    validateChecked(fields[index])
+                                  onChange={(event) =>
+                                    validateChecked(fields[index], event)
                                   }
                                 />
                                 <S.RadioText error={status}>{text}</S.RadioText>
@@ -106,19 +109,6 @@ class Checkout extends Component {
                                     );
                                   })}
                                 </S.CustomOptionList>
-                                <S.Select>
-                                  {options.map((option, optionIndex) => {
-                                    return (
-                                      <S.Option
-                                        key={optionIndex}
-                                        value={option}
-                                        onChange={({ target: { value } }) =>
-                                          validateField(fields[index], value)
-                                        }
-                                      />
-                                    );
-                                  })}
-                                </S.Select>
                               </S.CustomSelect>
                             );
                           } else {
@@ -187,13 +177,15 @@ class Checkout extends Component {
               </S.OrderButton>
             </S.Cart>
           </S.Inner>
-          <Modal>
+          <Modal hidden={modalHiddenStatus}>
             <S.ModalTitle>Отлично!</S.ModalTitle>
             <S.ModalDesc>
               Ваш заказ отправлен. Наш менеджер свяжется с&nbsp;вами
               в&nbsp;ближайшее время.
             </S.ModalDesc>
-            <S.ModalButton>Понятно</S.ModalButton>
+            <S.ModalButton to="/" onClick={() => clearForm()}>
+              Понятно
+            </S.ModalButton>
           </Modal>
         </Container>
       </S.Checkout>

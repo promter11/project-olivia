@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import Mark from "../../assets/icons/mark.svg";
 
@@ -206,12 +207,6 @@ export const RadioLabel = styled.label`
   }
 `;
 
-export const Select = styled.select`
-  display: none;
-`;
-
-export const Option = styled.option``;
-
 export const CustomSelect = styled.div`
   position: relative;
   width: 100%;
@@ -220,7 +215,7 @@ export const CustomSelect = styled.div`
 `;
 
 export const CustomSelectItem = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1;
   padding: 1.5rem 2rem;
   cursor: pointer;
@@ -389,9 +384,7 @@ export const ModalDesc = styled.p`
   margin-bottom: 3rem;
 `;
 
-export const ModalButton = styled.button.attrs({
-  type: "button",
-})`
+export const ModalButton = styled(Link)`
   font-size: 1.2rem;
   line-height: 1;
   font-weight: 300;

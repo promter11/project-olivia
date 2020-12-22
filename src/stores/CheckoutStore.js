@@ -1,14 +1,18 @@
 import { makeObservable, observable, action } from "mobx";
 
+import CartStore from "./CartStore";
+
 class CheckoutStore {
   constructor() {
     makeObservable(this, {
       form: observable,
+      modalHiddenStatus: observable,
       validateField: action,
       validateChecked: action,
       handleBlocks: action,
       handleSelect: action,
       submitForm: action,
+      clearForm: action,
     });
   }
 
@@ -28,6 +32,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
           {
             type: "text",
@@ -38,6 +43,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
           {
             type: "text",
@@ -48,6 +54,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
           {
             type: "phone",
@@ -58,6 +65,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
           {
             type: "email",
@@ -68,6 +76,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
           {
             type: "checkbox",
@@ -79,6 +88,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
         ],
       },
@@ -91,21 +101,25 @@ class CheckoutStore {
             type: "radio",
             name: "DeliveryMethod",
             text: "Самовывоз",
-            value: 2,
+            value: "",
+            toggleBlock: 2,
             error: {
               message: "",
               status: false,
             },
+            valid: false,
           },
           {
             type: "radio",
             name: "DeliveryMethod",
             text: "Доставка курьером",
-            value: 3,
+            value: "",
+            toggleBlock: 3,
             error: {
               message: "",
               status: false,
             },
+            valid: false,
           },
         ],
       },
@@ -124,6 +138,7 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
         ],
       },
@@ -147,14 +162,15 @@ class CheckoutStore {
               message: "",
               status: false,
             },
+            valid: false,
           },
         ],
       },
     ],
   };
+  modalHiddenStatus = true;
 
   validateField = (field, value) => {
-    let validate = false;
     let pattern = /^([а-яА-ЯёЁ]+\s?)+/;
     let message = "Пожалуйста, заполните поле.";
 
@@ -184,41 +200,44 @@ class CheckoutStore {
     if (pattern.test(value)) {
       field.error.status = false;
       field.error.message = "";
-
-      validate = !validate;
+      field.valid = true;
     } else {
       field.error.status = true;
       field.error.message = message;
+      field.valid = false;
     }
-
-    return validate;
   };
 
-  validateChecked = (field) => {
-    let validate = false;
-
+  validateChecked = (field, event) => {
     if (field.type === "radio") {
-      if (field.error.status) {
-        field.error.status = false;
+      const block = this.form.blocks.find((block, _) =>
+        block.fields.find((item, _) => item.name === field.name)
+      );
+
+      if (!event) {
+        const valid = block.fields.some((field, _) => field.valid);
+
+        if (!valid) {
+          block.fields.forEach((item, _) => {
+            item.error.status = true;
+          });
+        }
+      } else {
+        block.fields.forEach((item, _) => {
+          item.error.status = false;
+          item.valid = true;
+        });
       }
-      // if (field.error.status) {
-      //   const block = this.form.blocks.find((block, _) =>
-      //     block.fields.find((item, _) => item.name === field.name)
-      //   );
-      //
-      //   block.fields.forEach((item, _) => {
-      //     item.error.status = false;
-      //   });
-      // } else {
-      //   field.error.status = true;
-      // }
     } else {
-      field.error.status = !field.error.status;
-
-      validate = !validate;
+      if (!event) {
+        if (!field.valid) {
+          field.error.status = !field.valid;
+        }
+      } else {
+        field.error.status = !field.error.status;
+        field.valid = !field.valid;
+      }
     }
-
-    return validate;
   };
 
   handleBlocks = (id) => {
@@ -228,30 +247,76 @@ class CheckoutStore {
 
   handleSelect = (field, value = "") => {
     field.opened = !field.opened;
+    field.error.status = !field.error.status;
 
     if (value.length) {
       field.text = value;
       field.value = value;
       field.error.status = false;
+      field.valid = true;
     }
   };
 
   submitForm = (event) => {
     event.preventDefault();
 
-    const activeBlocks = this.form.blocks.filter((block, _) => !block.hidden);
+    let validationPassed = true;
 
-    activeBlocks.forEach((block, _) =>
+    this.form.blocks
+      .filter((block, _) => !block.hidden)
+      .forEach((block, _) => {
+        block.fields.forEach((field, _) => {
+          switch (field.type) {
+            case "text":
+            case "phone":
+            case "email":
+              this.validateField(field, field.value);
+
+              break;
+            case "checkbox":
+            case "radio":
+              this.validateChecked(field);
+
+              break;
+            default:
+              break;
+          }
+
+          if (!field.valid) {
+            validationPassed = false;
+          }
+        });
+      });
+
+    if (validationPassed) {
+      this.modalHiddenStatus = !this.modalHiddenStatus;
+    }
+  };
+
+  clearForm = () => {
+    this.modalHiddenStatus = !this.modalHiddenStatus;
+
+    this.form.blocks.forEach((block, _) => {
+      if (block.id === 2 || block.id === 3) {
+        block.hidden = true;
+      }
+
       block.fields.forEach((field, _) => {
-        if (field.type === "checkbox" || field.type === "radio") {
-          if (this.validateChecked(field)) {
-          }
-        } else {
-          if (this.validateField(field, field.value)) {
-          }
+        field.value = "";
+        field.error = {
+          status: false,
+          message: "",
+        };
+        field.valid = false;
+
+        if (field.type === "select") {
+          field.text = "Выберите адрес магазина";
+          field.opened = false;
         }
-      })
-    );
+      });
+    });
+
+    CartStore.items = [];
   };
 }
 
