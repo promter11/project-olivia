@@ -13,10 +13,14 @@ export const Modal = styled.div`
 
 export const Content = styled.div`
   max-width: 47rem;
-  width: 100%;
+  width: calc(100% - 3rem);
   margin: 0 auto;
   padding: 4rem;
   text-align: center;
   border-radius: 0.8rem;
   background-color: var(--white-color);
+
+  @media (max-width: 576px) {
+    padding: 2rem;
+  }
 `;

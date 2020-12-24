@@ -382,9 +382,15 @@ export const ModalTitle = styled.h2`
 
 export const ModalDesc = styled.p`
   margin-bottom: 3rem;
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
 `;
 
 export const ModalButton = styled(Link)`
+  display: inline-block;
   font-size: 1.2rem;
   line-height: 1;
   font-weight: 300;
@@ -400,9 +406,5 @@ export const ModalButton = styled(Link)`
   &:hover {
     background-color: transparent;
     color: var(--grey-color);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
   }
 `;

@@ -9,6 +9,7 @@ class CartStore {
       count: computed,
       totalPrice: computed,
       addItem: action,
+      plusItem: action,
       minusItem: action,
       removeItem: action,
       clearCart: action,
@@ -59,12 +60,18 @@ class CartStore {
     } else {
       const clone = toJS(object);
 
-      clone.options.find(
-        (option, _) => option.volume === +volume && option.countInCart++
-      );
+      clone.options.forEach((option, _) => {
+        option.volume === +volume && option.countInCart++;
+      });
 
       this.items.push(clone);
     }
+  };
+
+  plusItem = (index) => {
+    const current = this.getItemsCurrentOption(this.items[index]);
+
+    current.countInCart++;
   };
 
   minusItem = (index) => {

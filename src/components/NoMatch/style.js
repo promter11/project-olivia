@@ -32,6 +32,11 @@ export const Description = styled.p`
   line-height: 2.4rem;
   margin: 0 auto 3rem auto;
   color: var(--grey-color);
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`
