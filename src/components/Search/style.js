@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchImage from "../../assets/images/search.jpg";
 
 export const Search = styled.div`
-  position: fixed;
+  position: absolute;
   top: ${(props) => (props.active ? "0" : "-100%")};
   left: 0;
   z-index: 10;
@@ -16,7 +16,9 @@ export const Search = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 1.5rem;
-  transition: top 0.5s, visibility 0.5s;
+  visibility: ${(props) => (props.active ? "visible" : "hidden")};
+  opacity: ${(props) => (props.active ? "1" : "0")};
+  transition: all 0.5s;
   background: rgba(0, 0, 0, 0.5) url(${SearchImage}) no-repeat center center /
     cover;
   background-blend-mode: darken;
