@@ -16,7 +16,8 @@ export const Search = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 1.5rem;
-  transition: top 0.5s ease;
+  transition: top 0.5s, visibility 0.5s;
+  visibility: ${(props) => (props.active ? "visible" : "hidden")};
   background: rgba(0, 0, 0, 0.5) url(${SearchImage}) no-repeat center center /
     cover;
   background-blend-mode: darken;
